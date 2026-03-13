@@ -213,8 +213,19 @@ p{color:var(--ink2)}
   min-height:1.4em
 }
 
-.hero h1{margin-bottom:1.375rem;font-size:clamp(2.25rem,4.5vw,3.5rem)}
-.hero h1 em{font-style:normal;color:var(--p);position:relative}
+.hero h1{
+  margin-bottom:1.375rem;
+  font-size:clamp(2.25rem,4.5vw,3.5rem);
+  background:linear-gradient(90deg, var(--ink) 0%, var(--ink) 30%, var(--p) 50%, var(--ink) 70%, var(--ink) 100%);
+  background-size:300% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:headlineShimmer 5s linear infinite
+}
+@keyframes headlineShimmer{
+  0%{background-position:100% center}
+  100%{background-position:-200% center}
+}
+.hero h1 em{font-style:normal;position:relative}
 .hero h1 em::after{
   content:'';position:absolute;bottom:-3px;left:0;right:0;height:3px;
   background:linear-gradient(90deg,var(--p),var(--p2));border-radius:2px
@@ -864,7 +875,7 @@ p{color:var(--ink2)}
       <div class="hero-inner">
         <div>
           <div class="hero-kicker-word" id="kicker-word">Realtà Estesa</div>
-          <h1>XR e AI per chi vende prodotti innovativi e soluzioni <em>tecnologicamente complesse.</em></h1>
+          <h1>XR e AI per chi vende prodotti innovativi e soluzioni <em>complesse.</em></h1>
           <p class="sub">Daedalus-XR è il partner tecnologico per le aziende del manufacturing avanzato — Extended Reality (Realtà Virtuale, Aumentata e Mista) e Intelligenza Artificiale implementate in modo professionale e scalabile, con risultati di business misurabili.</p>
           <div class="hero-bts">
             <button class="btn btn-p" onclick="go('contatti')">Parla con noi</button>
