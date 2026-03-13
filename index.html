@@ -666,6 +666,7 @@ p{color:var(--ink2)}
   background:var(--w);border:1px solid var(--line);border-radius:20px;
   overflow:hidden;position:relative;
   display:flex;flex-direction:column;
+  min-height:calc(100vh - 380px);
   transition:border-color .3s,transform .3s,box-shadow .3s;
 }
 .icd-card:hover{
@@ -673,15 +674,15 @@ p{color:var(--ink2)}
   box-shadow:0 20px 50px rgba(150,103,224,.15)
 }
 .icd-num{
-  font-size:5rem;font-weight:800;line-height:1;
-  color:var(--p3);padding:1.75rem 1.75rem 0;letter-spacing:-.05em;
+  font-size:5.5rem;font-weight:800;line-height:1;
+  color:var(--p3);padding:2.5rem 2.5rem 0;letter-spacing:-.05em;
   position:relative
 }
 .icd-card:hover .icd-num{color:var(--p2)}
-.icd-body{padding:.5rem 2rem 2rem;flex:1;display:flex;flex-direction:column}
+.icd-body{padding:.75rem 2.5rem 3rem;flex:1;display:flex;flex-direction:column}
 .icd-tag{font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:.5rem}
-.icd-body h3{font-size:1.0625rem;margin-bottom:.625rem}
-.icd-body .flist{margin-top:.875rem}
+.icd-body h3{font-size:1.25rem;margin-bottom:.875rem}
+.icd-body .flist{margin-top:1.25rem;flex:1}
 .icd-duration{
   display:inline-flex;align-items:center;gap:.375rem;
   font-size:.75rem;font-weight:600;color:var(--ink3);
@@ -857,6 +858,43 @@ p{color:var(--ink2)}
 }
 @keyframes stepProgress{from{width:0}to{width:100%}}
 
+
+/* ── icd-timeline2: above cards, badges between dots ── */
+.icd-timeline2{
+  display:flex;align-items:center;
+  margin-bottom:2.5rem;position:relative;z-index:1
+}
+.tl2-item{display:flex;flex-direction:column;align-items:center;gap:.5rem;flex-shrink:0}
+.tl2-dot{
+  width:16px;height:16px;border-radius:50%;
+  background:var(--p);border:2px solid var(--w);
+  box-shadow:0 0 0 3px var(--p3)
+}
+.tl2-dot--open{background:var(--w);border:2.5px solid var(--p)}
+.tl2-label{font-size:.8125rem;font-weight:600;color:var(--ink2);white-space:nowrap}
+.tl2-decision .tl2-label{color:var(--p);font-weight:700}
+.tl2-seg{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  position:relative;top:-8px
+}
+.tl2-seg::before{
+  content:'';position:absolute;left:0;right:0;top:50%;
+  height:2px;background:var(--p3);transform:translateY(-50%)
+}
+.tl2-seg--dashed::before{
+  background:repeating-linear-gradient(90deg,var(--p2) 0,var(--p2) 6px,transparent 6px,transparent 12px)
+}
+.tl2-badge{
+  position:relative;z-index:1;
+  font-size:.6875rem;font-weight:700;color:var(--p);
+  background:var(--p4);border:1px solid var(--p3);
+  padding:.25rem .75rem;border-radius:100px;white-space:nowrap
+}
+@media(max-width:860px){
+  .icd-timeline2{display:none}
+  .icd-card{min-height:auto}
+}
+
 </style>
 </head>
 <body>
@@ -995,10 +1033,16 @@ p{color:var(--ink2)}
       <div class="icd-header reveal">
         <div class="lbl">Framework proprietario</div>
         <h2>Innovation Cycle Design</h2>
-        <p class="sub">Il framework proprietario di Daedalus-XR: tre incontri in 45 giorni per capire dove Extended Reality e Intelligenza Artificiale possono fare la differenza nel tuo business — prima di qualsiasi decisione di investimento.</p>
+        <p class="sub">Il framework proprietario di Daedalus-XR: tre incontri in 6 settimane per capire dove Extended Reality e Intelligenza Artificiale possono fare la differenza nel tuo business — prima di qualsiasi decisione di investimento.</p>
       </div>
-      <div class="icd-intro reveal">
-        <p>Tre incontri strutturati nell'arco di 45 giorni. Al termine decidi tu se e come andare avanti — sviluppo e assistenza sono un passo successivo, separato.</p>
+      <div class="icd-timeline2 reveal">
+        <div class="tl2-item"><span class="tl2-dot"></span><span class="tl2-label">Incontro 1</span></div>
+        <div class="tl2-seg"><span class="tl2-badge">14 giorni</span></div>
+        <div class="tl2-item"><span class="tl2-dot"></span><span class="tl2-label">Incontro 2</span></div>
+        <div class="tl2-seg"><span class="tl2-badge">14 giorni</span></div>
+        <div class="tl2-item"><span class="tl2-dot"></span><span class="tl2-label">Incontro 3</span></div>
+        <div class="tl2-seg tl2-seg--dashed"><span class="tl2-badge">14 giorni</span></div>
+        <div class="tl2-item tl2-decision"><span class="tl2-dot tl2-dot--open"></span><span class="tl2-label">Decidi tu</span></div>
       </div>
       <div class="icd-grid">
         <div class="icd-card reveal" style="--d:.08s">
@@ -1041,16 +1085,7 @@ p{color:var(--ink2)}
           </div>
         </div>
       </div>
-      <div class="icd-timeline reveal">
-        <div class="icd-tl-item"><span class="icd-tl-dot"></span><span class="icd-tl-label">Incontro 1</span></div>
-        <div class="icd-tl-line"></div>
-        <div class="icd-tl-item"><span class="icd-tl-dot"></span><span class="icd-tl-label">Incontro 2</span></div>
-        <div class="icd-tl-line"></div>
-        <div class="icd-tl-item"><span class="icd-tl-dot"></span><span class="icd-tl-label">Incontro 3</span></div>
-        <div class="icd-tl-line icd-tl-line--decision"></div>
-        <div class="icd-tl-item icd-tl-decision"><span class="icd-tl-dot icd-tl-dot--decision"></span><span class="icd-tl-label">Decidi tu</span></div>
-        <div class="icd-tl-duration">45 giorni</div>
-      </div>
+
       <div class="icd-cta reveal">
         <p>L'Innovation Cycle Design è il punto di partenza — il modo più sicuro per capire dove Extended Reality e AI fanno la differenza concreta nel tuo business, prima di investire in qualsiasi sviluppo.</p>
         <button onclick="go('contatti')" style="margin-top:1.5rem;display:inline-flex;align-items:center;gap:.625rem;font-family:'Poppins',sans-serif;font-size:1rem;font-weight:700;background:#ffffff !important;color:#9667E0 !important;border:2.5px solid #ffffff;border-radius:10px;padding:1rem 2.25rem;cursor:pointer;box-shadow:0 6px 28px rgba(0,0,0,.3);position:relative;z-index:10;">Prenota una call &nbsp;→</button>
@@ -1130,7 +1165,7 @@ p{color:var(--ink2)}
       <div class="cta-box">
         <div class="lbl on-p">Innovation Cycle Design</div>
         <h2>Inizia con l'Innovation Cycle Design.</h2>
-        <p class="sub">Tre incontri in 45 giorni. Una roadmap personalizzata con le opportunità concrete di Extended Reality e Intelligenza Artificiale per il tuo business — prima di qualsiasi decisione di sviluppo.</p>
+        <p class="sub">Tre incontri in 6 settimane. Una roadmap personalizzata con le opportunità concrete di Extended Reality e Intelligenza Artificiale per il tuo business — prima di qualsiasi decisione di sviluppo.</p>
         <button onclick="go('contatti')" style="
           margin-top:2.25rem;
           display:inline-flex;align-items:center;gap:.625rem;
@@ -1242,7 +1277,7 @@ p{color:var(--ink2)}
         <div class="svc-row"><div class="svc-name">Consulenza e formazione</div><div class="svc-desc">Analisi della situazione, roadmap personalizzata, accompagnamento all'adozione. Il punto di partenza per ogni progetto.</div></div>
       </div>
       <div class="sol-cta-bar">
-        <p>Inizia con l'Innovation Cycle Design — tre incontri in 45 giorni, roadmap personalizzata, output concreto.</p>
+        <p>Inizia con l'Innovation Cycle Design — tre incontri in 6 settimane, roadmap personalizzata, output concreto.</p>
         <button class="btn btn-p" onclick="go('contatti')">Contattaci</button>
       </div>
     </div>
@@ -1547,7 +1582,7 @@ p{color:var(--ink2)}
       <div style="margin-top:4.5rem;padding-top:4rem;border-top:1px solid var(--line)">
         <div class="lbl" style="margin-bottom:.75rem">Oppure</div>
         <h2 style="margin-bottom:.875rem">Innovation Cycle Design</h2>
-        <p class="sub" style="margin-bottom:2rem">Tre incontri in 45 giorni per capire dove Extended Reality e AI possono fare la differenza nel tuo business — prima di qualsiasi investimento.</p>
+        <p class="sub" style="margin-bottom:2rem">Tre incontri in 6 settimane per capire dove Extended Reality e AI possono fare la differenza nel tuo business — prima di qualsiasi investimento.</p>
         <button class="btn btn-p" onclick="go('contatti');document.getElementById('cform').scrollIntoView({behavior:'smooth'})">Prenota una call →</button>
       </div>
     </div>
