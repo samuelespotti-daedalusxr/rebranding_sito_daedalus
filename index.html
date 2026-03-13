@@ -185,7 +185,7 @@ p{color:var(--ink2)}
 .hero{
   position:relative;overflow:hidden;
   background:linear-gradient(155deg, var(--p5) 0%, #fff 60%);
-  padding:5.5rem 0 5rem;border-bottom:1px solid var(--line)
+  padding:3rem 0 2.5rem;border-bottom:1px solid var(--line)
 }
 /* decorative orb */
 .hero::after{
@@ -200,7 +200,7 @@ p{color:var(--ink2)}
   background-image:radial-gradient(var(--p2) 1px, transparent 1px);
   background-size:36px 36px;opacity:.22;pointer-events:none;z-index:0
 }
-.hero-inner{display:flex;flex-direction:column;gap:3rem;position:relative;z-index:1}
+.hero-inner{display:flex;flex-direction:column;gap:1.75rem;position:relative;z-index:1}
 
 .hero-kicker-word{
   font-size:clamp(1.375rem, 3vw, 1.875rem);
@@ -210,11 +210,12 @@ p{color:var(--ink2)}
   background:linear-gradient(120deg, var(--p) 0%, #b48ef5 50%, var(--p2) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   display:block;line-height:1.2;
-  min-height:1.4em
+  min-height:1.4em;
+  margin-bottom:.625rem
 }
 
 .hero h1{
-  margin-bottom:1.375rem;
+  margin-bottom:.875rem;
   max-width:800px;
   font-size:clamp(2.25rem,4.5vw,3.5rem);
   background:linear-gradient(90deg, var(--ink) 0%, var(--ink) 25%, var(--p) 50%, var(--ink) 75%, var(--ink) 100%);
@@ -227,14 +228,14 @@ p{color:var(--ink2)}
   100%{background-position:200% center}
 }
 .hero h1 em{font-style:normal}
-.hero .sub{max-width:600px;margin-bottom:2.25rem;font-size:1.0625rem}
+.hero .sub{max-width:600px;margin-bottom:1.375rem;font-size:1.0625rem}
 .hero-bts{display:flex;gap:.875rem;flex-wrap:wrap}
 
 /* hero cards */
 .hcards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .hcard{
   background:var(--w);border:1px solid var(--line);border-radius:var(--r-lg);
-  padding:1.5rem 1.625rem;position:relative;overflow:hidden;
+  padding:1.125rem 1.375rem;position:relative;overflow:hidden;
   transition:border-color .22s,transform .22s,box-shadow .22s
 }
 .hcard::before{
