@@ -974,6 +974,7 @@ p{color:var(--ink2)}
 }
 
 </style>
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
 </head>
 <body>
 
@@ -1912,18 +1913,47 @@ function submitForm(e) {
 
 
 
+
+<!-- Google Calendar Appointment Scheduling -->
+<div id="gcal-target" style="position:absolute;opacity:0;pointer-events:none;width:0;height:0;overflow:hidden"></div>
+<script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
 <script>
-function openGcal() {
-  var w = 860, h = 700;
-  var left = Math.max(0, (screen.width - w) / 2);
-  var top  = Math.max(0, (screen.height - h) / 2);
-  window.open(
-    'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2xX3auCDkrI5agwkyGkATj-vmg9mIkhrmF498eb6DJ5763fLAifb5mFGK2n5jbyumVBCC2o7Bn?gv=true',
-    'gcal_popup',
-    'width=' + w + ',height=' + h + ',left=' + left + ',top=' + top + ',resizable=yes,scrollbars=yes'
-  );
-}
+(function() {
+  function mountGcal() {
+    var target = document.getElementById('gcal-target');
+    if (!target || !window.calendar || !window.calendar.schedulingButton) return;
+    calendar.schedulingButton.load({
+      url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2xX3auCDkrI5agwkyGkATj-vmg9mIkhrmF498eb6DJ5763fLAifb5mFGK2n5jbyumVBCC2o7Bn?gv=true',
+      color: '#9667E0',
+      label: 'Prenota',
+      target: target,
+    });
+    window._gcalMounted = true;
+  }
+  window.addEventListener('load', function() {
+    var t = setInterval(function() {
+      if (window.calendar && window.calendar.schedulingButton) {
+        clearInterval(t);
+        mountGcal();
+      }
+    }, 100);
+    setTimeout(function() { clearInterval(t); }, 8000);
+  });
+  window.openGcal = function() {
+    if (!window._gcalMounted) {
+      mountGcal();
+      setTimeout(triggerGcal, 400);
+    } else {
+      triggerGcal();
+    }
+  };
+  function triggerGcal() {
+    var btn = document.querySelector('#gcal-target button, #gcal-target a');
+    if (btn) btn.click();
+  }
+})();
 </script>
+<!-- end Google Calendar Appointment Scheduling -->
 
 </body>
 </html>
