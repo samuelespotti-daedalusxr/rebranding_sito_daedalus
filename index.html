@@ -976,60 +976,74 @@ p{color:var(--ink2)}
 
 
 
-/* ── GCal button overlay trick ── */
-.gcal-btn-wrap{
-  position:relative;
-  display:inline-block;
-}
-/* Hide the real GCal button but keep it clickable */
-.gcal-btn-wrap>*{
-  position:absolute!important;
-  inset:0!important;
-  opacity:0!important;
-  width:100%!important;
-  height:100%!important;
-  cursor:pointer!important;
-  z-index:2!important;
-}
-/* Our fake button on top, purely visual */
-.gcal-btn-wrap::before{
-  content:'Prenota una call →';
-  position:relative;
-  z-index:1;
-  display:inline-flex;
-  align-items:center;
-  font-family:var(--f);font-size:.9375rem;font-weight:600;
-  padding:.9rem 2.25rem;
-  border-radius:var(--r);
-  cursor:pointer;
-  white-space:nowrap;
-  transition:all .18s;
-  pointer-events:none;
-}
-.gcal-purple::before{
-  background:var(--p);
-  color:#fff;
-}
-.gcal-purple:hover::before{
-  background:#7c45d4;
-}
-.gcal-white::before{
-  background:#fff;
-  color:#9667E0;
-  border:2.5px solid #fff;
-  border-radius:10px;
-  font-size:1rem;
-  font-weight:700;
-  padding:1rem 2.25rem;
-  box-shadow:0 6px 28px rgba(0,0,0,.3);
-}
-.gcal-white:hover::before{
-  background:transparent;
-  color:#fff;
-}
-@media(max-width:860px){
-  .gcal-btn-wrap{display:block;width:100%}
   .gcal-btn-wrap::before{width:100%;justify-content:center}
+}
+
+
+/* ── GCal button restyling — target any element inside wrapper ── */
+.gcal-btn-wrap{display:inline-block;line-height:0}
+.gcal-purple button,
+.gcal-purple a{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:.5rem !important;
+  font-family:'Poppins',sans-serif !important;
+  font-size:.9375rem !important;
+  font-weight:600 !important;
+  color:#fff !important;
+  background:var(--p) !important;
+  background-color:#9667E0 !important;
+  padding:.9rem 2.25rem !important;
+  border-radius:10px !important;
+  border:none !important;
+  box-shadow:none !important;
+  cursor:pointer !important;
+  text-decoration:none !important;
+  white-space:nowrap !important;
+  transition:background .18s, transform .18s !important;
+  outline:none !important;
+}
+.gcal-purple button:hover,
+.gcal-purple a:hover{
+  background:#7c45d4 !important;
+  background-color:#7c45d4 !important;
+  transform:translateY(-2px) !important;
+}
+.gcal-white button,
+.gcal-white a{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:.5rem !important;
+  font-family:'Poppins',sans-serif !important;
+  font-size:1rem !important;
+  font-weight:700 !important;
+  color:#9667E0 !important;
+  background:#fff !important;
+  background-color:#fff !important;
+  padding:1rem 2.25rem !important;
+  border-radius:10px !important;
+  border:2.5px solid #fff !important;
+  box-shadow:0 6px 28px rgba(0,0,0,.3) !important;
+  cursor:pointer !important;
+  text-decoration:none !important;
+  white-space:nowrap !important;
+  transition:background .18s !important;
+  outline:none !important;
+  margin-top:0 !important;
+}
+.gcal-white button:hover,
+.gcal-white a:hover{
+  background:transparent !important;
+  background-color:transparent !important;
+  color:#fff !important;
+}
+/* Hide GCal icon/svg */
+.gcal-btn-wrap svg,
+.gcal-btn-wrap img{display:none !important}
+@media(max-width:860px){
+  .gcal-btn-wrap{display:block}
+  .gcal-purple button,.gcal-purple a,
+  .gcal-white button,.gcal-white a{width:100% !important;justify-content:center !important}
 }
 
 </style>
