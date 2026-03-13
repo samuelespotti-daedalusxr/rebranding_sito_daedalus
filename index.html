@@ -589,38 +589,43 @@ p{color:var(--ink2)}
 }
 
 /* ══════════════════════════════════════════════
-   ANIMATIONS
+   ANIMATIONS — DESIGN SYSTEM
+   Principi: purposeful, gerarchico, non decorativo.
+   Ogni animazione ha una funzione narrativa.
 ══════════════════════════════════════════════ */
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes scaleIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
-@keyframes slideRight{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:translateX(0)}}
-@keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
-@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes rotateSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes borderGlow{0%,100%{box-shadow:0 0 0 0 rgba(150,103,224,0)}50%{box-shadow:0 0 0 6px rgba(150,103,224,.15)}}
 
-/* reveal on scroll */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
+/* keyframes essenziali */
+@keyframes fadeUp   { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn   { from{opacity:0}                            to{opacity:1} }
+@keyframes shimmer  { 0%{background-position:200% center} 100%{background-position:-200% center} }
+@keyframes scaleUp  { from{opacity:0;transform:scale(.97)} to{opacity:1;transform:scale(1)} }
+
+/* ── Scroll reveal: elementi entrano dal basso, staggered per colonna ── */
+.reveal{
+  opacity:0;transform:translateY(18px);
+  transition:opacity .55s cubic-bezier(.22,1,.36,1),
+             transform .55s cubic-bezier(.22,1,.36,1);
+  transition-delay:var(--d,0s)
+}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* hero animations */
-.hero-inner > div:first-child{animation:fadeUp .8s cubic-bezier(.16,1,.3,1) both}
-.hero-inner > .hcards{animation:fadeUp .8s .18s cubic-bezier(.16,1,.3,1) both}
+/* ── Hero: testo entra subito (above-fold, no delay percepibile) ── */
+.hero-inner>div:first-child{animation:fadeUp .6s cubic-bezier(.22,1,.36,1) both}
+.hero-inner>.hcards{animation:fadeUp .6s .14s cubic-bezier(.22,1,.36,1) both}
 
-/* number counter shimmer */
+/* ── Hero kicker pulse: segnala "live / attivo" ── */
+/* (già definito sopra come @keyframes pulse) */
+
+/* ── Caso studio numero: shimmer indica "dato dinamico" ── */
 .cs-num{
-  background:linear-gradient(90deg, var(--p2) 0%, var(--p) 40%, var(--p2) 60%, var(--p3) 100%);
+  background:linear-gradient(90deg,var(--p3) 0%,var(--p) 45%,var(--p2) 55%,var(--p3) 100%);
   background-size:200% auto;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:shimmer 4s linear infinite
+  animation:shimmer 5s linear infinite
 }
 
-/* nav scroll effect */
-#nav.scrolled{box-shadow:0 4px 24px rgba(150,103,224,.08)}
-
-/* hcard float on hover */
-.hcards .hcard:nth-child(2){animation:floatY 6s ease-in-out infinite}
+/* ── Nav shadow on scroll: feedback posizione ── */
+#nav.scrolled{box-shadow:0 2px 20px rgba(150,103,224,.09)}
 
 /* ══════════════════════════════════════════════
    INNOVATION CYCLE DESIGN
@@ -648,10 +653,7 @@ p{color:var(--ink2)}
   background:var(--w);border:1px solid var(--line);border-radius:20px;
   overflow:hidden;position:relative;
   transition:border-color .3s,transform .3s,box-shadow .3s;
-  animation:borderGlow 4s ease-in-out infinite
 }
-.icd-card:nth-child(2){animation-delay:1.3s}
-.icd-card:nth-child(3){animation-delay:2.6s}
 .icd-card:hover{
   border-color:var(--p);transform:translateY(-6px);
   box-shadow:0 20px 50px rgba(150,103,224,.15)
@@ -660,11 +662,6 @@ p{color:var(--ink2)}
   font-size:5rem;font-weight:800;line-height:1;
   color:var(--p3);padding:1.75rem 1.75rem 0;letter-spacing:-.05em;
   position:relative
-}
-.icd-num::after{
-  content:'';position:absolute;top:1.75rem;right:1.75rem;
-  width:36px;height:36px;border-radius:50%;
-  background:var(--p3);border:2px solid var(--p2)
 }
 .icd-card:hover .icd-num{color:var(--p2)}
 .icd-body{padding:0 1.75rem 1.75rem}
@@ -684,29 +681,52 @@ p{color:var(--ink2)}
 }
 .icd-cta p{color:rgba(255,255,255,.9);font-size:1rem;max-width:560px}
 
-/* connector lines between ICD cards */
-.icd-grid::before{
-  content:'';position:absolute;
-  top:calc(5rem + 28px);left:calc(33.33% - 1px);right:calc(33.33% - 1px);
-  height:2px;
-  background:linear-gradient(90deg, var(--p2), var(--p), var(--p2));
-  background-size:200% auto;animation:shimmer 3s linear infinite;
-  z-index:2;pointer-events:none
-}
 
-/* typed-text cursor blink */
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.cursor{display:inline-block;width:2px;height:1em;background:var(--p);vertical-align:middle;margin-left:2px;animation:blink 1.1s step-end infinite}
 
-/* particle dots on hero */
-.hero-dot{
-  position:absolute;border-radius:50%;background:var(--p);opacity:.18;
-  pointer-events:none;animation:floatY var(--dur,6s) var(--del,0s) ease-in-out infinite
-}
 
 @media(max-width:860px){
   .icd-grid{grid-template-columns:1fr}
-  .icd-grid::before{display:none}
+}
+
+
+/* ICD intro + timeline */
+.icd-intro{margin-bottom:2.5rem}
+.icd-intro p{font-size:1.0625rem;color:var(--ink2);line-height:1.8;max-width:620px;font-style:italic}
+
+.icd-timeline{
+  display:flex;align-items:center;gap:0;
+  padding:2rem 0 0;margin-top:.5rem;position:relative
+}
+.icd-tl-item{
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;flex-shrink:0
+}
+.icd-tl-dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--p);border:2px solid var(--w);
+  box-shadow:0 0 0 3px var(--p3)
+}
+.icd-tl-dot--decision{
+  background:var(--w);border:2.5px solid var(--p);
+  box-shadow:0 0 0 3px var(--p3)
+}
+.icd-tl-label{font-size:.75rem;font-weight:600;color:var(--ink2);white-space:nowrap}
+.icd-tl-line{
+  flex:1;height:2px;background:var(--p3);
+  position:relative;top:-10px
+}
+.icd-tl-line--decision{
+  background:repeating-linear-gradient(90deg,var(--p2) 0,var(--p2) 6px,transparent 6px,transparent 12px);
+}
+.icd-tl-decision .icd-tl-label{color:var(--p);font-weight:700}
+.icd-tl-duration{
+  position:absolute;bottom:-1.375rem;left:50%;transform:translateX(-50%);
+  font-size:.75rem;font-weight:600;color:var(--ink3);
+  background:var(--p4);padding:.25rem .875rem;border-radius:100px;
+  border:1px solid var(--line);white-space:nowrap
+}
+
+@media(max-width:860px){
+  .icd-timeline{display:none}
 }
 
 </style>
@@ -779,9 +799,9 @@ p{color:var(--ink2)}
           <div class="hcard hcard-hi">
             <div class="hcard-tag">Approccio</div>
             <div class="approach">
-              <span>Diagnostica</span><span class="arr">→</span>
-              <span>Progetto custom</span><span class="arr">→</span>
-              <span>Partnership</span>
+              <span>Innovation Cycle Design</span><span class="arr">→</span>
+              <span>Sviluppo</span><span class="arr">→</span>
+              <span>Assistenza</span>
             </div>
           </div>
         </div>
@@ -839,58 +859,65 @@ p{color:var(--ink2)}
       <div class="icd-header reveal">
         <div class="lbl">Framework proprietario</div>
         <h2>Innovation Cycle Design</h2>
-        <p class="sub">Il nostro metodo in tre fasi per portare Extended Reality e Intelligenza Artificiale nel tuo business in modo concreto, misurabile e senza rischi.</p>
+        <p class="sub">Il framework proprietario di Daedalus-XR: tre incontri in 45 giorni per capire dove Extended Reality e Intelligenza Artificiale possono fare la differenza nel tuo business — prima di qualsiasi decisione di investimento.</p>
+      </div>
+      <div class="icd-intro reveal">
+        <p>Tre incontri strutturati nell'arco di 45 giorni. Al termine decidi tu se e come andare avanti — sviluppo e assistenza sono un passo successivo, separato.</p>
       </div>
       <div class="icd-grid">
-        <div class="icd-card reveal" style="--d:.1s">
+        <div class="icd-card reveal" style="--d:.08s">
           <div class="icd-num">01</div>
           <div class="icd-body">
-            <div class="icd-tag">Fase 01 · Discover</div>
-            <h3>Diagnostica strategica</h3>
-            <p>Analisi approfondita del tuo business con il framework Innovation Cycle Design. Output: roadmap personalizzata con opportunità concrete di Extended Reality e AI, ROI stimato e priorità di intervento.</p>
+            <div class="icd-tag">Incontro 1 · Ascolto</div>
+            <h3>Analisi del contesto</h3>
+            <p>Capiamo il tuo business, i tuoi clienti e i processi chiave. Identifichiamo dove Extended Reality e Intelligenza Artificiale possono intervenire — e dove non ha senso farlo.</p>
             <ul class="flist">
-              <li>Analisi dei processi e dei pain point</li>
-              <li>Mappatura delle opportunità XR e AI</li>
-              <li>Roadmap con priorità e ROI stimato</li>
-              <li>Azionabile anche senza continuare con noi</li>
+              <li>Mappatura dei processi di vendita e supporto</li>
+              <li>Identificazione dei pain point prioritari</li>
+              <li>Prima valutazione di fattibilità</li>
             </ul>
-            <div class="icd-duration">⏱ 2 settimane · Output consegnato</div>
           </div>
         </div>
-        <div class="icd-card reveal" style="--d:.2s">
+        <div class="icd-card reveal" style="--d:.18s">
           <div class="icd-num">02</div>
           <div class="icd-body">
-            <div class="icd-tag">Fase 02 · Build</div>
-            <h3>Sviluppo su misura</h3>
-            <p>Realizziamo la soluzione identificata nella fase 1 — configuratore 3D, training in Realtà Virtuale, assistenza in Realtà Aumentata, Digital Human con AI. Integrazione con i tuoi sistemi esistenti, consegna e onboarding del team.</p>
+            <div class="icd-tag">Incontro 2 · Esplorazione</div>
+            <h3>Opportunità e scenari</h3>
+            <p>Presentiamo gli scenari concreti di applicazione — configuratori 3D, training in Realtà Virtuale, assistenza in Realtà Aumentata, Digital Human con AI — con stima dell'impatto atteso per il tuo caso specifico.</p>
             <ul class="flist">
-              <li>Sviluppo della soluzione definita</li>
-              <li>Integrazione con CRM / ERP esistenti</li>
-              <li>Onboarding e formazione del team</li>
-              <li>Perimetro definito — nessuna sorpresa</li>
+              <li>Scenari XR e AI su misura per il tuo settore</li>
+              <li>Impatto atteso su vendite, formazione e supporto</li>
+              <li>Benchmark da casi analoghi</li>
             </ul>
-            <div class="icd-duration">⏱ Durata variabile · Progetto definito</div>
           </div>
         </div>
-        <div class="icd-card reveal" style="--d:.3s">
+        <div class="icd-card reveal" style="--d:.28s">
           <div class="icd-num">03</div>
           <div class="icd-body">
-            <div class="icd-tag">Fase 03 · Evolve</div>
-            <h3>Partnership continuativa</h3>
-            <p>Non spariremo dopo la consegna. Manteniamo, aggiorniamo ed evolviamo la soluzione nel tempo, identificando nuovi use case e opportunità man mano che il tuo business cresce.</p>
+            <div class="icd-tag">Incontro 3 · Roadmap</div>
+            <h3>Piano d'azione</h3>
+            <p>Consegna della roadmap personalizzata: opportunità prioritarie, sequenza di intervento e ROI stimato. Un documento azionabile — utile anche se decidi di non procedere con noi.</p>
             <ul class="flist">
-              <li>Manutenzione e aggiornamenti continui</li>
-              <li>Evoluzione progressiva su nuovi use case</li>
-              <li>Accesso prioritario a nuove tecnologie XR/AI</li>
-              <li>Partner tecnologico attivo, non fornitore</li>
+              <li>Roadmap con priorità e sequenza di intervento</li>
+              <li>ROI stimato per ogni opportunità</li>
+              <li>Output consegnato e tuo per sempre</li>
             </ul>
-            <div class="icd-duration">⏱ Continuativo · Partnership attiva</div>
           </div>
         </div>
       </div>
+      <div class="icd-timeline reveal">
+        <div class="icd-tl-item"><span class="icd-tl-dot"></span><span class="icd-tl-label">Incontro 1</span></div>
+        <div class="icd-tl-line"></div>
+        <div class="icd-tl-item"><span class="icd-tl-dot"></span><span class="icd-tl-label">Incontro 2</span></div>
+        <div class="icd-tl-line"></div>
+        <div class="icd-tl-item"><span class="icd-tl-dot"></span><span class="icd-tl-label">Incontro 3</span></div>
+        <div class="icd-tl-line icd-tl-line--decision"></div>
+        <div class="icd-tl-item icd-tl-decision"><span class="icd-tl-dot icd-tl-dot--decision"></span><span class="icd-tl-label">Decidi tu</span></div>
+        <div class="icd-tl-duration">45 giorni</div>
+      </div>
       <div class="icd-cta reveal">
-        <p>Il punto di partenza è sempre la Diagnostica strategica — il modo più sicuro per capire dove Extended Reality e AI possono fare la differenza concreta nel tuo business.</p>
-        <button class="btn btn-p" onclick="go('contatti')">Inizia con la Diagnostica</button>
+        <p>L'Innovation Cycle Design è il punto di partenza — il modo più sicuro per capire dove Extended Reality e AI fanno la differenza concreta nel tuo business, prima di investire in qualsiasi sviluppo.</p>
+        <button class="btn btn-p" onclick="go('contatti')">Inizia con l'Innovation Cycle Design</button>
       </div>
     </div>
   </section>
@@ -949,9 +976,9 @@ p{color:var(--ink2)}
   <section class="sec">
     <div class="wrap">
       <div class="cta-box">
-        <div class="lbl on-p">Inizia dalla diagnostica</div>
-        <h2>Inizia dalla diagnostica.</h2>
-        <p class="sub">Due settimane di analisi con il nostro framework proprietario. Una roadmap personalizzata con le opportunità concrete di Extended Reality e AI per il tuo business.</p>
+        <div class="lbl on-p">Innovation Cycle Design</div>
+        <h2>Inizia con l'Innovation Cycle Design.</h2>
+        <p class="sub">Tre incontri in 45 giorni. Una roadmap personalizzata con le opportunità concrete di Extended Reality e Intelligenza Artificiale per il tuo business — prima di qualsiasi decisione di sviluppo.</p>
         <div class="cta-opts">
           <div class="cta-opt" onclick="go('contatti')">
             <div class="hcard-tag" style="color:var(--p2)">System Integrator</div>
@@ -1064,7 +1091,7 @@ p{color:var(--ink2)}
         <div class="svc-row"><div class="svc-name">Consulenza e formazione</div><div class="svc-desc">Analisi della situazione, roadmap personalizzata, accompagnamento all'adozione. Il punto di partenza per ogni progetto.</div></div>
       </div>
       <div class="sol-cta-bar">
-        <p>Parti dall'Innovation Cycle Design — il framework proprietario Daedalus-XR.</p>
+        <p>Inizia con l'Innovation Cycle Design — tre incontri in 45 giorni, roadmap personalizzata, output concreto.</p>
         <button class="btn btn-p" onclick="go('contatti')">Contattaci</button>
       </div>
     </div>
@@ -1240,7 +1267,7 @@ p{color:var(--ink2)}
       </div>
       <div class="blog-cta-row" style="margin-top:3rem">
         <p>Vuoi capire dove le tecnologie XR possono fare la differenza nella tua azienda?</p>
-        <button class="btn btn-p" onclick="go('contatti')">Inizia dalla diagnostica</button>
+        <button class="btn btn-p" onclick="go('contatti')">Inizia con l'Innovation Cycle Design</button>
       </div>
     </div>
   </section>
@@ -1368,10 +1395,10 @@ p{color:var(--ink2)}
 
       <div style="margin-top:4.5rem;padding-top:4rem;border-top:1px solid var(--line)">
         <div class="lbl" style="margin-bottom:.75rem">Oppure</div>
-        <h2 style="margin-bottom:.875rem">Parti dalla diagnostica</h2>
+        <h2 style="margin-bottom:.875rem">Innovation Cycle Design</h2>
         <p class="sub" style="margin-bottom:2rem">Due settimane. Una roadmap personalizzata con le opportunità XR/AI concrete per il tuo business.</p>
         <div class="diag-opts">
-          <div class="diag-opt"><div class="hcard-tag" style="color:var(--p);font-size:.625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase">System Integrator</div><h3>Prenota una call di 30 minuti</h3></div>
+          <div class="diag-opt"><div class="hcard-tag" style="color:var(--p);font-size:.625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase">System Integrator</div><h3>Prenota una call esplorativa</h3></div>
           <div class="diag-opt"><div class="hcard-tag" style="color:var(--p);font-size:.625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase">Prodotti complessi</div><h3>Richiedi una demo</h3></div>
         </div>
       </div>
@@ -1443,29 +1470,6 @@ function initReveal() {
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
-
-/* ──────────────────────────────────────
-   HERO FLOATING DOTS
-────────────────────────────────────── */
-function spawnDots() {
-  const hero = document.querySelector('.hero');
-  if (!hero) return;
-  const colors = ['#9667E0','#d4bbfc','#ebd9fc'];
-  for (let i = 0; i < 12; i++) {
-    const d = document.createElement('div');
-    d.className = 'hero-dot';
-    const size = Math.random() * 14 + 4;
-    d.style.cssText = [
-      `width:${size}px`, `height:${size}px`,
-      `left:${Math.random()*100}%`, `top:${Math.random()*100}%`,
-      `background:${colors[i%3]}`,
-      `--dur:${5+Math.random()*7}s`,
-      `--del:-${Math.random()*6}s`,
-      `opacity:${0.08+Math.random()*0.14}`
-    ].join(';');
-    hero.appendChild(d);
-  }
-}
 
 /* ──────────────────────────────────────
    ROUTING
@@ -1540,7 +1544,6 @@ function toggleMob() {
 // Init on load
 document.addEventListener('DOMContentLoaded', () => {
   initReveal();
-  spawnDots();
 });
 
 function closeMob() {
