@@ -60,7 +60,7 @@ h4{font-size:.9375rem;font-weight:600;color:var(--ink)}
 .sub{font-size:1rem;font-weight:400;color:var(--ink2);line-height:1.8;max-width:520px}
 p{color:var(--ink2)}
 .on-p .lbl{color:var(--p2)}.on-p .lbl::before{background:var(--p2)}
-.on-p h2,.on-p h3{color:var(--w)}
+.on-p h2,.on-p h3{color:#fff !important;-webkit-text-fill-color:#fff !important;background:none !important}
 .on-p p,.on-p .sub{color:rgba(255,255,255,.78)}
 
 /* ══════════════════════════════════════════════
@@ -495,7 +495,7 @@ p{color:var(--ink2)}
 .ubox>*{position:relative;z-index:1}
 .ubox .lbl{color:rgba(255,255,255,.7) !important}
 .ubox .lbl::before{background:rgba(255,255,255,.5) !important}
-.ubox h2,.ubox h3{color:#fff !important;margin:.5rem 0 1rem}
+.ubox h2,.ubox h3{color:#fff !important;-webkit-text-fill-color:#fff !important;margin:.5rem 0 1rem;background:none !important}
 .ubox p{color:rgba(255,255,255,.85);font-size:1rem;line-height:1.8;max-width:560px}
 .impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
 .icard{
@@ -718,7 +718,7 @@ p{color:var(--ink2)}
   background:var(--p);border-radius:var(--r-lg);
   display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap
 }
-.icd-cta h2,.icd-cta h3{color:#fff !important}
+.icd-cta h2,.icd-cta h3{color:#fff !important;-webkit-text-fill-color:#fff !important;background:none !important}
 .icd-cta p{color:rgba(255,255,255,.9);font-size:1rem;max-width:560px}
 .icd-cta .lbl{color:rgba(255,255,255,.7) !important}
 .icd-cta .lbl::before{background:rgba(255,255,255,.5) !important}
@@ -791,7 +791,7 @@ p{color:var(--ink2)}
 /* ── cta-box refinement ── */
 .cta-box .lbl{margin-bottom:.75rem;display:block;color:rgba(255,255,255,.7) !important}
 .cta-box .lbl::before{background:rgba(255,255,255,.5) !important}
-.cta-box h2,.cta-box h3{color:#fff !important;font-size:clamp(1.75rem,3vw,2.5rem);margin:.25rem 0 1rem}
+.cta-box h2,.cta-box h3{color:#fff !important;-webkit-text-fill-color:#fff !important;font-size:clamp(1.75rem,3vw,2.5rem);margin:.25rem 0 1rem;background:none !important}
 .cta-box .sub{color:rgba(255,255,255,.85);max-width:560px;font-size:1rem;line-height:1.75;margin-bottom:0}
 .cta-box .btn-cta-main{margin-top:2rem;display:inline-flex}
 
@@ -952,12 +952,7 @@ p{color:var(--ink2)}
 
 
 /* ── shimmer su tutti i titoli h2 ── */
-h2{
-  background:linear-gradient(90deg, var(--ink) 0%, var(--ink) 25%, var(--p) 50%, var(--ink) 75%, var(--ink) 100%);
-  background-size:400% auto;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:headlineShimmer 9s ease-in-out infinite alternate
-}
+
 
 
 /* ── cursor glow ── */
