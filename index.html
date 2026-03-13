@@ -1911,26 +1911,18 @@ function submitForm(e) {
 
 
 
-<!-- GCal iframe popup -->
-<div id="gcal-modal" onclick="if(event.target===this)closeGcal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(4px)">
-  <div style="position:relative;width:min(860px,95vw);height:min(720px,90vh);background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.35)">
-    <button onclick="closeGcal()" style="position:absolute;top:12px;right:14px;z-index:1;background:rgba(0,0,0,.08);border:none;border-radius:50%;width:34px;height:34px;font-size:1.125rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s" onmouseover="this.style.background='rgba(0,0,0,.18)'" onmouseout="this.style.background='rgba(0,0,0,.08)'">✕</button>
-    <iframe id="gcal-frame" src="" style="width:100%;height:100%;border:none" title="Prenota una call"></iframe>
-  </div>
-</div>
+
 <script>
 function openGcal() {
-  var m = document.getElementById('gcal-modal');
-  var f = document.getElementById('gcal-frame');
-  if (!f.src) f.src = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2xX3auCDkrI5agwkyGkATj-vmg9mIkhrmF498eb6DJ5763fLAifb5mFGK2n5jbyumVBCC2o7Bn?gv=true';
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
+  var w = 860, h = 700;
+  var left = Math.max(0, (screen.width - w) / 2);
+  var top  = Math.max(0, (screen.height - h) / 2);
+  window.open(
+    'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2xX3auCDkrI5agwkyGkATj-vmg9mIkhrmF498eb6DJ5763fLAifb5mFGK2n5jbyumVBCC2o7Bn?gv=true',
+    'gcal_popup',
+    'width=' + w + ',height=' + h + ',left=' + left + ',top=' + top + ',resizable=yes,scrollbars=yes'
+  );
 }
-function closeGcal() {
-  document.getElementById('gcal-modal').style.display = 'none';
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', function(e) { if(e.key==='Escape') closeGcal(); });
 </script>
 
 </body>
