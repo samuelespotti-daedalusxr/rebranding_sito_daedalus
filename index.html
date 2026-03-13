@@ -788,8 +788,8 @@ p{color:var(--ink2)}
 /* ── intro two-col layout ── */
 .intro-layout{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
 .intro-lead{
-  font-size:1.25rem;font-weight:600;color:var(--ink);line-height:1.6;
-  border-left:3px solid var(--p);padding-left:1.5rem
+  font-size:1.4375rem;font-weight:700;color:var(--ink);line-height:1.5;
+  border-left:4px solid var(--p);padding-left:1.75rem
 }
 .intro-body{font-size:1rem;color:var(--ink2);line-height:1.85;margin-bottom:1.25rem}
 .intro-tags{display:flex;flex-wrap:wrap;gap:.5rem}
@@ -805,6 +805,16 @@ p{color:var(--ink2)}
   .intro-layout{grid-template-columns:1fr;gap:1.5rem}
   .intro-lead{font-size:1.0625rem}
 }
+
+
+/* ── rotating kicker word ── */
+@keyframes kickerIn  { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+@keyframes kickerOut { from{opacity:1;transform:translateY(0)} to{opacity:0;transform:translateY(-8px)} }
+#kicker-word{
+  display:inline-block;
+  animation:kickerIn .35s cubic-bezier(.22,1,.36,1) both
+}
+#kicker-word.out{animation:kickerOut .25s cubic-bezier(.22,1,.36,1) both}
 
 </style>
 </head>
@@ -854,8 +864,8 @@ p{color:var(--ink2)}
     <div class="wrap">
       <div class="hero-inner">
         <div>
-          <div class="hero-kicker"><span></span>Extended Reality · Intelligenza Artificiale · Industria 4.0/5.0</div>
-          <h1>XR e AI per chi vende prodotti innovativi e soluzioni <em>tecnologicamente complesse.</em></h1>
+          <div class="hero-kicker"><span></span><span id="kicker-word">Realtà Estesa</span></div>
+          <h1>Vendi di più.<br>Forma meglio.<br>Supporta <em>ovunque.</em></h1>
           <p class="sub">Daedalus-XR è il partner tecnologico per le aziende del manufacturing avanzato — Extended Reality (Realtà Virtuale, Aumentata e Mista) e Intelligenza Artificiale implementate in modo professionale e scalabile, con risultati di business misurabili.</p>
           <div class="hero-bts">
             <button class="btn btn-p" onclick="go('contatti')">Parla con noi</button>
@@ -890,10 +900,10 @@ p{color:var(--ink2)}
     <div class="wrap">
       <div class="intro-layout">
         <div class="intro-left reveal">
-          <p class="intro-lead">Poche aziende sanno integrare Extended Reality e Intelligenza Artificiale in modo davvero scalabile e professionale.</p>
+          <p class="intro-lead">Lavoriamo con chi integra e vende soluzioni complesse e con chi produce sistemi ad alto contenuto tecnologico nel manufacturing avanzato.</p>
         </div>
         <div class="intro-right reveal" style="--d:.12s">
-          <p class="intro-body">Lavoriamo con chi integra e vende soluzioni complesse e con chi produce sistemi ad alto contenuto tecnologico nel manufacturing avanzato — e vogliono un partner tecnologico affidabile, non un fornitore generico.</p>
+          <p class="intro-body">Poche aziende sanno integrare Extended Reality e Intelligenza Artificiale in modo davvero scalabile e professionale. Noi lavoriamo solo con chi cerca un partner tecnologico serio — non un fornitore generico.</p>
           <div class="intro-tags">
             <span class="itag">System Integrator</span>
             <span class="itag">Meccatronico</span>
@@ -1684,6 +1694,31 @@ function submitForm(e) {
     btn.textContent = 'Invia messaggio';
   }, 700);
 }
+
+/* ── rotating kicker words ── */
+(function(){
+  const words = [
+    'Realtà Estesa',
+    'Intelligenza Artificiale',
+    'Realtà Virtuale',
+    '3D Real Time',
+    'Realtà Mista',
+    'Realtà Aumentata',
+    'Applicazioni Interattive'
+  ];
+  let i = 0;
+  const el = document.getElementById('kicker-word');
+  if (!el) return;
+  setInterval(() => {
+    el.classList.add('out');
+    setTimeout(() => {
+      i = (i + 1) % words.length;
+      el.textContent = words[i];
+      el.classList.remove('out');
+    }, 260);
+  }, 2400);
+})();
+
 </script>
 
 </body>
