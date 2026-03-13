@@ -216,20 +216,16 @@ p{color:var(--ink2)}
 .hero h1{
   margin-bottom:1.375rem;
   font-size:clamp(2.25rem,4.5vw,3.5rem);
-  background:linear-gradient(90deg, var(--ink) 0%, var(--ink) 30%, var(--p) 50%, var(--ink) 70%, var(--ink) 100%);
-  background-size:300% auto;
+  background:linear-gradient(90deg, var(--ink) 0%, var(--ink) 25%, var(--p) 50%, var(--ink) 75%, var(--ink) 100%);
+  background-size:400% auto;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:headlineShimmer 5s linear infinite
+  animation:headlineShimmer 9s ease-in-out infinite alternate
 }
 @keyframes headlineShimmer{
-  0%{background-position:100% center}
-  100%{background-position:-200% center}
+  0%{background-position:0% center}
+  100%{background-position:200% center}
 }
-.hero h1 em{font-style:normal;position:relative}
-.hero h1 em::after{
-  content:'';position:absolute;bottom:-3px;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--p),var(--p2));border-radius:2px
-}
+.hero h1 em{font-style:normal}
 .hero .sub{max-width:460px;margin-bottom:2.25rem;font-size:1.0625rem}
 .hero-bts{display:flex;gap:.875rem;flex-wrap:wrap}
 
