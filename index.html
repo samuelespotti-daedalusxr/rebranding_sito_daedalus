@@ -856,7 +856,7 @@ p{color:var(--ink2)}
 .apstep.active::after{
   content:'';display:block;position:absolute;
   bottom:0;left:0;height:2px;background:var(--p);
-  animation:stepProgress 2.2s linear forwards
+  animation:stepProgress 3.8s linear forwards
 }
 @keyframes stepProgress{from{width:0}to{width:100%}}
 
@@ -1819,7 +1819,7 @@ function submitForm(e) {
     });
   };
   activate(0);
-  setInterval(() => { cur = (cur+1) % steps.length; activate(cur); }, 4000);
+  setInterval(() => { cur = (cur+1) % steps.length; activate(cur); }, 3900);
 })();
 
 </script>
