@@ -735,13 +735,16 @@ p{color:var(--ink2)}
   display:inline-flex;align-items:center;gap:.625rem;
   font-family:var(--f);font-size:1rem;font-weight:700;
   background:#fff;color:var(--p);
-  border:none;border-radius:var(--r);
-  padding:.9rem 2rem;cursor:pointer;
-  box-shadow:0 4px 20px rgba(0,0,0,.18);
-  transition:transform .18s,box-shadow .18s;
-  margin-top:.5rem
+  border:2px solid #fff;border-radius:var(--r);
+  padding:1rem 2.25rem;cursor:pointer;
+  box-shadow:0 4px 24px rgba(0,0,0,.22);
+  transition:transform .18s,box-shadow .18s,background .18s,color .18s;
+  flex-shrink:0
 }
-.btn-cta-main:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.22)}
+.btn-cta-main:hover{
+  background:transparent;color:#fff;
+  transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.2)
+}
 
 /* ── cta-box refinement ── */
 .cta-box .lbl{margin-bottom:.75rem;display:block}
@@ -1045,7 +1048,7 @@ p{color:var(--ink2)}
         <div class="lbl on-p">Innovation Cycle Design</div>
         <h2>Inizia con l'Innovation Cycle Design.</h2>
         <p class="sub">Tre incontri in 45 giorni. Una roadmap personalizzata con le opportunità concrete di Extended Reality e Intelligenza Artificiale per il tuo business — prima di qualsiasi decisione di sviluppo.</p>
-        <button class="btn btn-cta-main" onclick="go('contatti')">Prenota una call →</button>
+        <button class="btn-cta-main" onclick="go('contatti')" style="margin-top:2rem">Prenota una call →</button>
       </div>
     </div>
   </section>
