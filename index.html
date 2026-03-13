@@ -170,7 +170,13 @@ p{color:var(--ink2)}
   background:linear-gradient(160deg, var(--p5) 0%, var(--p4) 100%);
   padding:4.5rem 0;border-bottom:1px solid var(--line)
 }
-.ph h1{margin:.6rem 0 1.125rem}
+.ph h1{
+  margin:.6rem 0 1.125rem;
+  background:linear-gradient(90deg, var(--ink) 0%, var(--ink) 25%, var(--p) 50%, var(--ink) 75%, var(--ink) 100%);
+  background-size:400% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:headlineShimmer 9s ease-in-out infinite alternate
+}
 .ph .sub{max-width:560px}
 
 /* ══════════════════════════════════════════════
@@ -946,10 +952,22 @@ h2{
   animation:headlineShimmer 9s ease-in-out infinite alternate
 }
 
+
+/* ── cursor glow ── */
+#cursor-glow{
+  pointer-events:none;position:fixed;z-index:9999;
+  width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle, rgba(150,103,224,.13) 0%, transparent 70%);
+  transform:translate(-50%,-50%);
+  transition:opacity .3s;
+  will-change:transform
+}
+
 </style>
 </head>
 <body>
 
+<div id="cursor-glow"></div>
 <!-- ══════════════ NAV ══════════════ -->
 <header id="nav">
   <div class="nav-inner">
@@ -1865,6 +1883,26 @@ function submitForm(e) {
   };
   activate(0);
   setInterval(() => { cur = (cur+1) % steps.length; activate(cur); }, 3900);
+})();
+
+
+/* ── cursor glow ── */
+(function(){
+  const g = document.getElementById('cursor-glow');
+  if(!g) return;
+  let mx=window.innerWidth/2, my=window.innerHeight/2;
+  let cx=mx, cy=my, raf;
+  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+  function loop(){
+    cx += (mx-cx)*.12;
+    cy += (my-cy)*.12;
+    g.style.left = cx+'px';
+    g.style.top  = cy+'px';
+    raf = requestAnimationFrame(loop);
+  }
+  loop();
+  // hide on mobile
+  if('ontouchstart' in window) g.style.display='none';
 })();
 
 </script>
