@@ -1054,14 +1054,13 @@ p{color:var(--ink2)}
           margin-top:2.25rem;
           display:inline-flex;align-items:center;gap:.625rem;
           font-family:'Poppins',sans-serif;font-size:1rem;font-weight:700;
-          background:#fff;color:#9667E0;
-          border:2.5px solid #fff;border-radius:10px;
+          background:#ffffff !important;color:#9667E0 !important;
+          border:2.5px solid #ffffff;border-radius:10px;
           padding:1rem 2.25rem;cursor:pointer;
-          box-shadow:0 4px 24px rgba(0,0,0,.25);
+          box-shadow:0 6px 28px rgba(0,0,0,.3);
           position:relative;z-index:10;
-          transition:background .18s,color .18s,transform .18s;
-        " onmouseover="this.style.background='transparent';this.style.color='#fff'"
-           onmouseout="this.style.background='#fff';this.style.color='#9667E0'">
+        " onmouseover="this.style.cssText=this.style.cssText.replace('background:#ffffff !important','background:transparent !important').replace('color:#9667E0 !important','color:#ffffff !important')"
+           onmouseout="this.style.cssText=this.style.cssText.replace('background:transparent !important','background:#ffffff !important').replace('color:#ffffff !important','color:#9667E0 !important')">
           Prenota una call &nbsp;→
         </button>
       </div>
