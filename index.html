@@ -200,7 +200,7 @@ p{color:var(--ink2)}
   background-image:radial-gradient(var(--p2) 1px, transparent 1px);
   background-size:36px 36px;opacity:.22;pointer-events:none;z-index:0
 }
-.hero-inner{display:flex;flex-direction:column;gap:1.75rem;position:relative;z-index:1}
+.hero-inner{display:flex;flex-direction:column;gap:2rem;position:relative;z-index:1}
 
 .hero-kicker-word{
   font-size:clamp(1.375rem, 3vw, 1.875rem);
@@ -215,8 +215,8 @@ p{color:var(--ink2)}
 }
 
 .hero h1{
-  margin-bottom:.875rem;
-  max-width:800px;
+  margin-bottom:1rem;
+  max-width:780px;
   font-size:clamp(2.25rem,4.5vw,3.5rem);
   background:linear-gradient(90deg, var(--ink) 0%, var(--ink) 25%, var(--p) 50%, var(--ink) 75%, var(--ink) 100%);
   background-size:400% auto;
@@ -577,7 +577,7 @@ p{color:var(--ink2)}
   .nav-menu{display:none}
   .burger{display:flex}
   .hero-inner{grid-template-columns:1fr}
-  .hcards{display:none}
+  .hcards{display:grid;grid-template-columns:1fr}
   .hero::after,.hero::before{display:none}
   .sol-grid,.sb-inner,.uc-grid,.ct-wrap,.cs-wrap,.impact-grid,.cta-opts,.diag-opts,.frow{grid-template-columns:1fr}
   .blog-grid{grid-template-columns:1fr}
@@ -644,7 +644,8 @@ p{color:var(--ink2)}
 ══════════════════════════════════════════════ */
 .icd-sec{
   background:linear-gradient(180deg, #fff 0%, var(--p5) 40%, var(--p4) 100%);
-  position:relative;overflow:hidden
+  position:relative;overflow:hidden;
+  padding-top:5rem;padding-bottom:5rem
 }
 .icd-sec::before{
   content:'';position:absolute;top:-200px;right:-200px;
@@ -658,12 +659,13 @@ p{color:var(--ink2)}
   background:radial-gradient(circle, var(--p4) 0%, transparent 65%);
   pointer-events:none
 }
-.icd-header{margin-bottom:3.5rem;position:relative;z-index:1}
+.icd-header{margin-bottom:2.5rem;position:relative;z-index:1}
 .icd-header h2{margin:.5rem 0 .875rem}
-.icd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;position:relative;z-index:1}
+.icd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative;z-index:1}
 .icd-card{
   background:var(--w);border:1px solid var(--line);border-radius:20px;
   overflow:hidden;position:relative;
+  display:flex;flex-direction:column;
   transition:border-color .3s,transform .3s,box-shadow .3s;
 }
 .icd-card:hover{
@@ -676,7 +678,7 @@ p{color:var(--ink2)}
   position:relative
 }
 .icd-card:hover .icd-num{color:var(--p2)}
-.icd-body{padding:0 1.75rem 1.75rem}
+.icd-body{padding:.5rem 2rem 2rem;flex:1;display:flex;flex-direction:column}
 .icd-tag{font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:.5rem}
 .icd-body h3{font-size:1.0625rem;margin-bottom:.625rem}
 .icd-body .flist{margin-top:.875rem}
@@ -702,7 +704,7 @@ p{color:var(--ink2)}
 
 
 /* ICD intro + timeline */
-.icd-intro{margin-bottom:2.5rem}
+.icd-intro{margin-bottom:3rem}
 .icd-intro p{font-size:1.0625rem;color:var(--ink2);line-height:1.8;max-width:620px;font-style:italic}
 
 .icd-timeline{
@@ -824,6 +826,37 @@ p{color:var(--ink2)}
 .hero-kicker-word.out{opacity:0;transform:translateY(-6px)}
 .hero-kicker-word{display:block;transition:opacity .22s,transform .22s}
 
+
+/* ── hcard approach animated steps ── */
+.hcard-approach{min-height:120px}
+.approach-steps{display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem}
+.apstep{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.5rem .75rem;border-radius:8px;
+  transition:background .3s,transform .3s;
+  opacity:.45;transform:translateX(0)
+}
+.apstep.active{
+  background:rgba(150,103,224,.12);opacity:1;
+}
+.aps-n{
+  font-size:.7rem;font-weight:800;color:var(--p);
+  background:var(--p3);border-radius:50%;
+  width:22px;height:22px;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;letter-spacing:0
+}
+.apstep.active .aps-n{background:var(--p);color:#fff}
+.aps-label{font-size:.875rem;font-weight:600;color:var(--ink)}
+.apstep.active .aps-label{color:var(--p)}
+
+/* progress bar under active step */
+.apstep.active::after{
+  content:'';display:block;position:absolute;
+  bottom:0;left:0;height:2px;background:var(--p);
+  animation:stepProgress 2.2s linear forwards
+}
+@keyframes stepProgress{from{width:0}to{width:100%}}
+
 </style>
 </head>
 <body>
@@ -882,21 +915,19 @@ p{color:var(--ink2)}
         </div>
         <div class="hcards">
           <div class="hcard">
-            <div class="hcard-tag">System Integrator</div>
             <h3>Aggiungi una linea software alla tua offerta</h3>
             <p>Margini alti, gestione zero.</p>
           </div>
           <div class="hcard">
-            <div class="hcard-tag">Prodotti complessi</div>
             <h3>Trasforma la complessità tecnica in un'esperienza visiva</h3>
             <p>Accelera la vendita e riduci i costi di supporto.</p>
           </div>
-          <div class="hcard hcard-hi">
-            <div class="hcard-tag">Approccio</div>
-            <div class="approach">
-              <span>Innovation Cycle Design</span><span class="arr">→</span>
-              <span>Sviluppo</span><span class="arr">→</span>
-              <span>Assistenza</span>
+          <div class="hcard hcard-hi hcard-approach">
+            <div class="hcard-tag">Il nostro approccio</div>
+            <div class="approach-steps">
+              <div class="apstep" id="aps0"><span class="aps-n">01</span><span class="aps-label">Innovation Cycle Design</span></div>
+              <div class="apstep" id="aps1"><span class="aps-n">02</span><span class="aps-label">Sviluppo</span></div>
+              <div class="apstep" id="aps2"><span class="aps-n">03</span><span class="aps-label">Assistenza</span></div>
             </div>
           </div>
         </div>
@@ -913,10 +944,10 @@ p{color:var(--ink2)}
         <div class="intro-right reveal" style="--d:.12s">
           <p class="intro-body">Poche aziende sanno integrare Extended Reality e Intelligenza Artificiale in modo davvero scalabile e professionale. Noi lavoriamo solo con chi cerca un partner tecnologico serio — non un fornitore generico.</p>
           <div class="intro-tags">
-            <span class="itag">System Integrator</span>
-            <span class="itag">Meccatronico</span>
             <span class="itag">Digital Manufacturing</span>
-            <span class="itag">Industria 4.0 / 5.0</span>
+            <span class="itag">Digital Design &amp; Manufacturing</span>
+            <span class="itag">Integrated Virtual Product Design</span>
+            <span class="itag">Process Simulation</span>
           </div>
         </div>
       </div>
@@ -1729,6 +1760,23 @@ function submitForm(e) {
   }, 2600);
   // smooth transition on element
   el.style.transition = 'opacity .28s ease, transform .28s ease';
+})();
+
+
+/* ── animated approach steps ── */
+(function(){
+  const steps = document.querySelectorAll('.apstep');
+  if(!steps.length) return;
+  let cur = 0;
+  const activate = i => {
+    steps.forEach((s,idx) => {
+      s.classList.toggle('active', idx === i);
+      // restart animation
+      if(idx === i){ s.style.animation='none'; void s.offsetWidth; s.style.animation=''; }
+    });
+  };
+  activate(0);
+  setInterval(() => { cur = (cur+1) % steps.length; activate(cur); }, 2200);
 })();
 
 </script>
