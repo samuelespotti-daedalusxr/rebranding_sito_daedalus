@@ -974,8 +974,6 @@ p{color:var(--ink2)}
 }
 
 </style>
-  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
 </head>
 <body>
 
@@ -1172,7 +1170,7 @@ p{color:var(--ink2)}
 
       <div class="icd-cta reveal">
         <p>L'Innovation Cycle Design è il punto di partenza — il modo più sicuro per capire dove Extended Reality e AI fanno la differenza concreta nel tuo business, prima di investire in qualsiasi sviluppo.</p>
-<button onclick="openGcalPopup()" style="margin-top:1.5rem;display:inline-flex;align-items:center;gap:.625rem;font-family:'Poppins',sans-serif;font-size:1rem;font-weight:700;background:#ffffff !important;color:#9667E0 !important;border:2.5px solid #ffffff;border-radius:10px;padding:1rem 2.25rem;cursor:pointer;box-shadow:0 6px 28px rgba(0,0,0,.3);position:relative;z-index:10;">Prenota una call →</button>
+<button onclick="openGcal()" style="margin-top:1.5rem;display:inline-flex;align-items:center;gap:.625rem;font-family:'Poppins',sans-serif;font-size:1rem;font-weight:700;background:#ffffff !important;color:#9667E0 !important;border:2.5px solid #ffffff;border-radius:10px;padding:1rem 2.25rem;cursor:pointer;box-shadow:0 6px 28px rgba(0,0,0,.3);position:relative;z-index:10;">Prenota una call →</button>
       </div>
     </div>
   </section>
@@ -1250,19 +1248,7 @@ p{color:var(--ink2)}
         <div class="lbl on-p">Innovation Cycle Design</div>
         <h2>Inizia con l'Innovation Cycle Design.</h2>
         <p class="sub">Tre incontri in 6 settimane. Una roadmap personalizzata con le opportunità concrete di Extended Reality e Intelligenza Artificiale per il tuo business — prima di qualsiasi decisione di sviluppo.</p>
-        <button onclick="go('contatti')" style="
-          margin-top:2.25rem;
-          display:inline-flex;align-items:center;gap:.625rem;
-          font-family:'Poppins',sans-serif;font-size:1rem;font-weight:700;
-          background:#ffffff !important;color:#9667E0 !important;
-          border:2.5px solid #ffffff;border-radius:10px;
-          padding:1rem 2.25rem;cursor:pointer;
-          box-shadow:0 6px 28px rgba(0,0,0,.3);
-          position:relative;z-index:10;
-        " onmouseover="this.style.cssText=this.style.cssText.replace('background:#ffffff !important','background:transparent !important').replace('color:#9667E0 !important','color:#ffffff !important')"
-           onmouseout="this.style.cssText=this.style.cssText.replace('background:transparent !important','background:#ffffff !important').replace('color:#ffffff !important','color:#9667E0 !important')">
-          Prenota una call &nbsp;→
-        </button>
+<button onclick="openGcal()" style="margin-top:2.25rem;display:inline-flex;align-items:center;gap:.625rem;font-family:'Poppins',sans-serif;font-size:1rem;font-weight:700;background:#ffffff !important;color:#9667E0 !important;border:2.5px solid #ffffff;border-radius:10px;padding:1rem 2.25rem;cursor:pointer;box-shadow:0 6px 28px rgba(0,0,0,.3);position:relative;z-index:10;">Prenota una call →</button>
       </div>
     </div>
   </section>
@@ -1361,7 +1347,7 @@ p{color:var(--ink2)}
       </div>
       <div class="sol-cta-bar">
         <p>Non sai da dove partire? L'Innovation Cycle Design è fatto per questo — tre incontri in 6 settimane, zero impegno di sviluppo.</p>
-        <button class="btn btn-p" onclick="openGcalPopup()">Prenota una call →</button>
+        <button class="btn btn-p" onclick="openGcal()">Prenota una call →</button>
       </div>
     </div>
   </section>
@@ -1606,7 +1592,7 @@ p{color:var(--ink2)}
         <div class="lbl">Lavoriamo insieme</div>
         <h2>Lavoriamo con chi vuole risultati concreti, non solo tecnologia.</h2>
         <p>Se vendi prodotti innovativi o soluzioni complesse nel manufacturing avanzato e vuoi un partner tecnologico serio, parliamo.</p>
-        <button class="btn btn-p" onclick="openGcalPopup()">Prenota una call →</button>
+        <button class="btn btn-p" onclick="openGcal()">Prenota una call →</button>
       </div>
     </div>
   </section>
@@ -1657,7 +1643,7 @@ p{color:var(--ink2)}
         <div class="lbl" style="margin-bottom:.75rem">Oppure</div>
         <h2 style="margin-bottom:.875rem">Innovation Cycle Design</h2>
         <p class="sub" style="margin-bottom:2rem">Tre incontri in 6 settimane per capire dove Extended Reality e AI possono fare la differenza nel tuo business — prima di qualsiasi investimento.</p>
-        <button class="btn btn-p" onclick="openGcalPopup()">Prenota una call →</button>
+        <button class="btn btn-p" onclick="openGcal()">Prenota una call →</button>
       </div>
     </div>
   </section>
@@ -1924,54 +1910,27 @@ function submitForm(e) {
 
 
 
-<div id="gcal-anchor" style="display:none"></div>
+
+<!-- GCal iframe popup -->
+<div id="gcal-modal" onclick="if(event.target===this)closeGcal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(4px)">
+  <div style="position:relative;width:min(860px,95vw);height:min(720px,90vh);background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.35)">
+    <button onclick="closeGcal()" style="position:absolute;top:12px;right:14px;z-index:1;background:rgba(0,0,0,.08);border:none;border-radius:50%;width:34px;height:34px;font-size:1.125rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s" onmouseover="this.style.background='rgba(0,0,0,.18)'" onmouseout="this.style.background='rgba(0,0,0,.08)'">✕</button>
+    <iframe id="gcal-frame" src="" style="width:100%;height:100%;border:none" title="Prenota una call"></iframe>
+  </div>
+</div>
 <script>
-(function() {
-  var gcalReady = false;
-  var pendingClick = false;
-
-  function initGcal() {
-    var anchor = document.getElementById('gcal-anchor');
-    if (!anchor || !window.calendar || !window.calendar.schedulingButton) return;
-    calendar.schedulingButton.load({
-      url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2xX3auCDkrI5agwkyGkATj-vmg9mIkhrmF498eb6DJ5763fLAifb5mFGK2n5jbyumVBCC2o7Bn?gv=true',
-      color: '#9667E0',
-      label: 'Prenota',
-      target: anchor,
-    });
-    gcalReady = true;
-    // hide the real GCal button visually — we trigger it programmatically
-    anchor.style.display = 'none';
-    if (pendingClick) {
-      triggerGcal();
-      pendingClick = false;
-    }
-  }
-
-  function triggerGcal() {
-    var btn = document.querySelector('#gcal-anchor button, #gcal-anchor a');
-    if (btn) btn.click();
-  }
-
-  window.openGcalPopup = function() {
-    if (gcalReady) {
-      triggerGcal();
-    } else {
-      pendingClick = true;
-      // try to init
-      var t = setInterval(function() {
-        if (window.calendar && window.calendar.schedulingButton) {
-          clearInterval(t);
-          initGcal();
-        }
-      }, 100);
-    }
-  };
-
-  window.addEventListener('load', function() {
-    setTimeout(initGcal, 500);
-  });
-})();
+function openGcal() {
+  var m = document.getElementById('gcal-modal');
+  var f = document.getElementById('gcal-frame');
+  if (!f.src) f.src = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2xX3auCDkrI5agwkyGkATj-vmg9mIkhrmF498eb6DJ5763fLAifb5mFGK2n5jbyumVBCC2o7Bn?gv=true';
+  m.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeGcal() {
+  document.getElementById('gcal-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) { if(e.key==='Escape') closeGcal(); });
 </script>
 
 </body>
