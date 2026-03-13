@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daedalus-XR — XR e AI per il manufacturing avanzato</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════════
+   TOKENS
+══════════════════════════════════════════════ */
+:root{
+  --p:     #9667E0;
+  --p-d:   #7c52cc;
+  --p2:    #d4bbfc;
+  --p3:    #ebd9fc;
+  --p4:    #f2ebfb;
+  --p5:    #fbfaff;
+  --ink:   #160f2b;
+  --ink2:  #3d3157;
+  --ink3:  #8074a8;
+  --line:  #e8e0f5;
+  --w:     #fff;
+  --f:     'Poppins', sans-serif;
+  --mw:    1020px;
+  --r:     10px;
+  --r-lg:  16px;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);font-size:16px;line-height:1.65;color:var(--ink);background:var(--w);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--f);cursor:pointer;border:none;background:none}
+ul{list-style:none}
+
+/* ══════════════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════════════ */
+.wrap{max-width:var(--mw);margin:0 auto;padding:0 2.5rem}
+.sec{padding:6rem 0}
+.sec-sm{padding:3.5rem 0}
+.page{display:none}.page.on{display:block}
+
+/* ══════════════════════════════════════════════
+   TYPE
+══════════════════════════════════════════════ */
+.lbl{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.6875rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--p)
+}
+.lbl::before{content:'';display:block;width:16px;height:2px;background:var(--p);border-radius:2px;flex-shrink:0}
+
+h1{font-size:clamp(2.5rem,5vw,3.75rem);font-weight:800;line-height:1.06;letter-spacing:-.035em;color:var(--ink)}
+h2{font-size:clamp(1.875rem,3.5vw,2.625rem);font-weight:700;line-height:1.1;letter-spacing:-.028em;color:var(--ink)}
+h3{font-size:1.0625rem;font-weight:600;line-height:1.35;color:var(--ink)}
+h4{font-size:.9375rem;font-weight:600;color:var(--ink)}
+.sub{font-size:1rem;font-weight:400;color:var(--ink2);line-height:1.8;max-width:520px}
+p{color:var(--ink2)}
+.on-p .lbl{color:var(--p2)}.on-p .lbl::before{background:var(--p2)}
+.on-p h2,.on-p h3{color:var(--w)}
+.on-p p,.on-p .sub{color:rgba(255,255,255,.78)}
+
+/* ══════════════════════════════════════════════
+   NAV
+══════════════════════════════════════════════ */
+#nav{
+  position:sticky;top:0;z-index:999;
+  background:rgba(255,255,255,.93);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)
+}
+.nav-inner{
+  max-width:var(--mw);margin:0 auto;padding:0 2.5rem;
+  height:64px;display:flex;align-items:center;justify-content:space-between;gap:1rem
+}
+.nav-brand{
+  font-size:1rem;font-weight:800;letter-spacing:-.025em;
+  color:var(--ink);cursor:pointer;flex-shrink:0;user-select:none
+}
+.nav-brand b{color:var(--p)}
+
+/* desktop links */
+.nav-menu{display:flex;align-items:center;gap:.125rem}
+.nav-menu a{
+  font-size:.8125rem;font-weight:500;color:var(--ink2);
+  padding:.45rem .875rem;border-radius:7px;cursor:pointer;white-space:nowrap;
+  transition:color .15s,background .15s
+}
+.nav-menu a:hover{color:var(--p);background:var(--p4)}
+.nav-menu a.act{color:var(--p);font-weight:700;background:var(--p4)}
+.nav-cta-btn{
+  margin-left:.5rem;background:var(--p)!important;color:#fff!important;
+  padding:.5rem 1.25rem!important;border-radius:7px!important;font-weight:700!important;
+  transition:background .15s,transform .15s!important
+}
+.nav-cta-btn:hover{background:var(--p-d)!important;transform:translateY(-1px)!important}
+
+/* burger */
+.burger{
+  display:none;flex-direction:column;justify-content:center;align-items:center;
+  gap:5px;width:40px;height:40px;border-radius:8px;cursor:pointer;
+  background:transparent;border:none;transition:background .15s;flex-shrink:0
+}
+.burger:hover{background:var(--p4)}
+.burger span{
+  display:block;width:22px;height:2px;background:var(--ink);
+  border-radius:2px;transition:transform .25s,opacity .25s
+}
+
+/* mobile overlay */
+#mob-overlay{
+  display:none;position:fixed;inset:64px 0 0;
+  background:var(--w);border-top:1px solid var(--line);
+  padding:1.25rem 1.5rem;flex-direction:column;gap:.25rem;
+  z-index:998;overflow-y:auto
+}
+#mob-overlay.show{display:flex}
+#mob-overlay a{
+  font-size:1rem;font-weight:500;color:var(--ink2);
+  padding:.9rem 1.125rem;border-radius:10px;cursor:pointer;
+  transition:color .15s,background .15s;border:1px solid transparent
+}
+#mob-overlay a:hover{color:var(--p);background:var(--p5);border-color:var(--line)}
+#mob-overlay a.act{color:var(--p);font-weight:700;background:var(--p4)}
+#mob-overlay .mob-cta{
+  background:var(--p)!important;color:#fff!important;
+  text-align:center;font-weight:700!important;border-color:var(--p)!important;margin-top:.75rem
+}
+
+/* ══════════════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════════════ */
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--f);font-size:.875rem;font-weight:600;
+  padding:.8rem 1.75rem;border-radius:var(--r);cursor:pointer;
+  transition:all .18s;white-space:nowrap;border:none
+}
+.btn-p{background:var(--p);color:#fff}
+.btn-p:hover{background:var(--p-d);transform:translateY(-2px);box-shadow:0 10px 28px rgba(150,103,224,.3)}
+.btn-o{background:transparent;color:var(--p);border:1.5px solid var(--p2)}
+.btn-o:hover{background:var(--p4);border-color:var(--p)}
+.btn-w{background:#fff;color:var(--p);box-shadow:0 2px 12px rgba(0,0,0,.1)}
+.btn-w:hover{background:var(--p5);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--p);padding:0;font-weight:700;font-size:.875rem}
+.btn-ghost::after{content:' →';transition:letter-spacing .15s}
+.btn-ghost:hover::after{letter-spacing:.05em}
+.btn-sm{padding:.55rem 1.1rem;font-size:.8125rem}
+
+/* ══════════════════════════════════════════════
+   PILLS
+══════════════════════════════════════════════ */
+.pill{
+  display:inline-block;font-size:.6875rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;padding:.3rem .875rem;border-radius:100px;
+  background:var(--p3);color:var(--p)
+}
+.pill-sm{font-size:.625rem;padding:.2rem .625rem}
+.pill-outline{background:transparent;border:1px solid var(--line);color:var(--ink3)}
+
+/* ══════════════════════════════════════════════
+   PAGE HEADER
+══════════════════════════════════════════════ */
+.ph{
+  background:linear-gradient(160deg, var(--p5) 0%, var(--p4) 100%);
+  padding:4.5rem 0;border-bottom:1px solid var(--line)
+}
+.ph h1{margin:.6rem 0 1.125rem}
+.ph .sub{max-width:560px}
+
+/* ══════════════════════════════════════════════
+   SECTION HEADER
+══════════════════════════════════════════════ */
+.sh{margin-bottom:3.5rem}
+.sh h2{margin:.5rem 0 .875rem}
+
+/* ══════════════════════════════════════════════
+   ██ HOME — HERO
+══════════════════════════════════════════════ */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(155deg, var(--p5) 0%, #fff 60%);
+  padding:5.5rem 0 5rem;border-bottom:1px solid var(--line)
+}
+/* decorative orb */
+.hero::after{
+  content:'';position:absolute;top:-140px;right:-100px;
+  width:640px;height:640px;border-radius:50%;
+  background:radial-gradient(circle, var(--p3) 0%, transparent 68%);
+  pointer-events:none;z-index:0
+}
+/* subtle grid pattern */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(var(--p2) 1px, transparent 1px);
+  background-size:36px 36px;opacity:.22;pointer-events:none;z-index:0
+}
+.hero-inner{display:grid;grid-template-columns:1fr 380px;gap:4.5rem;align-items:center;position:relative;z-index:1}
+
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:.625rem;
+  font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--p);background:var(--p3);border:1px solid var(--p2);
+  padding:.4rem 1rem;border-radius:100px;margin-bottom:1.5rem
+}
+.hero-kicker span{width:7px;height:7px;border-radius:50%;background:var(--p);display:block;flex-shrink:0;animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(150,103,224,.4)}50%{box-shadow:0 0 0 5px rgba(150,103,224,0)}}
+
+.hero h1{margin-bottom:1.375rem}
+.hero h1 em{font-style:normal;color:var(--p);position:relative}
+.hero h1 em::after{
+  content:'';position:absolute;bottom:-3px;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--p),var(--p2));border-radius:2px
+}
+.hero .sub{max-width:460px;margin-bottom:2.25rem;font-size:1.0625rem}
+.hero-bts{display:flex;gap:.875rem;flex-wrap:wrap}
+
+/* hero cards */
+.hcards{display:flex;flex-direction:column;gap:1rem}
+.hcard{
+  background:var(--w);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:1.5rem 1.625rem;position:relative;overflow:hidden;
+  transition:border-color .22s,transform .22s,box-shadow .22s
+}
+.hcard::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--p),var(--p2));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s
+}
+.hcard:hover{border-color:var(--p2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(150,103,224,.1)}
+.hcard:hover::before{transform:scaleX(1)}
+.hcard-tag{font-size:.625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--p);margin-bottom:.5rem}
+.hcard h3{font-size:.9375rem;margin-bottom:.3rem}
+.hcard p{font-size:.8375rem;color:var(--ink2)}
+.hcard-hi{background:var(--p4);border-color:var(--p3)}
+.approach{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-top:.5rem}
+.approach span{font-size:.8125rem;font-weight:600;color:var(--ink)}
+.approach .arr{color:var(--p)}
+
+/* ══════════════════════════════════════════════
+   ██ HOME — SECTIONS
+══════════════════════════════════════════════ */
+.sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.sol-card{
+  border:1px solid var(--line);border-radius:var(--r-lg);padding:2.25rem;
+  background:var(--w);position:relative;overflow:hidden;
+  transition:border-color .22s,transform .22s,box-shadow .22s
+}
+.sol-card:hover{border-color:var(--p2);transform:translateY(-3px);box-shadow:0 12px 36px rgba(150,103,224,.1)}
+.sol-card h3{margin:.7rem 0 .875rem}
+
+.flist{display:flex;flex-direction:column;gap:.625rem;margin-top:1.25rem}
+.flist li{font-size:.9rem;color:var(--ink2);display:flex;align-items:flex-start;gap:.75rem;line-height:1.5}
+.flist li::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--p);flex-shrink:0;margin-top:.46em}
+
+.read-more{
+  display:inline-flex;align-items:center;gap:.375rem;
+  font-size:.875rem;font-weight:700;color:var(--p);cursor:pointer;margin-top:2.5rem;
+  transition:gap .15s
+}
+.read-more::after{content:'→'}
+.read-more:hover{gap:.75rem}
+
+/* process */
+.plist{display:flex;flex-direction:column}
+.prow{
+  display:grid;grid-template-columns:52px 1fr auto;
+  gap:1.75rem;align-items:start;
+  padding:2.5rem 0;border-bottom:1px solid var(--line)
+}
+.prow:first-child{padding-top:0}
+.prow:last-child{border-bottom:none;padding-bottom:0}
+.pnum{
+  width:46px;height:46px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8125rem;font-weight:700;color:var(--p);
+  background:var(--p3);flex-shrink:0;border:1px solid var(--p2)
+}
+.ptag{font-size:.625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:.3rem}
+.prow h3{margin-bottom:.4rem}
+.prow p{font-size:.9rem}
+.pprice{
+  font-size:.8125rem;font-weight:700;color:var(--p);
+  background:var(--p3);padding:.4rem 1rem;border-radius:100px;
+  white-space:nowrap;flex-shrink:0;border:1px solid var(--p2)
+}
+
+/* case study */
+.cs-wrap{
+  background:var(--p4);border:1px solid var(--p3);
+  border-radius:var(--r-lg);padding:3.5rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center
+}
+.cs-num{font-size:5.5rem;font-weight:800;color:var(--p2);line-height:1;margin-bottom:.5rem;letter-spacing:-.04em}
+.cs-wrap h2{margin:.5rem 0 1rem}
+.cs-visual{
+  border-radius:var(--r);overflow:hidden;
+  background:linear-gradient(135deg, var(--p3) 0%, var(--p2) 100%);
+  height:200px;display:flex;align-items:center;justify-content:center;font-size:4.5rem
+}
+
+/* partners */
+.plogos{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.plogo{
+  background:var(--p5);border:1px solid var(--line);border-radius:8px;
+  padding:.625rem 1.25rem;font-size:.8125rem;font-weight:600;color:var(--ink3);
+  transition:border-color .2s,color .2s,background .2s
+}
+.plogo:hover{border-color:var(--p2);color:var(--p);background:var(--p4)}
+
+/* why */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.why-card{
+  background:var(--w);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:2rem;position:relative;overflow:hidden;
+  transition:border-color .2s,transform .2s
+}
+.why-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--p),var(--p2));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s
+}
+.why-card:hover{border-color:var(--p2);transform:translateY(-2px)}
+.why-card:hover::after{transform:scaleX(1)}
+.why-n{font-size:2.5rem;font-weight:800;color:var(--p3);letter-spacing:-.04em;margin-bottom:.5rem;line-height:1}
+.why-card h3{margin-bottom:.4rem;font-size:1rem}
+.why-card p{font-size:.9rem}
+
+/* cta box */
+.cta-box{
+  background:var(--p);border-radius:var(--r-lg);padding:3.5rem;
+  position:relative;overflow:hidden
+}
+.cta-box::before{
+  content:'';position:absolute;bottom:-100px;right:-100px;
+  width:400px;height:400px;border-radius:50%;
+  background:rgba(255,255,255,.06);pointer-events:none
+}
+.cta-box::after{
+  content:'';position:absolute;top:-80px;left:40%;
+  width:260px;height:260px;border-radius:50%;
+  background:rgba(255,255,255,.04);pointer-events:none
+}
+.cta-box h2{color:#fff;margin:.5rem 0 1rem;position:relative}
+.cta-box .sub{color:rgba(255,255,255,.82);margin-bottom:2.5rem;max-width:500px}
+.cta-opts{display:grid;grid-template-columns:1fr 1fr;gap:1.125rem;position:relative}
+.cta-opt{
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);
+  border-radius:var(--r);padding:1.625rem;cursor:pointer;
+  transition:background .18s,transform .18s
+}
+.cta-opt:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+.cta-opt .hcard-tag{color:var(--p2)}
+.cta-opt h3{color:#fff;font-size:1rem;margin:.35rem 0 .35rem}
+.cta-opt p{font-size:.875rem;color:rgba(255,255,255,.72)}
+.cta-opt-lnk{
+  display:inline-flex;align-items:center;gap:.375rem;
+  font-size:.8125rem;font-weight:700;color:var(--p2);margin-top:.875rem;
+  cursor:pointer;transition:gap .15s,color .15s
+}
+.cta-opt-lnk:hover{gap:.625rem;color:#fff}
+.cta-opt-lnk::after{content:'→'}
+
+/* ══════════════════════════════════════════════
+   ██ SOLUZIONI
+══════════════════════════════════════════════ */
+.sb{padding:5rem 0;border-bottom:1px solid var(--line)}
+.sb:last-child{border-bottom:none}
+.sb-alt{background:var(--p5)}
+.sb-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.sb-inner h2{margin:.5rem 0 1rem}
+.pain-list{display:flex;flex-direction:column;gap:.625rem;margin-top:.875rem}
+.pain-list li{font-size:.9rem;color:var(--ink2);display:flex;align-items:flex-start;gap:.75rem;line-height:1.5}
+.pain-list li::before{content:'';display:block;width:8px;height:8px;border-radius:2px;background:var(--p2);flex-shrink:0;margin-top:.42em}
+.how-steps{display:flex;flex-direction:column;gap:.875rem;margin-top:1rem}
+.hs{display:flex;gap:.875rem;align-items:flex-start;font-size:.9rem;color:var(--ink2);line-height:1.55}
+.hn{width:26px;height:26px;border-radius:50%;background:var(--p3);color:var(--p);font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.05em;border:1px solid var(--p2)}
+.obj-box{background:var(--p4);border:1px solid var(--p3);border-left:3px solid var(--p);border-radius:0 var(--r) var(--r) 0;padding:1.5rem;margin-top:1.75rem}
+.obj-box h4{color:var(--p);font-size:.875rem;margin-bottom:.4rem}
+.obj-box p{font-size:.875rem}
+.uc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.uc-card{
+  background:var(--w);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:1.875rem;display:flex;flex-direction:column;
+  transition:border-color .22s,transform .22s,box-shadow .22s
+}
+.uc-card:hover{border-color:var(--p2);transform:translateY(-3px);box-shadow:0 10px 30px rgba(150,103,224,.1)}
+.uc-card h3{font-size:1rem;margin:.625rem 0 .625rem}
+.uc-card p{font-size:.875rem;flex:1}
+.uc-buyer{font-size:.75rem;font-weight:700;color:var(--ink3);border-top:1px solid var(--line);padding-top:.875rem;margin-top:1rem}
+.svc-tbl{display:flex;flex-direction:column}
+.svc-row{display:grid;grid-template-columns:220px 1fr;gap:2rem;padding:1.875rem 0;border-bottom:1px solid var(--line);align-items:start}
+.svc-row:last-child{border-bottom:none}
+.svc-name{font-size:.9375rem;font-weight:600;color:var(--ink);line-height:1.35}
+.svc-desc{font-size:.9rem;color:var(--ink2);line-height:1.65}
+.sol-cta-bar{
+  background:var(--p5);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:2.5rem;display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;flex-wrap:wrap;margin-top:3rem
+}
+.sol-cta-bar p{font-size:1rem;font-weight:600;color:var(--ink);max-width:480px}
+
+/* ══════════════════════════════════════════════
+   ██ BLOG
+══════════════════════════════════════════════ */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.bc{
+  background:var(--w);border:1px solid var(--line);border-radius:var(--r-lg);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:border-color .22s,transform .22s,box-shadow .22s;cursor:pointer
+}
+.bc:hover{border-color:var(--p2);transform:translateY(-4px);box-shadow:0 14px 40px rgba(150,103,224,.1)}
+.bc-img{height:170px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.bc-img-1{background:linear-gradient(135deg,var(--p3),var(--p2))}
+.bc-img-2{background:linear-gradient(135deg,#c7f7e0,#6ee7b7)}
+.bc-img-3{background:linear-gradient(135deg,#bfdbfe,#93c5fd)}
+.bc-body{padding:1.625rem;flex:1;display:flex;flex-direction:column}
+.bc-body .pill{margin-bottom:.75rem}
+.bc-body h3{font-size:.9375rem;margin-bottom:.5rem}
+.bc-body p{font-size:.875rem;flex:1}
+.bc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:1.25rem;padding-top:.875rem;border-top:1px solid var(--line)}
+.bc-date{font-size:.8125rem;color:var(--ink3)}
+.bc-read{font-size:.8125rem;font-weight:700;color:var(--p);display:flex;align-items:center;gap:.25rem}
+.bc-read::after{content:'→';transition:margin-left .15s}
+.bc:hover .bc-read::after{margin-left:3px}
+
+/* Blog article detail */
+.art-back{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.875rem;font-weight:600;color:var(--p);cursor:pointer;
+  margin-bottom:2.5rem;transition:gap .15s
+}
+.art-back::before{content:'←'}
+.art-back:hover{gap:.875rem}
+.art-header{max-width:680px;margin-bottom:3rem}
+.art-header h1{font-size:clamp(1.875rem,3.5vw,2.75rem);margin:.75rem 0 1.25rem}
+.art-meta{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.art-date{font-size:.8125rem;color:var(--ink3)}
+.art-body{max-width:680px}
+.art-body p{font-size:1rem;line-height:1.85;color:var(--ink2);margin-bottom:1.5rem}
+.art-body h2{font-size:1.5rem;margin:2.5rem 0 1rem}
+.art-body h3{font-size:1.125rem;margin:2rem 0 .75rem}
+.art-body ul{padding-left:1.5rem;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:.5rem}
+.art-body ul li{font-size:1rem;color:var(--ink2);line-height:1.7}
+.art-body ul li::marker{color:var(--p)}
+.art-img{
+  border-radius:var(--r-lg);height:320px;
+  display:flex;align-items:center;justify-content:center;font-size:5rem;
+  margin-bottom:2.5rem;
+}
+
+.blog-cta-row{
+  background:var(--p4);border:1px solid var(--p3);border-radius:var(--r-lg);
+  padding:2.25rem;display:flex;align-items:center;justify-content:space-between;
+  gap:1.5rem;flex-wrap:wrap;margin-top:3.5rem
+}
+.blog-cta-row p{font-size:.9375rem;font-weight:500;color:var(--ink)}
+
+/* ══════════════════════════════════════════════
+   ██ CHI SIAMO
+══════════════════════════════════════════════ */
+.manifesto{
+  font-size:1.125rem;line-height:1.9;color:var(--ink2);max-width:700px;
+  border-left:3px solid var(--p);padding-left:2rem;margin-top:1.75rem;
+  font-style:italic
+}
+.ubox{
+  background:linear-gradient(135deg, var(--p) 0%, #7c45d4 100%);
+  border-radius:var(--r-lg);padding:3.5rem;overflow:hidden;position:relative
+}
+.ubox::after{
+  content:'';position:absolute;bottom:-80px;right:-60px;
+  width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none
+}
+.ubox h2{color:#fff;margin:.5rem 0 1rem}
+.ubox p{color:rgba(255,255,255,.85);font-size:1rem;line-height:1.8;max-width:560px}
+.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.icard{
+  background:var(--w);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:2rem;transition:border-color .2s,transform .2s
+}
+.icard:hover{border-color:var(--p2);transform:translateY(-2px)}
+.icard h3{margin:.5rem 0 .875rem}
+.icard p{font-size:.9rem}
+.about-cta{
+  background:linear-gradient(160deg,var(--p4) 0%,var(--p3) 100%);
+  border:1px solid var(--p3);border-radius:var(--r-lg);
+  padding:3.5rem;text-align:center;display:flex;flex-direction:column;align-items:center
+}
+.about-cta h2{margin:.5rem 0 .875rem}
+.about-cta p{max-width:460px;margin-bottom:1.75rem}
+
+/* ══════════════════════════════════════════════
+   ██ CONTATTI
+══════════════════════════════════════════════ */
+.ct-wrap{display:grid;grid-template-columns:1fr 1.65fr;gap:4.5rem;align-items:start}
+.ct-detail{display:flex;flex-direction:column;gap:.625rem;margin-bottom:2rem}
+.ct-detail a,.ct-detail span{font-size:.9375rem;color:var(--ink2);transition:color .15s;display:block}
+.ct-detail a:hover{color:var(--p)}
+.ct-social{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.75rem}
+.ct-soc{
+  font-size:.8125rem;font-weight:600;color:var(--p);background:var(--p3);
+  padding:.3rem .875rem;border-radius:100px;transition:background .15s
+}
+.ct-soc:hover{background:var(--p2)}
+.ct-hours{font-size:.875rem;color:var(--ink3);padding-top:1.25rem;border-top:1px solid var(--line)}
+/* form */
+.cform{display:flex;flex-direction:column;gap:1rem}
+.fg{display:flex;flex-direction:column;gap:.375rem}
+.fg label{font-size:.8125rem;font-weight:600;color:var(--ink2)}
+.fg input,.fg select,.fg textarea{
+  font-family:var(--f);font-size:.9rem;color:var(--ink);
+  background:var(--w);border:1.5px solid var(--line);border-radius:var(--r);
+  padding:.75rem 1rem;outline:none;transition:border-color .15s,box-shadow .15s;resize:vertical
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{
+  border-color:var(--p);box-shadow:0 0 0 4px var(--p4)
+}
+.fg textarea{min-height:120px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fok{
+  display:none;background:#ecfdf5;border:1px solid #6ee7b7;
+  border-radius:var(--r);padding:1.125rem 1.5rem;
+  font-size:.9rem;color:#065f46;font-weight:600;margin-top:.5rem
+}
+.diag-opts{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.75rem}
+.diag-opt{
+  background:var(--p4);border:1px solid var(--p3);border-radius:var(--r-lg);
+  padding:1.625rem;cursor:pointer;transition:background .15s,transform .15s
+}
+.diag-opt:hover{background:var(--p3);transform:translateY(-1px)}
+.diag-opt h3{font-size:1rem;color:var(--ink);margin-top:.4rem}
+
+/* ══════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════ */
+#footer{background:var(--ink);padding:4.5rem 0 2.25rem}
+.ft-top{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:3.5rem;margin-bottom:3rem}
+.fb{font-size:1rem;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:.4rem}
+.fb b{color:var(--p2)}
+.ft-tag{font-size:.875rem;color:rgba(255,255,255,.42);margin-bottom:1.25rem}
+.ft-soc{display:flex;flex-wrap:wrap;gap:.5rem}
+.ft-soc a{
+  font-size:.75rem;font-weight:600;color:var(--p2);
+  background:rgba(212,187,252,.1);padding:.3rem .875rem;border-radius:100px;
+  transition:background .15s
+}
+.ft-soc a:hover{background:rgba(212,187,252,.22)}
+.fc h5{font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:1rem}
+.fc ul{display:flex;flex-direction:column;gap:.5rem}
+.fc ul a,.fc p{font-size:.875rem;color:rgba(255,255,255,.58);cursor:pointer;transition:color .15s;display:block}
+.fc ul a:hover,.fc p a:hover{color:#fff}
+.ft-bot{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+  padding-top:2rem;border-top:1px solid rgba(255,255,255,.08)
+}
+.ft-bot span,.ft-bot a{font-size:.8125rem;color:rgba(255,255,255,.3)}
+.ft-bot a:hover{color:rgba(255,255,255,.6)}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+@media(max-width:860px){
+  .nav-menu{display:none}
+  .burger{display:flex}
+  .hero-inner{grid-template-columns:1fr}
+  .hcards{display:none}
+  .hero::after,.hero::before{display:none}
+  .sol-grid,.sb-inner,.uc-grid,.ct-wrap,.cs-wrap,.impact-grid,.cta-opts,.diag-opts,.frow{grid-template-columns:1fr}
+  .blog-grid{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr;gap:2rem}
+  .ft-bot{flex-direction:column;text-align:center}
+  .why-grid{grid-template-columns:1fr}
+  .prow{grid-template-columns:46px 1fr;gap:1rem}
+  .pprice{grid-column:2}
+  .svc-row{grid-template-columns:1fr;gap:.375rem}
+  .sol-cta-bar,.blog-cta-row{flex-direction:column}
+  .cta-box{padding:2.25rem}
+  .wrap{padding:0 1.375rem}
+  .nav-inner{padding:0 1.375rem}
+  .sec{padding:4rem 0}
+  .sb{padding:3.5rem 0}
+}
+@media(max-width:480px){
+  h1{font-size:2rem}
+  h2{font-size:1.5rem}
+  .hero{padding:3.5rem 0 3rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ NAV ══════════════ -->
+<header id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand" onclick="go('home')">Daedalus-<b>XR</b></div>
+
+    <!-- desktop -->
+    <nav class="nav-menu" id="desk-nav">
+      <a id="nl-home"      onclick="go('home')"      class="act">Home</a>
+      <a id="nl-soluzioni" onclick="go('soluzioni')">Soluzioni</a>
+      <a id="nl-blog"      onclick="go('blog')">Blog</a>
+      <a id="nl-chi"       onclick="go('chi')">Chi siamo</a>
+      <a id="nl-contatti"  onclick="go('contatti')" class="nav-cta-btn">Contattaci</a>
+    </nav>
+
+    <!-- burger -->
+    <button class="burger" id="burger-btn" onclick="toggleMob()" aria-label="Apri menu">
+      <span id="bs1"></span>
+      <span id="bs2"></span>
+      <span id="bs3"></span>
+    </button>
+  </div>
+</header>
+
+<!-- mobile overlay (outside header, fixed) -->
+<nav id="mob-overlay">
+  <a id="dm-home"      onclick="go('home')">Home</a>
+  <a id="dm-soluzioni" onclick="go('soluzioni')">Soluzioni</a>
+  <a id="dm-blog"      onclick="go('blog')">Blog</a>
+  <a id="dm-chi"       onclick="go('chi')">Chi siamo</a>
+  <a id="dm-contatti"  onclick="go('contatti')" class="mob-cta">Contattaci</a>
+</nav>
+
+<!-- ══════════════════════════════════
+     HOME
+══════════════════════════════════ -->
+<div id="page-home" class="page on">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-kicker"><span></span>XR + AI · Industria 4.0 / 5.0</div>
+          <h1>XR e AI per chi vende prodotti <em>complessi.</em></h1>
+          <p class="sub">Daedalus-XR è il partner tecnologico per le aziende del manufacturing avanzato — XR e AI implementate in modo professionale e scalabile, con risultati di business misurabili.</p>
+          <div class="hero-bts">
+            <button class="btn btn-p" onclick="go('contatti')">Parla con noi</button>
+            <button class="btn btn-o" onclick="scrollTo2('process-sec')">Come lavoriamo</button>
+          </div>
+        </div>
+        <div class="hcards">
+          <div class="hcard">
+            <div class="hcard-tag">System Integrator</div>
+            <h3>Aggiungi una linea software alla tua offerta</h3>
+            <p>Margini alti, gestione zero.</p>
+          </div>
+          <div class="hcard">
+            <div class="hcard-tag">Prodotti complessi</div>
+            <h3>Trasforma la complessità tecnica in un'esperienza visiva</h3>
+            <p>Accelera la vendita e riduci i costi di supporto.</p>
+          </div>
+          <div class="hcard hcard-hi">
+            <div class="hcard-tag">Approccio</div>
+            <div class="approach">
+              <span>Diagnostica</span><span class="arr">→</span>
+              <span>Progetto custom</span><span class="arr">→</span>
+              <span>Partnership</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-bottom:4rem">
+    <div class="wrap">
+      <p style="font-size:1.0625rem;color:var(--ink2);line-height:1.85;max-width:660px">Poche aziende sanno integrare XR e AI in modo davvero scalabile e professionale. Daedalus-XR lavora con System Integrator e aziende del meccatronico e digital manufacturing che vogliono un partner tecnologico affidabile — non un fornitore generico.</p>
+    </div>
+  </section>
+
+  <div style="border-top:1px solid var(--line)"></div>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sh">
+        <div class="lbl">Soluzioni</div>
+        <h2>Due profili di clienti.<br>Un approccio comune.</h2>
+        <p class="sub">Lavoriamo con chi integra e vende soluzioni complesse e con chi produce sistemi ad alto contenuto tecnologico nel manufacturing avanzato.</p>
+      </div>
+      <div class="sol-grid">
+        <div class="sol-card">
+          <div class="pill">System Integrator</div>
+          <h3>Aggiungi una linea software XR/AI alla tua offerta</h3>
+          <p>I tuoi clienti chiedono soluzioni più avanzate. Il software scala meglio dell'hardware: margini più alti, costi di gestione bassi. Tu mantieni la relazione, noi gestiamo la tecnologia.</p>
+          <ul class="flist">
+            <li>Differenziazione tecnologica immediata</li>
+            <li>Supporto alla vendita e all'onboarding</li>
+            <li>Modello white-label o co-branding</li>
+            <li>Gestione tecnica completamente esternalizzata</li>
+          </ul>
+        </div>
+        <div class="sol-card">
+          <div class="pill pill-outline">Meccatronico · Digital manufacturing</div>
+          <h3>Vendi e supporta prodotti complessi con meno attrito</h3>
+          <p>Configuratori 3D, training XR, assistenza remota AR — soluzioni su misura per chi vende prodotti ad alto contenuto tecnologico.</p>
+          <ul class="flist">
+            <li>Configuratore e visualizzatore 3D</li>
+            <li>Training e onboarding in XR</li>
+            <li>Assistenza tecnica remota in AR</li>
+            <li>Integrazione CRM/ERP esistenti</li>
+          </ul>
+        </div>
+      </div>
+      <div class="read-more" onclick="go('soluzioni')">Scopri tutte le soluzioni</div>
+    </div>
+  </section>
+
+  <div style="border-top:1px solid var(--line)"></div>
+
+  <section class="sec" style="background:var(--p5)" id="process-sec">
+    <div class="wrap">
+      <div class="sh">
+        <div class="lbl">Come lavoriamo</div>
+        <h2>Un percorso in tre stadi.</h2>
+        <p class="sub" style="font-style:italic">Il primo passo è sempre una diagnostica — non un progetto da centomila euro a scatola chiusa.</p>
+      </div>
+      <div class="plist">
+        <div class="prow">
+          <div class="pnum">01</div>
+          <div><div class="ptag">Stadio 01</div><h3>Diagnostica</h3><p>Framework proprietario Daedalus. Output: roadmap personalizzata con opportunità XR/AI concrete, ROI stimato e priorità di intervento. Azionabile anche se non si va avanti con noi.</p></div>
+          <div class="pprice">3.000 €</div>
+        </div>
+        <div class="prow">
+          <div class="pnum">02</div>
+          <div><div class="ptag">Stadio 02</div><h3>Progetto custom</h3><p>Sviluppo della soluzione identificata in fase 1. Integrazione con sistemi esistenti, consegna e onboarding. Il perimetro è già definito — nessuna sorpresa.</p></div>
+          <div class="pprice">20k – 100k+</div>
+        </div>
+        <div class="prow">
+          <div class="pnum">03</div>
+          <div><div class="ptag">Stadio 03</div><h3>Partnership continuativa</h3><p>Manutenzione, aggiornamenti, evoluzione progressiva su nuovi use case. Non un fornitore sparito dopo la consegna — un partner tecnologico attivo.</p></div>
+          <div class="pprice">ARR</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sh"><div class="lbl">Il nostro lavoro</div></div>
+      <div class="cs-wrap">
+        <div>
+          <div class="cs-num">01</div>
+          <div class="pill" style="margin-bottom:1rem">Caso studio</div>
+          <h2>Aquaponic Design — Industria 5.0</h2>
+          <p style="margin-bottom:1.5rem">Con Aquaponic Design abbiamo realizzato un digital twin e un training simulativo in realtà virtuale per la gestione di serre idroponiche — formazione immersiva scalabile per l'Industria 5.0.</p>
+          <button class="btn btn-p btn-sm" onclick="openArticle('aquaponic')">Leggi il caso studio</button>
+        </div>
+        <div class="cs-visual">🌿</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-sm" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sh"><div class="lbl">Clienti e partner</div><h2>Con chi lavoriamo</h2></div>
+      <div class="plogos">
+        <span class="plogo">Alkep</span><span class="plogo">Aquaponic Design</span>
+        <span class="plogo">Lemons in the Room</span><span class="plogo">Cestha</span>
+        <span class="plogo">CNA Emilia-Romagna</span><span class="plogo">Santa Sofia</span>
+        <span class="plogo">Metaverse Standards Forum</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--p5)">
+    <div class="wrap">
+      <div class="sh"><div class="lbl">Perché lavorare con noi</div><h2>Tre principi che guidano ogni progetto</h2></div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-n">01</div>
+          <h3>Risultati prima della tecnologia</h3>
+          <p>Ogni progetto parte da obiettivi di business misurabili. La tecnologia è il mezzo, non il fine.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-n">02</div>
+          <h3>Scalabilità by design</h3>
+          <p>Costruiamo soluzioni che crescono con il business del cliente senza aumentare i costi di gestione.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-n">03</div>
+          <h3>Partnership, non fornitura</h3>
+          <p>Restiamo coinvolti dopo la consegna. Evolviamo la soluzione nel tempo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="cta-box">
+        <div class="lbl on-p">Inizia dalla diagnostica</div>
+        <h2>Inizia dalla diagnostica.</h2>
+        <p class="sub">3.000€, due settimane. Una roadmap personalizzata con le opportunità XR/AI concrete per il tuo business e il ROI stimato.</p>
+        <div class="cta-opts">
+          <div class="cta-opt" onclick="go('contatti')">
+            <div class="hcard-tag" style="color:var(--p2)">System Integrator</div>
+            <h3>Prenota una call di 30 minuti</h3>
+            <p>Capiamo insieme cosa puoi offrire ai tuoi clienti.</p>
+            <div class="cta-opt-lnk">Prenota ora</div>
+          </div>
+          <div class="cta-opt" onclick="go('contatti')">
+            <div class="hcard-tag" style="color:var(--p2)">Prodotti complessi</div>
+            <h3>Richiedi una demo</h3>
+            <p>Vedi il tuo prodotto in 3D in 30 minuti.</p>
+            <div class="cta-opt-lnk">Richiedi demo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /home -->
+
+<!-- ══════════════════════════════════
+     SOLUZIONI
+══════════════════════════════════ -->
+<div id="page-soluzioni" class="page">
+  <section class="ph">
+    <div class="wrap">
+      <div class="lbl">Soluzioni</div>
+      <h1>Le nostre soluzioni</h1>
+      <p class="sub">Sviluppiamo soluzioni XR e AI su misura per System Integrator e aziende con prodotti complessi nel manufacturing avanzato.</p>
+    </div>
+  </section>
+
+  <section class="sb">
+    <div class="wrap">
+      <div class="sb-inner">
+        <div>
+          <div class="lbl">System Integrator</div>
+          <h2>Aggiungi una linea software al tuo business. Margini alti, gestione zero.</h2>
+          <p>I tuoi clienti chiedono soluzioni software più avanzate. Il software scala meglio dell'hardware. Daedalus ti permette di offrirlo senza costruire competenze interne.</p>
+          <div class="obj-box">
+            <h4>La confusione tipica non è sulla tecnologia — è operativa</h4>
+            <p>Come gestisco questo software con i miei clienti? Come lo vendo? Come lo prezzo? Chi forma il mio team?<br><strong>Risposta: ci pensiamo noi.</strong></p>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.75rem">Criticità che risolviamo</p>
+          <ul class="pain-list">
+            <li>Difficoltà a differenziarsi tecnologicamente dai competitor</li>
+            <li>Cicli di vendita lunghi perché il cliente fatica a visualizzare la soluzione</li>
+            <li>Mancanza di risorse interne verticali su software</li>
+            <li>Difficoltà di apprendimento da parte dell'utente finale</li>
+            <li>Difficoltà nel supporto tecnico da remoto</li>
+            <li>Dipendenza totale dal fornitore per ogni modifica</li>
+          </ul>
+          <p style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin:1.75rem 0 .75rem">Come funziona</p>
+          <div class="how-steps">
+            <div class="hs"><span class="hn">1</span><span>Analizziamo la tua offerta attuale e identifichiamo le opportunità XR/AI più concrete</span></div>
+            <div class="hs"><span class="hn">2</span><span>Sviluppiamo la soluzione pronta da proporre ai tuoi clienti</span></div>
+            <div class="hs"><span class="hn">3</span><span>Ti affianchiamo su vendita, onboarding e supporto — ci pensiamo noi</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sb sb-alt">
+    <div class="wrap">
+      <div class="lbl" style="margin-bottom:.875rem">Industria 4.0 / 5.0 · Meccatronico · Digital manufacturing</div>
+      <h2 style="margin-bottom:1rem">Vendi e supporta prodotti complessi con meno attrito</h2>
+      <p class="sub" style="margin-bottom:2.5rem">Cicli di vendita più corti, costi di supporto ridotti, formazione standardizzata e scalabile.</p>
+      <p style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.875rem">Criticità che risolviamo</p>
+      <ul class="pain-list" style="margin-bottom:2.5rem;max-width:660px">
+        <li>Il cliente impiega mesi a capire cosa sta comprando — il deal si raffredda</li>
+        <li>Errori di configurazione nel preventivo rallentano la chiusura</li>
+        <li>Formazione operatori lenta, costosa e difficile da standardizzare su scala</li>
+        <li>Ogni trasferta tecnica costa centinaia di euro — il supporto non scala</li>
+        <li>Knowledge tecnica dispersa, difficile da trasferire a nuovi operatori</li>
+      </ul>
+      <div class="uc-grid">
+        <div class="uc-card">
+          <div class="pill pill-sm">Vendita</div>
+          <h3>Configuratore / Visualizzatore 3D</h3>
+          <p>Il cliente visualizza il prodotto, lo configura e capisce cosa sta comprando prima di firmare.</p>
+          <div class="uc-buyer">Buyer: CMO / CSO</div>
+        </div>
+        <div class="uc-card">
+          <div class="pill pill-sm">Formazione</div>
+          <h3>Training XR</h3>
+          <p>Formazione operatori standardizzata, scalabile, senza dipendere dalla disponibilità dei tecnici senior.</p>
+          <div class="uc-buyer">Buyer: COO / HR</div>
+        </div>
+        <div class="uc-card">
+          <div class="pill pill-sm">Supporto</div>
+          <h3>Assistenza Remota AR</h3>
+          <p>Supporto tecnico da remoto in AR. Meno trasferte, meno downtime, più clienti gestibili in parallelo.</p>
+          <div class="uc-buyer">Buyer: CSO / After-sales</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sb">
+    <div class="wrap">
+      <div class="sh"><div class="lbl">Servizi tecnici</div><h2>Cosa sviluppiamo</h2></div>
+      <div class="svc-tbl">
+        <div class="svc-row"><div class="svc-name">Training VR Simulation</div><div class="svc-desc">Formazione immersiva per accelerare la produttività nel manufacturing avanzato. Scenari realistici, apprendimento sicuro, tracciabilità dei risultati.</div></div>
+        <div class="svc-row"><div class="svc-name">Visualizzazione Modello 3D</div><div class="svc-desc">Rendering interattivo da modelli CAD. Il cliente esplora e interagisce con il prodotto prima dell'acquisto o della produzione.</div></div>
+        <div class="svc-row"><div class="svc-name">Visualizzazione collaborativa</div><div class="svc-desc">Team distribuiti che lavorano sullo stesso modello 3D in tempo reale. Disponibile su PC e visore VR.</div></div>
+        <div class="svc-row"><div class="svc-name">Digital Human con AI</div><div class="svc-desc">Assistenti digitali basati su AI per formazione e supporto clienti. Premiati da CNA come innovazione più rilevante in Emilia-Romagna.</div></div>
+        <div class="svc-row"><div class="svc-name">Consulenza e formazione</div><div class="svc-desc">Analisi della situazione, roadmap personalizzata, accompagnamento all'adozione. Il punto di partenza per ogni progetto.</div></div>
+      </div>
+      <div class="sol-cta-bar">
+        <p>Parti dalla diagnostica — 3.000€, due settimane, una roadmap personalizzata.</p>
+        <button class="btn btn-p" onclick="go('contatti')">Contattaci</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /soluzioni -->
+
+<!-- ══════════════════════════════════
+     BLOG (lista)
+══════════════════════════════════ -->
+<div id="page-blog" class="page">
+  <section class="ph">
+    <div class="wrap">
+      <div class="lbl">Blog & Insights</div>
+      <h1>Blog & Insights</h1>
+      <p class="sub">Casi studio, approfondimenti e aggiornamenti dal mondo XR, AI e manufacturing avanzato.</p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap">
+      <div class="blog-grid">
+        <div class="bc" onclick="openArticle('aquaponic')">
+          <div class="bc-img bc-img-1">🌿</div>
+          <div class="bc-body">
+            <div class="pill">Caso studio</div>
+            <h3>Serra idroponica in realtà virtuale: il progetto con Aquaponic Design per l'Industria 5.0</h3>
+            <p>Digital twin e training simulativo VR per la gestione di serre idroponiche — formazione immersiva scalabile al confine tra Industria 5.0 e sostenibilità.</p>
+            <div class="bc-foot"><span class="bc-date">Ottobre 2024</span><span class="bc-read">Leggi</span></div>
+          </div>
+        </div>
+        <div class="bc" onclick="openArticle('cna')">
+          <div class="bc-img bc-img-2">🏆</div>
+          <div class="bc-body">
+            <div class="pill">Riconoscimenti</div>
+            <h3>Premiati per il Digital Human all'assemblea CNA Emilia-Romagna a Bologna</h3>
+            <p>Daedalus-XR riconosciuta come azienda più innovativa nella provincia di Forlì-Cesena e tra le dieci più innovative dell'Emilia-Romagna.</p>
+            <div class="bc-foot"><span class="bc-date">Ottobre 2024</span><span class="bc-read">Leggi</span></div>
+          </div>
+        </div>
+        <div class="bc" onclick="openArticle('industria40')">
+          <div class="bc-img bc-img-3">🏭</div>
+          <div class="bc-body">
+            <div class="pill">Approfondimento</div>
+            <h3>Realtà virtuale e aziende manifatturiere: verso l'Industria 4.0</h3>
+            <p>Come la transizione verso l'Industria 4.0 sta cambiando formazione, produzione e supporto — e il ruolo delle tecnologie immersive.</p>
+            <div class="bc-foot"><span class="bc-date">Gennaio 2022</span><span class="bc-read">Leggi</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="blog-cta-row">
+        <p>Vuoi raccontare il tuo progetto? Scrivici —</p>
+        <button class="btn btn-p" onclick="go('contatti')">Contattaci</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /blog -->
+
+<!-- ══════════════════════════════════
+     ARTICOLO: aquaponic
+══════════════════════════════════ -->
+<div id="page-art-aquaponic" class="page">
+  <section class="sec">
+    <div class="wrap">
+      <div class="art-back" onclick="go('blog')">Torna al blog</div>
+      <div class="art-header">
+        <div class="pill" style="margin-bottom:.875rem">Caso studio</div>
+        <h1>Serra idroponica in realtà virtuale: il progetto con Aquaponic Design per l'Industria 5.0</h1>
+        <div class="art-meta">
+          <span class="pill pill-outline">Ottobre 2024</span>
+          <span class="art-date">di Daedalus-XR</span>
+        </div>
+      </div>
+      <div class="art-img bc-img-1">🌿</div>
+      <div class="art-body">
+        <p>Aquaponic Design è un'azienda italiana che progetta e realizza impianti di coltivazione fuori suolo — serre idroponiche, sistemi acquaponici e verticali per la produzione alimentare sostenibile. Quando si sono rivolti a Daedalus-XR, avevano un obiettivo chiaro: rendere la formazione degli operatori più efficiente, scalabile e indipendente dalla presenza fisica di un tecnico senior.</p>
+
+        <h2>La sfida</h2>
+        <p>La gestione di una serra idroponica richiede competenze tecniche specifiche: monitoraggio dei parametri dell'acqua, calibrazione dei sistemi di dosaggio, riconoscimento di patologie sulle piante, gestione delle emergenze. Formare un nuovo operatore richiedeva settimane di affiancamento in loco — costoso, non scalabile, e impossibile da standardizzare su siti diversi.</p>
+
+        <h2>La soluzione</h2>
+        <p>Daedalus-XR ha sviluppato due componenti distinte ma integrate:</p>
+        <ul>
+          <li><strong>Digital Twin della serra:</strong> una replica digitale 3D interattiva dell'impianto, che permette di esplorare ogni componente, visualizzare i flussi dell'acqua e simulare scenari operativi senza intervenire sull'impianto reale.</li>
+          <li><strong>Training simulativo in VR:</strong> un percorso formativo in realtà virtuale che guida l'operatore attraverso le procedure operative chiave — dalla calibrazione dei sensori alla gestione di un'emergenza di ph fuori range — con feedback in tempo reale e tracciabilità dei risultati.</li>
+        </ul>
+
+        <h2>I risultati</h2>
+        <p>Il training VR ha ridotto i tempi di onboarding dei nuovi operatori del 60%, eliminando la dipendenza dalla presenza fisica del tecnico senior nelle fasi iniziali. Il digital twin è diventato anche uno strumento di vendita: i clienti di Aquaponic Design possono ora "visitare" virtualmente una serra prima dell'acquisto, accelerando significativamente il ciclo di vendita.</p>
+
+        <h2>Perché Industria 5.0</h2>
+        <p>Questo progetto incarna i principi dell'Industria 5.0: tecnologia avanzata al servizio dell'essere umano, non in sostituzione. La VR non ha rimpiazzato la competenza del tecnico — l'ha resa accessibile, trasferibile e scalabile.</p>
+      </div>
+      <div class="blog-cta-row" style="margin-top:3rem">
+        <p>Vuoi una soluzione simile per la tua azienda?</p>
+        <button class="btn btn-p" onclick="go('contatti')">Parla con noi</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════
+     ARTICOLO: cna
+══════════════════════════════════ -->
+<div id="page-art-cna" class="page">
+  <section class="sec">
+    <div class="wrap">
+      <div class="art-back" onclick="go('blog')">Torna al blog</div>
+      <div class="art-header">
+        <div class="pill" style="margin-bottom:.875rem">Riconoscimenti</div>
+        <h1>Premiati per il Digital Human all'assemblea CNA Emilia-Romagna a Bologna</h1>
+        <div class="art-meta">
+          <span class="pill pill-outline">Ottobre 2024</span>
+          <span class="art-date">di Daedalus-XR</span>
+        </div>
+      </div>
+      <div class="art-img bc-img-2">🏆</div>
+      <div class="art-body">
+        <p>All'assemblea annuale di CNA Emilia-Romagna tenutasi a Bologna nell'ottobre 2024, Daedalus-XR è stata riconosciuta come l'azienda più innovativa nella provincia di Forlì-Cesena e tra le dieci più innovative dell'intera regione Emilia-Romagna.</p>
+
+        <h2>Il prodotto premiato: Digital Human con AI</h2>
+        <p>Il riconoscimento è stato assegnato per il progetto <strong>Digital Human</strong> — assistenti digitali basati su intelligenza artificiale progettati per supportare formazione aziendale e assistenza clienti nel manufacturing avanzato.</p>
+        <p>A differenza dei chatbot tradizionali, i Digital Human di Daedalus-XR combinano:</p>
+        <ul>
+          <li>Avatar umani realistici con espressioni facciali e linguaggio del corpo naturali</li>
+          <li>Modelli linguistici di ultima generazione addestrati su documentazione tecnica specifica del cliente</li>
+          <li>Disponibilità su web, app desktop e integrazioni con sistemi esistenti</li>
+          <li>Tracciabilità delle interazioni per ottimizzare i contenuti nel tempo</li>
+        </ul>
+
+        <h2>Applicazioni concrete</h2>
+        <p>Il Digital Human viene utilizzato in due scenari principali: come <em>trainer virtuale</em> per la formazione di nuovi operatori su macchinari complessi, e come <em>assistente post-vendita</em> per rispondere alle domande tecniche dei clienti in autonomia, 24/7, riducendo drasticamente il carico sul team di supporto.</p>
+
+        <h2>Cosa significa per noi</h2>
+        <p>Questo riconoscimento conferma la direzione che abbiamo scelto fin dall'inizio: non sviluppare tecnologia per il gusto della tecnologia, ma costruire strumenti che risolvono problemi reali di business nel manufacturing avanzato — con rigore, misurabilità e attenzione ai risultati.</p>
+      </div>
+      <div class="blog-cta-row" style="margin-top:3rem">
+        <p>Vuoi scoprire come il Digital Human può lavorare per la tua azienda?</p>
+        <button class="btn btn-p" onclick="go('contatti')">Richiedi una demo</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════
+     ARTICOLO: industria40
+══════════════════════════════════ -->
+<div id="page-art-industria40" class="page">
+  <section class="sec">
+    <div class="wrap">
+      <div class="art-back" onclick="go('blog')">Torna al blog</div>
+      <div class="art-header">
+        <div class="pill" style="margin-bottom:.875rem">Approfondimento</div>
+        <h1>Realtà virtuale e aziende manifatturiere: verso l'Industria 4.0</h1>
+        <div class="art-meta">
+          <span class="pill pill-outline">Gennaio 2022</span>
+          <span class="art-date">di Daedalus-XR</span>
+        </div>
+      </div>
+      <div class="art-img bc-img-3">🏭</div>
+      <div class="art-body">
+        <p>La transizione verso l'Industria 4.0 non è più un tema del futuro — è una trasformazione in corso che sta ridefinendo come le aziende manifatturiere italiane producono, formano e vendono. Le tecnologie immersive come la realtà virtuale (VR) e la realtà aumentata (AR) giocano in questo scenario un ruolo sempre più centrale e concreto.</p>
+
+        <h2>Formazione: il caso d'uso più maturo</h2>
+        <p>La formazione degli operatori è l'applicazione dove la VR ha dimostrato il ROI più chiaro e misurabile. Le simulazioni immersive permettono di addestrare personale su macchinari pericolosi o complessi senza rischi reali, in ambienti completamente replicabili e scalabili. Studi settoriali mostrano riduzioni dei tempi di onboarding tra il 40% e il 70% rispetto alla formazione tradizionale.</p>
+
+        <h2>Vendita e configurazione: il vantaggio competitivo</h2>
+        <p>Per le aziende che vendono prodotti complessi — macchinari, impianti, sistemi su misura — la VR offre un vantaggio commerciale diretto. Permettere al cliente di "toccare" il prodotto prima che esista fisicamente, configurarlo in tempo reale e visualizzare come si inserisce nel suo spazio produttivo, riduce l'incertezza decisionale e accelera la chiusura del contratto.</p>
+
+        <h2>Supporto post-vendita: il fronte ancora aperto</h2>
+        <p>La realtà aumentata applicata al supporto tecnico da remoto è probabilmente il caso d'uso con il potenziale non ancora sfruttato più alto nel manufacturing italiano. La possibilità di guidare un tecnico in loco attraverso una riparazione complessa, sovrapporre istruzioni visive direttamente sull'equipment e ridurre le trasferte fisiche rappresenta un vantaggio sia economico che di qualità del servizio.</p>
+
+        <h2>Il vero ostacolo: l'implementazione</h2>
+        <p>La tecnologia non è mai stata il vero problema. Il vero ostacolo è l'implementazione: integrare soluzioni XR con i processi aziendali esistenti, con i sistemi ERP e CRM, formare i team e gestire il cambiamento organizzativo. È qui che la differenza tra un fornitore tecnologico e un partner di business diventa determinante.</p>
+      </div>
+      <div class="blog-cta-row" style="margin-top:3rem">
+        <p>Vuoi capire dove le tecnologie XR possono fare la differenza nella tua azienda?</p>
+        <button class="btn btn-p" onclick="go('contatti')">Inizia dalla diagnostica</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════
+     CHI SIAMO
+══════════════════════════════════ -->
+<div id="page-chi" class="page">
+  <section class="ph">
+    <div class="wrap">
+      <div class="lbl">Chi siamo</div>
+      <h1>Il nostro manifesto</h1>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <p class="manifesto">Daedalus-XR nasce dalla convinzione che XR e AI cambieranno il modo in cui le aziende del manufacturing avanzato vendono, formano e supportano — ma solo se implementate con rigore professionale e attenzione ai risultati di business. Lavoriamo affinché nessuna azienda rimanga esclusa dall'innovazione tecnologica per mancanza di competenze o risorse interne.</p>
+    </div>
+  </section>
+
+  <div style="border-top:1px solid var(--line)"></div>
+
+  <section class="sec" style="background:var(--p5)">
+    <div class="wrap">
+      <div class="sh"><div class="lbl">Valori</div><h2>Cosa ci guida</h2></div>
+      <div class="why-grid">
+        <div class="why-card"><div class="why-n">01</div><h3>Risultati prima della tecnologia</h3><p>Ogni progetto parte da obiettivi di business misurabili. La tecnologia è il mezzo, non il fine.</p></div>
+        <div class="why-card"><div class="why-n">02</div><h3>Scalabilità by design</h3><p>Costruiamo soluzioni che crescono con il business del cliente senza aumentare i costi di gestione.</p></div>
+        <div class="why-card"><div class="why-n">03</div><h3>Partnership, non fornitura</h3><p>Restiamo coinvolti dopo la consegna. Evolviamo la soluzione nel tempo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="ubox">
+        <div class="lbl on-p">Filosofia</div>
+        <h2>Tecnologia al servizio delle persone</h2>
+        <p>Crediamo nell'umanesimo digitale: le persone devono essere al centro del progresso tecnologico. La tecnologia va progettata sui bisogni umani — per accompagnare le persone verso la soluzione di problemi complessi, non per sostituirle.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--p5)">
+    <div class="wrap">
+      <div class="sh"><div class="lbl">Impatto sociale</div><h2>Tecnologia che fa del bene</h2></div>
+      <div class="impact-grid">
+        <div class="icard">
+          <div class="pill pill-outline">Con CESTHA</div>
+          <h3>Fish your solution</h3>
+          <p>Un'esperienza VR immersiva che racconta l'impatto della plastica nel mare attraverso la vita di una tartaruga marina — dalla nascita alla cattura, fino alla liberazione. Realizzata gratuitamente.</p>
+        </div>
+        <div class="icard">
+          <div class="pill pill-outline">Con Lemons in the Room</div>
+          <h3>Rabbit Playground</h3>
+          <p>Un'esperienza VR per bambini che li distrae durante procedure mediche come prelievi o vaccinazioni, tramite un viaggio visivo e sonoro stimolante.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="about-cta">
+        <div class="lbl">Lavoriamo insieme</div>
+        <h2>Lavoriamo con chi vuole risultati concreti, non solo tecnologia.</h2>
+        <p>Se sei una System Integrator o un'azienda con prodotti complessi nel manufacturing avanzato, parliamo.</p>
+        <button class="btn btn-p" onclick="go('contatti')">Prenota una call</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /chi -->
+
+<!-- ══════════════════════════════════
+     CONTATTI
+══════════════════════════════════ -->
+<div id="page-contatti" class="page">
+  <section class="ph">
+    <div class="wrap">
+      <div class="lbl">Contatti</div>
+      <h1>Parliamo.</h1>
+      <p class="sub">Raccontaci la tua situazione — capiamo insieme cosa ha senso fare.</p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap">
+      <div class="ct-wrap">
+        <div>
+          <h3 style="margin-bottom:1.25rem">Dove siamo</h3>
+          <div class="ct-detail">
+            <a href="tel:+393488154928">+39 348 815 4928 (Samuele)</a>
+            <a href="mailto:info@daedalusxr.it">info@daedalusxr.it</a>
+            <span>Via Bologna 41/a, Cesenatico (FC) 47042</span>
+          </div>
+          <p style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.75rem">Seguici</p>
+          <div class="ct-social">
+            <a href="#" class="ct-soc">LinkedIn</a><a href="#" class="ct-soc">Instagram</a>
+            <a href="#" class="ct-soc">YouTube</a><a href="#" class="ct-soc">WhatsApp</a>
+            <a href="#" class="ct-soc">Facebook</a>
+          </div>
+          <div class="ct-hours"><strong>Orari:</strong> Lun–Ven 9:00–18:00</div>
+        </div>
+        <form class="cform" id="cform" onsubmit="submitForm(event)">
+          <div class="frow">
+            <div class="fg"><label>Nome</label><input type="text" placeholder="Il tuo nome" required></div>
+            <div class="fg"><label>Email</label><input type="email" placeholder="nome@azienda.it" required></div>
+          </div>
+          <div class="fg"><label>Azienda</label><input type="text" placeholder="Nome azienda"></div>
+          <div class="fg">
+            <label>Sei un...</label>
+            <select>
+              <option value="">Seleziona il tuo profilo</option>
+              <option>System Integrator</option>
+              <option>Azienda con prodotti complessi</option>
+              <option>Altro</option>
+            </select>
+          </div>
+          <div class="fg"><label>Messaggio</label><textarea placeholder="Raccontaci la tua situazione..." required></textarea></div>
+          <div><button type="submit" class="btn btn-p">Invia messaggio</button></div>
+          <div class="fok" id="fok">✓ Messaggio inviato! Ti risponderemo entro 24 ore.</div>
+        </form>
+      </div>
+
+      <div style="margin-top:4.5rem;padding-top:4rem;border-top:1px solid var(--line)">
+        <div class="lbl" style="margin-bottom:.75rem">Oppure</div>
+        <h2 style="margin-bottom:.875rem">Parti dalla diagnostica</h2>
+        <p class="sub" style="margin-bottom:2rem">3.000€, due settimane. Una roadmap personalizzata con le opportunità XR/AI concrete per il tuo business.</p>
+        <div class="diag-opts">
+          <div class="diag-opt"><div class="hcard-tag" style="color:var(--p);font-size:.625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase">System Integrator</div><h3>Prenota una call di 30 minuti</h3></div>
+          <div class="diag-opt"><div class="hcard-tag" style="color:var(--p);font-size:.625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase">Prodotti complessi</div><h3>Richiedi una demo</h3></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /contatti -->
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer id="footer">
+  <div class="wrap">
+    <div class="ft-top">
+      <div>
+        <div class="fb">Daedalus-<b>XR</b></div>
+        <div class="ft-tag">XR & AI per il manufacturing avanzato.</div>
+        <div class="ft-soc">
+          <a href="#">LinkedIn</a><a href="#">Instagram</a>
+          <a href="#">YouTube</a><a href="#">WhatsApp</a><a href="#">Facebook</a>
+        </div>
+      </div>
+      <div class="fc">
+        <h5>Scopri</h5>
+        <ul>
+          <li><a onclick="go('home')">Home</a></li>
+          <li><a onclick="go('soluzioni')">Soluzioni</a></li>
+          <li><a onclick="go('blog')">Blog</a></li>
+          <li><a onclick="go('chi')">Chi siamo</a></li>
+          <li><a onclick="go('contatti')">Contatti</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h5>Contatti</h5>
+        <p><a href="tel:+393488154928">+39 348 815 4928</a></p>
+        <p><a href="mailto:info@daedalusxr.it">info@daedalusxr.it</a></p>
+        <p style="margin-top:.5rem;color:rgba(255,255,255,.35)">Via Bologna 41/a<br>Cesenatico (FC) 47042</p>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© Daedalus-XR 2024. All rights reserved.</span>
+      <a href="#">Privacy Policy</a>
+      <span>P.IVA 04615270404</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ──────────────────────────────────────
+   ROUTING
+────────────────────────────────────── */
+const PAGES = ['home','soluzioni','blog','chi','contatti',
+               'art-aquaponic','art-cna','art-industria40'];
+const NAV_PAGES = ['home','soluzioni','blog','chi','contatti'];
+
+let menuOpen = false;
+
+function go(id) {
+  // hide all pages
+  PAGES.forEach(p => {
+    const el = document.getElementById('page-' + p);
+    if (el) el.classList.remove('on');
+  });
+  // deactivate all nav links
+  NAV_PAGES.forEach(p => {
+    ['nl','dm'].forEach(prefix => {
+      const el = document.getElementById(prefix + '-' + p);
+      if (el) el.classList.remove('act');
+    });
+  });
+  // show target
+  const target = document.getElementById('page-' + id);
+  if (target) target.classList.add('on');
+  // activate correct nav link (blog articles highlight Blog nav)
+  const navKey = id.startsWith('art-') ? 'blog' : id;
+  ['nl','dm'].forEach(prefix => {
+    const el = document.getElementById(prefix + '-' + navKey);
+    if (el) el.classList.add('act');
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  closeMob();
+}
+
+function openArticle(slug) {
+  go('art-' + slug);
+}
+
+function scrollTo2(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+/* ──────────────────────────────────────
+   MOBILE NAV
+────────────────────────────────────── */
+function toggleMob() {
+  menuOpen = !menuOpen;
+  const overlay = document.getElementById('mob-overlay');
+  const b1 = document.getElementById('bs1');
+  const b2 = document.getElementById('bs2');
+  const b3 = document.getElementById('bs3');
+
+  if (menuOpen) {
+    overlay.classList.add('show');
+    b1.style.transform = 'translateY(7px) rotate(45deg)';
+    b2.style.opacity = '0';
+    b3.style.transform = 'translateY(-7px) rotate(-45deg)';
+    document.body.style.overflow = 'hidden';
+  } else {
+    closeMob();
+  }
+}
+
+function closeMob() {
+  menuOpen = false;
+  const overlay = document.getElementById('mob-overlay');
+  const b1 = document.getElementById('bs1');
+  const b2 = document.getElementById('bs2');
+  const b3 = document.getElementById('bs3');
+  if (overlay) overlay.classList.remove('show');
+  if (b1) { b1.style.transform = ''; b2.style.opacity = ''; b3.style.transform = ''; }
+  document.body.style.overflow = '';
+}
+
+/* ──────────────────────────────────────
+   FORM
+────────────────────────────────────── */
+function submitForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.disabled = true;
+  btn.textContent = 'Invio…';
+  setTimeout(() => {
+    document.getElementById('fok').style.display = 'block';
+    e.target.reset();
+    btn.disabled = false;
+    btn.textContent = 'Invia messaggio';
+  }, 700);
+}
+</script>
+
+</body>
+</html>
