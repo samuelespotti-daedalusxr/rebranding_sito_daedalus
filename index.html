@@ -903,6 +903,27 @@ p{color:var(--ink2)}
 .hcard-arr{font-size:.8125rem;font-weight:700;color:var(--p);transition:gap .15s}
 .hcard:hover .hcard-arr{letter-spacing:.04em}
 
+
+/* ── slot badge ── */
+.icd-header-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:.5rem}
+.slot-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.8125rem;font-weight:700;
+  color:#c05621;background:#fff7ed;
+  border:1.5px solid #fed7aa;border-radius:100px;
+  padding:.4rem 1.125rem;
+  animation:slotPulse 3s ease-in-out infinite
+}
+@keyframes slotPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(192,86,33,.15)}
+  50%{box-shadow:0 0 0 6px rgba(192,86,33,0)}
+}
+.slot-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#f97316;flex-shrink:0;
+  animation:pulse 2s ease-in-out infinite
+}
+
 </style>
 </head>
 <body>
@@ -1039,7 +1060,10 @@ p{color:var(--ink2)}
   <section class="sec icd-sec" id="process-sec">
     <div class="wrap">
       <div class="icd-header reveal">
-        <div class="lbl">Framework proprietario</div>
+        <div class="icd-header-top">
+          <div class="lbl">Framework proprietario</div>
+          <div class="slot-badge"><span class="slot-dot"></span>Solo 3 slot disponibili</div>
+        </div>
         <h2>Innovation Cycle Design</h2>
         <p class="sub">Il framework proprietario di Daedalus-XR: tre incontri in 6 settimane per capire dove Extended Reality e Intelligenza Artificiale possono fare la differenza nel tuo business — prima di qualsiasi decisione di investimento.</p>
       </div>
