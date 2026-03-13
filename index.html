@@ -784,6 +784,28 @@ p{color:var(--ink2)}
 .mlogo img{max-height:32px;max-width:120px;object-fit:contain;filter:grayscale(1) opacity(.55);transition:filter .2s}
 .mlogo:hover img{filter:grayscale(0) opacity(1)}
 
+
+/* ── intro two-col layout ── */
+.intro-layout{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.intro-lead{
+  font-size:1.25rem;font-weight:600;color:var(--ink);line-height:1.6;
+  border-left:3px solid var(--p);padding-left:1.5rem
+}
+.intro-body{font-size:1rem;color:var(--ink2);line-height:1.85;margin-bottom:1.25rem}
+.intro-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.itag{
+  font-size:.75rem;font-weight:600;color:var(--ink2);
+  background:var(--p5);border:1px solid var(--line);
+  padding:.3rem .875rem;border-radius:100px;
+  transition:border-color .15s,color .15s,background .15s
+}
+.itag:hover{border-color:var(--p2);color:var(--p);background:var(--p4)}
+
+@media(max-width:860px){
+  .intro-layout{grid-template-columns:1fr;gap:1.5rem}
+  .intro-lead{font-size:1.0625rem}
+}
+
 </style>
 </head>
 <body>
@@ -833,7 +855,7 @@ p{color:var(--ink2)}
       <div class="hero-inner">
         <div>
           <div class="hero-kicker"><span></span>Extended Reality · Intelligenza Artificiale · Industria 4.0/5.0</div>
-          <h1>XR e AI per chi vende prodotti <em>complessi.</em></h1>
+          <h1>XR e AI per chi vende prodotti innovativi e soluzioni <em>tecnologicamente complesse.</em></h1>
           <p class="sub">Daedalus-XR è il partner tecnologico per le aziende del manufacturing avanzato — Extended Reality (Realtà Virtuale, Aumentata e Mista) e Intelligenza Artificiale implementate in modo professionale e scalabile, con risultati di business misurabili.</p>
           <div class="hero-bts">
             <button class="btn btn-p" onclick="go('contatti')">Parla con noi</button>
@@ -864,9 +886,22 @@ p{color:var(--ink2)}
     </div>
   </section>
 
-  <section class="sec" style="padding-bottom:4rem">
+  <section class="sec intro-sec" style="padding-bottom:4rem">
     <div class="wrap">
-      <p style="font-size:1.0625rem;color:var(--ink2);line-height:1.85;max-width:660px">Poche aziende sanno integrare XR e AI in modo davvero scalabile e professionale. Daedalus-XR lavora con System Integrator e aziende del meccatronico e digital manufacturing che vogliono un partner tecnologico affidabile — non un fornitore generico.</p>
+      <div class="intro-layout">
+        <div class="intro-left reveal">
+          <p class="intro-lead">Poche aziende sanno integrare Extended Reality e Intelligenza Artificiale in modo davvero scalabile e professionale.</p>
+        </div>
+        <div class="intro-right reveal" style="--d:.12s">
+          <p class="intro-body">Lavoriamo con chi integra e vende soluzioni complesse e con chi produce sistemi ad alto contenuto tecnologico nel manufacturing avanzato — e vogliono un partner tecnologico affidabile, non un fornitore generico.</p>
+          <div class="intro-tags">
+            <span class="itag">System Integrator</span>
+            <span class="itag">Meccatronico</span>
+            <span class="itag">Digital Manufacturing</span>
+            <span class="itag">Industria 4.0 / 5.0</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -876,12 +911,10 @@ p{color:var(--ink2)}
     <div class="wrap">
       <div class="sh reveal">
         <div class="lbl">Soluzioni</div>
-        <h2>Due profili di clienti.<br>Un approccio comune.</h2>
-        <p class="sub">Lavoriamo con chi integra e vende soluzioni complesse e con chi produce sistemi ad alto contenuto tecnologico nel manufacturing avanzato.</p>
+        <h2>Cosa facciamo concretamente.</h2>
       </div>
       <div class="sol-grid">
         <div class="sol-card reveal">
-          <div class="pill">System Integrator</div>
           <h3>Aggiungi una linea software XR/AI alla tua offerta</h3>
           <p>I tuoi clienti chiedono soluzioni più avanzate. Il software scala meglio dell'hardware: margini più alti, costi di gestione bassi. Tu mantieni la relazione, noi gestiamo la tecnologia.</p>
           <ul class="flist">
@@ -892,7 +925,6 @@ p{color:var(--ink2)}
           </ul>
         </div>
         <div class="sol-card reveal">
-          <div class="pill">Digital Manufacturing</div>
           <h3>Vendi e supporta prodotti complessi con meno attrito</h3>
           <p>Configuratori 3D, training XR, assistenza remota AR — soluzioni su misura per chi vende prodotti ad alto contenuto tecnologico.</p>
           <ul class="flist">
@@ -1547,34 +1579,50 @@ const NAV_PAGES = ['home','soluzioni','blog','chi','contatti'];
 
 let menuOpen = false;
 
-function go(id) {
-  // hide all pages
+function renderPage(id) {
   PAGES.forEach(p => {
     const el = document.getElementById('page-' + p);
     if (el) el.classList.remove('on');
   });
-  // deactivate all nav links
   NAV_PAGES.forEach(p => {
     ['nl','dm'].forEach(prefix => {
       const el = document.getElementById(prefix + '-' + p);
       if (el) el.classList.remove('act');
     });
   });
-  // show target
   const target = document.getElementById('page-' + id);
   if (target) target.classList.add('on');
-  // activate correct nav link (blog articles highlight Blog nav)
   const navKey = id.startsWith('art-') ? 'blog' : id;
   ['nl','dm'].forEach(prefix => {
     const el = document.getElementById(prefix + '-' + navKey);
     if (el) el.classList.add('act');
   });
-
   window.scrollTo({ top: 0, behavior: 'smooth' });
   closeMob();
-  // re-init reveal for newly shown page
   setTimeout(initReveal, 50);
 }
+
+function go(id, pushHistory = true) {
+  if (pushHistory) {
+    history.pushState({ page: id }, '', '#' + id);
+  }
+  renderPage(id);
+}
+
+// handle browser back/forward
+window.addEventListener('popstate', (e) => {
+  const id = (e.state && e.state.page) ? e.state.page : 'home';
+  renderPage(id);
+});
+
+// handle direct URL with hash on load
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = location.hash.replace('#','');
+  const startPage = PAGES.includes(hash) ? hash : 'home';
+  history.replaceState({ page: startPage }, '', '#' + startPage);
+  renderPage(startPage);
+  initReveal();
+});
 
 function openArticle(slug) {
   go('art-' + slug);
@@ -1608,10 +1656,7 @@ function toggleMob() {
   }
 }
 
-// Init on load
-document.addEventListener('DOMContentLoaded', () => {
-  initReveal();
-});
+// initReveal called inside DOMContentLoaded above
 
 function closeMob() {
   menuOpen = false;
