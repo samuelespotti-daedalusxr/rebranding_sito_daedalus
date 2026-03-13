@@ -407,7 +407,7 @@ p{color:var(--ink2)}
    ██ BLOG
 ══════════════════════════════════════════════ */
 .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.bc{
+.bc{display:block;color:inherit;
   background:var(--w);border:1px solid var(--line);border-radius:var(--r-lg);
   overflow:hidden;display:flex;flex-direction:column;
   transition:border-color .22s,transform .22s,box-shadow .22s;cursor:pointer
@@ -928,7 +928,7 @@ p{color:var(--ink2)}
   <section class="sec">
     <div class="wrap">
       <div class="blog-grid">
-        <div class="bc" onclick="openArticle('aquaponic')">
+        <a class="bc" href="javascript:void(0)" onclick="openArticle('aquaponic')">
           <div class="bc-img bc-img-1">🌿</div>
           <div class="bc-body">
             <div class="pill">Caso studio</div>
@@ -936,8 +936,8 @@ p{color:var(--ink2)}
             <p>Digital twin e training simulativo VR per la gestione di serre idroponiche — formazione immersiva scalabile al confine tra Industria 5.0 e sostenibilità.</p>
             <div class="bc-foot"><span class="bc-date">Ottobre 2024</span><span class="bc-read">Leggi</span></div>
           </div>
-        </div>
-        <div class="bc" onclick="openArticle('cna')">
+        </a>
+        <a class="bc" href="javascript:void(0)" onclick="openArticle('cna')">
           <div class="bc-img bc-img-2">🏆</div>
           <div class="bc-body">
             <div class="pill">Riconoscimenti</div>
@@ -945,8 +945,8 @@ p{color:var(--ink2)}
             <p>Daedalus-XR riconosciuta come azienda più innovativa nella provincia di Forlì-Cesena e tra le dieci più innovative dell'Emilia-Romagna.</p>
             <div class="bc-foot"><span class="bc-date">Ottobre 2024</span><span class="bc-read">Leggi</span></div>
           </div>
-        </div>
-        <div class="bc" onclick="openArticle('industria40')">
+        </a>
+        <a class="bc" href="javascript:void(0)" onclick="openArticle('industria40')">
           <div class="bc-img bc-img-3">🏭</div>
           <div class="bc-body">
             <div class="pill">Approfondimento</div>
@@ -954,7 +954,7 @@ p{color:var(--ink2)}
             <p>Come la transizione verso l'Industria 4.0 sta cambiando formazione, produzione e supporto — e il ruolo delle tecnologie immersive.</p>
             <div class="bc-foot"><span class="bc-date">Gennaio 2022</span><span class="bc-read">Leggi</span></div>
           </div>
-        </div>
+        </a>
       </div>
       <div class="blog-cta-row">
         <p>Vuoi raccontare il tuo progetto? Scrivici —</p>
@@ -970,7 +970,7 @@ p{color:var(--ink2)}
 <div id="page-art-aquaponic" class="page">
   <section class="sec">
     <div class="wrap">
-      <div class="art-back" onclick="go('blog')">Torna al blog</div>
+      <button class="art-back" onclick="go('blog')">Torna al blog</button>
       <div class="art-header">
         <div class="pill" style="margin-bottom:.875rem">Caso studio</div>
         <h1>Serra idroponica in realtà virtuale: il progetto con Aquaponic Design per l'Industria 5.0</h1>
@@ -1013,7 +1013,7 @@ p{color:var(--ink2)}
 <div id="page-art-cna" class="page">
   <section class="sec">
     <div class="wrap">
-      <div class="art-back" onclick="go('blog')">Torna al blog</div>
+      <button class="art-back" onclick="go('blog')">Torna al blog</button>
       <div class="art-header">
         <div class="pill" style="margin-bottom:.875rem">Riconoscimenti</div>
         <h1>Premiati per il Digital Human all'assemblea CNA Emilia-Romagna a Bologna</h1>
@@ -1056,7 +1056,7 @@ p{color:var(--ink2)}
 <div id="page-art-industria40" class="page">
   <section class="sec">
     <div class="wrap">
-      <div class="art-back" onclick="go('blog')">Torna al blog</div>
+      <button class="art-back" onclick="go('blog')">Torna al blog</button>
       <div class="art-header">
         <div class="pill" style="margin-bottom:.875rem">Approfondimento</div>
         <h1>Realtà virtuale e aziende manifatturiere: verso l'Industria 4.0</h1>
