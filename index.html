@@ -235,8 +235,7 @@ p{color:var(--ink2)}
 .hcards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .hcard{
   background:var(--w);border:1px solid var(--line);border-radius:var(--r-lg);
-  padding:1.75rem 1.875rem;position:relative;overflow:hidden;
-  display:flex;flex-direction:column;justify-content:space-between;gap:1rem;
+  padding:1.875rem;position:relative;overflow:hidden;
   transition:border-color .22s,transform .22s,box-shadow .22s
 }
 .hcard::before{
@@ -960,25 +959,25 @@ p{color:var(--ink2)}
           </div>
         </div>
         <div class="hcards">
-          <div class="hcard" onclick="go('soluzioni')" style="cursor:pointer">
-            <div>
-              <div class="hcard-tag">System Integrator</div>
-              <h3>Aggiungi una linea software XR/AI alla tua offerta</h3>
-              <p style="margin-top:.5rem">Margini più alti, costi di gestione bassi. Tu mantieni la relazione, noi gestiamo la tecnologia.</p>
-            </div>
-            <div class="hcard-foot">
-              <span class="hcard-arr">Scopri →</span>
-            </div>
+          <div class="hcard">
+            <div class="hcard-tag">System Integrator</div>
+            <h3>Aggiungi una linea software XR/AI alla tua offerta</h3>
+            <p>Margini più alti, costi di gestione bassi. Tu mantieni la relazione, noi gestiamo la tecnologia.</p>
+            <ul class="flist" style="margin-top:1rem">
+              <li>Differenziazione tecnologica immediata</li>
+              <li>Modello white-label o co-branding</li>
+              <li>Gestione tecnica esternalizzata</li>
+            </ul>
           </div>
-          <div class="hcard" onclick="go('soluzioni')" style="cursor:pointer">
-            <div>
-              <div class="hcard-tag">Prodotti complessi</div>
-              <h3>Trasforma la complessità tecnica in un'esperienza visiva</h3>
-              <p style="margin-top:.5rem">Configuratori 3D, training XR, assistenza remota AR — meno attrito nella vendita e nel supporto.</p>
-            </div>
-            <div class="hcard-foot">
-              <span class="hcard-arr">Scopri →</span>
-            </div>
+          <div class="hcard">
+            <div class="hcard-tag">Prodotti complessi</div>
+            <h3>Trasforma la complessità tecnica in un'esperienza visiva</h3>
+            <p>Configuratori 3D, training XR, assistenza remota AR — meno attrito nella vendita e nel supporto.</p>
+            <ul class="flist" style="margin-top:1rem">
+              <li>Configuratore e visualizzatore 3D</li>
+              <li>Training e onboarding in XR</li>
+              <li>Assistenza tecnica remota in AR</li>
+            </ul>
           </div>
           <div class="hcard hcard-hi hcard-approach">
             <div class="hcard-tag">Il nostro approccio</div>
