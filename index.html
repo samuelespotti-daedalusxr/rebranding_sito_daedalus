@@ -344,7 +344,7 @@ p{color:var(--ink2)}
 }
 .cta-box h2{color:#fff;margin:.5rem 0 1rem;position:relative}
 .cta-box .sub{color:rgba(255,255,255,.82);margin-bottom:2.5rem;max-width:500px}
-.cta-opts{display:grid;grid-template-columns:1fr 1fr;gap:1.125rem;position:relative}
+
 .cta-opt{
   background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);
   border-radius:var(--r);padding:1.625rem;cursor:pointer;
@@ -729,6 +729,56 @@ p{color:var(--ink2)}
   .icd-timeline{display:none}
 }
 
+
+/* ── btn-cta-main: white on purple, max contrast ── */
+.btn-cta-main{
+  display:inline-flex;align-items:center;gap:.625rem;
+  font-family:var(--f);font-size:1rem;font-weight:700;
+  background:#fff;color:var(--p);
+  border:none;border-radius:var(--r);
+  padding:.9rem 2rem;cursor:pointer;
+  box-shadow:0 4px 20px rgba(0,0,0,.18);
+  transition:transform .18s,box-shadow .18s;
+  margin-top:.5rem
+}
+.btn-cta-main:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.22)}
+
+/* ── cta-box refinement ── */
+.cta-box .lbl{margin-bottom:.75rem;display:block}
+.cta-box h2{color:#fff;font-size:clamp(1.75rem,3vw,2.5rem);margin:.25rem 0 1rem}
+.cta-box .sub{color:rgba(255,255,255,.85);max-width:560px;font-size:1rem;line-height:1.75;margin-bottom:0}
+
+/* ── marquee partner logos ── */
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-outer{width:100%;overflow:hidden;padding:.25rem 0;cursor:default;position:relative}
+.marquee-outer::before,.marquee-outer::after{
+  content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none
+}
+.marquee-outer::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
+.marquee-outer::after{right:0;background:linear-gradient(-90deg,#fff,transparent)}
+.marquee-track{
+  display:flex;width:max-content;
+  animation:marquee 28s linear infinite
+}
+.marquee-outer:hover .marquee-track{animation-play-state:paused}
+.marquee-set{display:flex;align-items:center;gap:1rem;padding:0 .5rem}
+.mlogo{
+  display:flex;align-items:center;justify-content:center;
+  height:64px;min-width:140px;padding:0 1.5rem;
+  background:var(--p5);border:1px solid var(--line);border-radius:10px;
+  flex-shrink:0;transition:border-color .2s,background .2s;
+  position:relative;overflow:hidden
+}
+.mlogo:hover{border-color:var(--p2);background:var(--p4)}
+.mlogo span{
+  font-size:.875rem;font-weight:600;color:var(--ink3);
+  white-space:nowrap;user-select:none;transition:color .2s
+}
+.mlogo:hover span{color:var(--p)}
+/* logo image support — when img added it replaces span */
+.mlogo img{max-height:32px;max-width:120px;object-fit:contain;filter:grayscale(1) opacity(.55);transition:filter .2s}
+.mlogo:hover img{filter:grayscale(0) opacity(1)}
+
 </style>
 </head>
 <body>
@@ -837,7 +887,7 @@ p{color:var(--ink2)}
           </ul>
         </div>
         <div class="sol-card reveal">
-          <div class="pill pill-outline">Meccatronico · Digital manufacturing</div>
+          <div class="pill">Digital Manufacturing</div>
           <h3>Vendi e supporta prodotti complessi con meno attrito</h3>
           <p>Configuratori 3D, training XR, assistenza remota AR — soluzioni su misura per chi vende prodotti ad alto contenuto tecnologico.</p>
           <ul class="flist">
@@ -927,7 +977,6 @@ p{color:var(--ink2)}
       <div class="sh"><div class="lbl">Il nostro lavoro</div></div>
       <div class="cs-wrap reveal">
         <div>
-          <div class="cs-num">01</div>
           <div class="pill" style="margin-bottom:1rem">Caso studio</div>
           <h2>Aquaponic Design — Industria 5.0</h2>
           <p style="margin-bottom:1.5rem">Con Aquaponic Design abbiamo realizzato un digital twin e un training simulativo in realtà virtuale per la gestione di serre idroponiche — formazione immersiva scalabile per l'Industria 5.0.</p>
@@ -938,14 +987,31 @@ p{color:var(--ink2)}
     </div>
   </section>
 
-  <section class="sec-sm" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-    <div class="wrap">
-      <div class="sh"><div class="lbl">Clienti e partner</div><h2>Con chi lavoriamo</h2></div>
-      <div class="plogos">
-        <span class="plogo">Alkep</span><span class="plogo">Aquaponic Design</span>
-        <span class="plogo">Lemons in the Room</span><span class="plogo">Cestha</span>
-        <span class="plogo">CNA Emilia-Romagna</span><span class="plogo">Santa Sofia</span>
-        <span class="plogo">Metaverse Standards Forum</span>
+  <section class="sec-sm partner-sec" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden">
+    <div class="wrap" style="margin-bottom:1.75rem">
+      <div class="lbl reveal">Clienti e partner</div>
+    </div>
+    <div class="marquee-outer" aria-label="Partner e clienti">
+      <div class="marquee-track">
+        <div class="marquee-set">
+          <div class="mlogo"><span>Alkep</span></div>
+          <div class="mlogo"><span>Aquaponic Design</span></div>
+          <div class="mlogo"><span>Lemons in the Room</span></div>
+          <div class="mlogo"><span>Cestha</span></div>
+          <div class="mlogo"><span>CNA Emilia-Romagna</span></div>
+          <div class="mlogo"><span>Santa Sofia</span></div>
+          <div class="mlogo"><span>Metaverse Standards Forum</span></div>
+        </div>
+        <!-- duplicate for seamless loop -->
+        <div class="marquee-set" aria-hidden="true">
+          <div class="mlogo"><span>Alkep</span></div>
+          <div class="mlogo"><span>Aquaponic Design</span></div>
+          <div class="mlogo"><span>Lemons in the Room</span></div>
+          <div class="mlogo"><span>Cestha</span></div>
+          <div class="mlogo"><span>CNA Emilia-Romagna</span></div>
+          <div class="mlogo"><span>Santa Sofia</span></div>
+          <div class="mlogo"><span>Metaverse Standards Forum</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -979,20 +1045,7 @@ p{color:var(--ink2)}
         <div class="lbl on-p">Innovation Cycle Design</div>
         <h2>Inizia con l'Innovation Cycle Design.</h2>
         <p class="sub">Tre incontri in 45 giorni. Una roadmap personalizzata con le opportunità concrete di Extended Reality e Intelligenza Artificiale per il tuo business — prima di qualsiasi decisione di sviluppo.</p>
-        <div class="cta-opts">
-          <div class="cta-opt" onclick="go('contatti')">
-            <div class="hcard-tag" style="color:var(--p2)">System Integrator</div>
-            <h3>Prenota una call di 30 minuti</h3>
-            <p>Capiamo insieme cosa puoi offrire ai tuoi clienti.</p>
-            <div class="cta-opt-lnk">Prenota ora</div>
-          </div>
-          <div class="cta-opt" onclick="go('contatti')">
-            <div class="hcard-tag" style="color:var(--p2)">Prodotti complessi</div>
-            <h3>Richiedi una demo</h3>
-            <p>Vedi il tuo prodotto in 3D in 30 minuti.</p>
-            <div class="cta-opt-lnk">Richiedi demo</div>
-          </div>
-        </div>
+        <button class="btn btn-cta-main" onclick="go('contatti')">Prenota una call →</button>
       </div>
     </div>
   </section>
