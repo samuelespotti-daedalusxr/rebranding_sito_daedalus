@@ -661,12 +661,11 @@ p{color:var(--ink2)}
 }
 .icd-header{margin-bottom:2.5rem;position:relative;z-index:1}
 .icd-header h2{margin:.5rem 0 .875rem}
-.icd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative;z-index:1}
+.icd-grid{display:flex;flex-direction:column;gap:1.5rem;position:relative;z-index:1}
 .icd-card{
   background:var(--w);border:1px solid var(--line);border-radius:20px;
   overflow:hidden;position:relative;
-  display:flex;flex-direction:column;
-  min-height:calc(100vh - 380px);
+  display:grid;grid-template-columns:160px 1fr;align-items:start;
   transition:border-color .3s,transform .3s,box-shadow .3s;
 }
 .icd-card:hover{
@@ -674,15 +673,17 @@ p{color:var(--ink2)}
   box-shadow:0 20px 50px rgba(150,103,224,.15)
 }
 .icd-num{
-  font-size:5.5rem;font-weight:800;line-height:1;
-  color:var(--p3);padding:2.5rem 2.5rem 0;letter-spacing:-.05em;
-  position:relative
+  font-size:5rem;font-weight:800;line-height:1;
+  color:var(--p3);padding:2rem 1.5rem;letter-spacing:-.05em;
+  position:relative;align-self:stretch;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--p5);border-right:1px solid var(--line)
 }
 .icd-card:hover .icd-num{color:var(--p2)}
-.icd-body{padding:.75rem 2.5rem 3rem;flex:1;display:flex;flex-direction:column}
+.icd-body{padding:1.75rem 2.5rem;display:flex;flex-direction:column;gap:.5rem}
 .icd-tag{font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:.5rem}
-.icd-body h3{font-size:1.25rem;margin-bottom:.875rem}
-.icd-body .flist{margin-top:1.25rem;flex:1}
+.icd-body h3{font-size:1.125rem;margin:.1rem 0 .5rem}
+.icd-body .flist{margin-top:.625rem}
 .icd-duration{
   display:inline-flex;align-items:center;gap:.375rem;
   font-size:.75rem;font-weight:600;color:var(--ink3);
@@ -892,7 +893,8 @@ p{color:var(--ink2)}
 }
 @media(max-width:860px){
   .icd-timeline2{display:none}
-  .icd-card{min-height:auto}
+  .icd-card{grid-template-columns:1fr}
+  .icd-num{padding:1.5rem;justify-content:flex-start;border-right:none;border-bottom:1px solid var(--line);background:var(--p5)}
 }
 
 </style>
