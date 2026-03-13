@@ -974,8 +974,6 @@ p{color:var(--ink2)}
 }
 
 </style>
-  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
 </head>
 <body>
 
@@ -1657,7 +1655,7 @@ p{color:var(--ink2)}
         <div class="lbl" style="margin-bottom:.75rem">Oppure</div>
         <h2 style="margin-bottom:.875rem">Innovation Cycle Design</h2>
         <p class="sub" style="margin-bottom:2rem">Tre incontri in 6 settimane per capire dove Extended Reality e AI possono fare la differenza nel tuo business — prima di qualsiasi investimento.</p>
-        <div id="gcal-btn"></div>
+        <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2xX3auCDkrI5agwkyGkATj-vmg9mIkhrmF498eb6DJ5763fLAifb5mFGK2n5jbyumVBCC2o7Bn?gv=true" target="_blank" rel="noopener" class="btn btn-p">Prenota una call →</a>
       </div>
     </div>
   </section>
@@ -1922,20 +1920,6 @@ function submitForm(e) {
 
 </script>
 
-
-<script>
-window.addEventListener('load', function() {
-  var target = document.getElementById('gcal-btn');
-  if(target && window.calendar && window.calendar.schedulingButton) {
-    calendar.schedulingButton.load({
-      url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2xX3auCDkrI5agwkyGkATj-vmg9mIkhrmF498eb6DJ5763fLAifb5mFGK2n5jbyumVBCC2o7Bn?gv=true',
-      color: '#9667E0',
-      label: 'Prenota una call',
-      target,
-    });
-  }
-});
-</script>
 
 </body>
 </html>
