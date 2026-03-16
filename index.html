@@ -1028,7 +1028,23 @@ p{color:var(--ink2)}
 }
 .ph-video-overlay{
   position:absolute;inset:0;z-index:1;
-  background:linear-gradient(135deg,rgba(30,10,60,.75) 0%,rgba(60,20,100,.55) 100%);
+  background:linear-gradient(135deg,rgba(30,10,60,.45) 0%,rgba(60,20,100,.3) 100%);
+}
+
+
+/* ── training VR full-bleed decorativo ── */
+.training-img-wrap{
+  width:100%;max-width:860px;margin:2.5rem auto 0;
+  border-radius:20px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(150,103,224,.18);
+}
+.training-img{
+  width:100%;display:block;
+  object-fit:cover;aspect-ratio:4/3;
+}
+@media(max-width:860px){
+  .training-img-wrap{border-radius:12px}
+  .training-img{aspect-ratio:1/1}
 }
 
 </style>
@@ -1110,12 +1126,11 @@ p{color:var(--ink2)}
     </div>
   </section>
 
-  <section class="sec intro-sec" style="padding-bottom:4rem">
+  <section class="sec intro-sec" style="padding-bottom:0">
     <div class="wrap">
       <div class="intro-layout">
         <div class="intro-left reveal">
           <p class="intro-lead">Lavoriamo con chi integra e vende soluzioni complesse e con chi produce sistemi ad alto contenuto tecnologico nel manufacturing avanzato.</p>
-          <img src="assets/images/training_vr.png" alt="Training VR Simulator" style="width:100%;margin-top:2rem;border-radius:12px;object-fit:cover;aspect-ratio:1/1;display:block">
         </div>
         <div class="intro-right reveal" style="--d:.12s">
           <p class="intro-body">Poche aziende sanno integrare Extended Reality e Intelligenza Artificiale in modo davvero scalabile e professionale. Noi lavoriamo solo con chi cerca un partner tecnologico serio — non un fornitore generico.</p>
@@ -1125,9 +1140,12 @@ p{color:var(--ink2)}
             <span class="itag">Integrated Virtual Product Design</span>
             <span class="itag">Process Simulation</span>
           </div>
-          <img src="assets/images/consulenza.jpg" alt="Consulenza XR" style="width:100%;margin-top:1.5rem;border-radius:12px;object-fit:cover;aspect-ratio:3/4;display:block">
         </div>
       </div>
+    </div>
+    <!-- training VR full-bleed con leggero tilt -->
+    <div class="training-img-wrap reveal">
+      <img src="assets/images/training_vr.png" alt="Training VR Simulator" class="training-img">
     </div>
   </section>
 
@@ -1298,6 +1316,15 @@ p{color:var(--ink2)}
           <h3>Partnership, non fornitura</h3>
           <p>Restiamo coinvolti dopo la consegna. Evolviamo la soluzione nel tempo.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- consulenza decorativa -->
+  <section class="sec" style="padding-top:0;padding-bottom:0">
+    <div class="wrap">
+      <div style="display:flex;justify-content:center">
+        <img src="assets/images/consulenza.jpg" alt="Consulenza XR" class="reveal" style="width:100%;max-width:420px;border-radius:16px;object-fit:cover;aspect-ratio:3/4;box-shadow:0 16px 48px rgba(0,0,0,.1)">
       </div>
     </div>
   </section>
@@ -1619,12 +1646,11 @@ p{color:var(--ink2)}
   <section class="sec">
     <div class="wrap">
       <div class="sh reveal"><div class="lbl">Il team</div><h2>Le persone dietro Daedalus-XR.</h2></div>
-      <img src="assets/images/team_totale.jpg" alt="Il team Daedalus-XR" class="reveal" style="width:100%;border-radius:16px;object-fit:cover;aspect-ratio:16/7;display:block;margin-top:2rem">
-      <div class="team-names reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem">
-        <div><div class="team-name">Filippo Rampolla</div><div class="team-role">Art Director</div></div>
-        <div><div class="team-name">Samuele Spotti</div><div class="team-role">Head of Growth</div></div>
-        <div><div class="team-name">Alessandro Bertozzi</div><div class="team-role">Backend Developer</div></div>
-        <div><div class="team-name">Gabriele Fiorenza</div><div class="team-role">VR Developer</div></div>
+      <div class="team-grid">
+        <div class="team-card reveal"><div class="team-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9" r="4.5"/><path d="M3.5 21c0-4.5 3.8-8 8.5-8s8.5 3.5 8.5 8"/></svg><span>Foto in arrivo</span></div><div class="team-name">Filippo Rampolla</div><div class="team-role">Art Director</div></div>
+        <div class="team-card reveal" style="--d:.08s"><div class="team-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9" r="4.5"/><path d="M3.5 21c0-4.5 3.8-8 8.5-8s8.5 3.5 8.5 8"/></svg><span>Foto in arrivo</span></div><div class="team-name">Samuele Spotti</div><div class="team-role">Head of Growth</div></div>
+        <div class="team-card reveal" style="--d:.16s"><div class="team-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9" r="4.5"/><path d="M3.5 21c0-4.5 3.8-8 8.5-8s8.5 3.5 8.5 8"/></svg><span>Foto in arrivo</span></div><div class="team-name">Alessandro Bertozzi</div><div class="team-role">Backend Developer</div></div>
+        <div class="team-card reveal" style="--d:.24s"><div class="team-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9" r="4.5"/><path d="M3.5 21c0-4.5 3.8-8 8.5-8s8.5 3.5 8.5 8"/></svg><span>Foto in arrivo</span></div><div class="team-name">Gabriele Fiorenza</div><div class="team-role">VR Developer</div></div>
       </div>
     </div>
   </section>
@@ -1724,7 +1750,12 @@ p{color:var(--ink2)}
         </form>
       </div>
 
-      <div style="margin-top:4.5rem;padding-top:4rem;border-top:1px solid var(--line)">
+      <div style="margin-top:3rem">
+        <img src="assets/images/team_totale.jpg" alt="Il team Daedalus-XR" style="width:100%;border-radius:16px;object-fit:cover;aspect-ratio:16/7;display:block">
+        <p style="font-size:.8125rem;color:var(--ink3);margin-top:.75rem;text-align:center">Il team Daedalus-XR — Samuele, Gabriele, Filippo, Alessandro</p>
+      </div>
+
+      <div style="margin-top:3rem;padding-top:3rem;border-top:1px solid var(--line)">
         <div class="lbl" style="margin-bottom:.75rem">Oppure</div>
         <h2 style="margin-bottom:.875rem">Innovation Cycle Design</h2>
         <p class="sub" style="margin-bottom:2rem">Tre incontri in 6 settimane per capire dove Extended Reality e AI possono fare la differenza nel tuo business — prima di qualsiasi investimento.</p>
