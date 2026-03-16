@@ -986,6 +986,39 @@ p{color:var(--ink2)}
 
 
 
+
+/* ── img-box placeholder ── */
+.img-box{
+  width:100%;border-radius:var(--r);background:#f0eaf8;
+  border:2px solid #d4bbfc;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.5rem;
+  color:#9667E0;font-size:.75rem;font-weight:500;
+}
+.img-box svg{opacity:.38;flex-shrink:0}
+.img-box span{opacity:.5}
+
+/* ── team ── */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem}
+.team-card{display:flex;flex-direction:column}
+.team-photo{
+  width:100%;aspect-ratio:4/5;border-radius:12px;
+  background:#f0eaf8;border:2px solid #d4bbfc;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;
+  color:#9667E0;overflow:hidden;margin-bottom:1rem;
+}
+.team-photo svg{opacity:.32;width:36px;height:36px}
+.team-photo span{opacity:.45;font-size:.6875rem;font-weight:500}
+.team-name{font-weight:700;font-size:1rem;color:var(--ink);line-height:1.3}
+.team-role{font-size:.8125rem;color:var(--p);font-weight:600;margin-top:.2rem}
+@media(max-width:860px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.team-grid{grid-template-columns:1fr 1fr}}
+
+/* ── mlogo-placeholder ── */
+.mlogo-placeholder{
+  width:100px;height:40px;border-radius:6px;
+  background:#f0eaf8;border:1.5px solid #d4bbfc;
+}
+
 </style>
 </head>
 <body>
@@ -1571,25 +1604,25 @@ p{color:var(--ink2)}
 
   <section class="sec">
     <div class="wrap">
-      <div class="sh reveal"><div class="lbl">Il team</div><h2>Chi siamo</h2></div>
+      <div class="sh reveal"><div class="lbl">Il team</div><h2>Le persone dietro Daedalus-XR.</h2></div>
       <div class="team-grid">
         <div class="team-card reveal">
-          <div class="team-photo"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Foto Samuele</span></div>
+          <div class="team-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9" r="4.5"/><path d="M3.5 21c0-4.5 3.8-8 8.5-8s8.5 3.5 8.5 8"/></svg><span>Foto in arrivo</span></div>
           <div class="team-name">Samuele Spotti</div>
           <div class="team-role">Head of Growth</div>
         </div>
         <div class="team-card reveal" style="--d:.08s">
-          <div class="team-photo"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Foto Gabriele</span></div>
+          <div class="team-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9" r="4.5"/><path d="M3.5 21c0-4.5 3.8-8 8.5-8s8.5 3.5 8.5 8"/></svg><span>Foto in arrivo</span></div>
           <div class="team-name">Gabriele Fiorenza</div>
           <div class="team-role">VR Developer</div>
         </div>
         <div class="team-card reveal" style="--d:.16s">
-          <div class="team-photo"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Foto Filippo</span></div>
+          <div class="team-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9" r="4.5"/><path d="M3.5 21c0-4.5 3.8-8 8.5-8s8.5 3.5 8.5 8"/></svg><span>Foto in arrivo</span></div>
           <div class="team-name">Filippo Rampolla</div>
           <div class="team-role">Art Director</div>
         </div>
         <div class="team-card reveal" style="--d:.24s">
-          <div class="team-photo"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Foto Alessandro</span></div>
+          <div class="team-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9" r="4.5"/><path d="M3.5 21c0-4.5 3.8-8 8.5-8s8.5 3.5 8.5 8"/></svg><span>Foto in arrivo</span></div>
           <div class="team-name">Alessandro Bertozzi</div>
           <div class="team-role">Backend Developer</div>
         </div>
