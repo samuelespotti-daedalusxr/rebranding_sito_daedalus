@@ -1019,6 +1019,18 @@ p{color:var(--ink2)}
   background:#f0eaf8;border:1.5px solid #d4bbfc;
 }
 
+
+/* ── ph con video background ── */
+.ph-video{position:relative;overflow:hidden;padding:6rem 0 5rem}
+.ph-bg-video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;z-index:0;pointer-events:none;
+}
+.ph-video-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(135deg,rgba(30,10,60,.75) 0%,rgba(60,20,100,.55) 100%);
+}
+
 </style>
 </head>
 <body>
@@ -1103,7 +1115,7 @@ p{color:var(--ink2)}
       <div class="intro-layout">
         <div class="intro-left reveal">
           <p class="intro-lead">Lavoriamo con chi integra e vende soluzioni complesse e con chi produce sistemi ad alto contenuto tecnologico nel manufacturing avanzato.</p>
-          <div class="img-box reveal" style="margin-top:2rem;aspect-ratio:16/9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>XR in azione</span></div>
+          <img src="assets/images/training_vr.png" alt="Training VR Simulator" style="width:100%;margin-top:2rem;border-radius:12px;object-fit:cover;aspect-ratio:1/1;display:block">
         </div>
         <div class="intro-right reveal" style="--d:.12s">
           <p class="intro-body">Poche aziende sanno integrare Extended Reality e Intelligenza Artificiale in modo davvero scalabile e professionale. Noi lavoriamo solo con chi cerca un partner tecnologico serio — non un fornitore generico.</p>
@@ -1113,7 +1125,7 @@ p{color:var(--ink2)}
             <span class="itag">Integrated Virtual Product Design</span>
             <span class="itag">Process Simulation</span>
           </div>
-          <div class="img-box reveal" style="margin-top:1.5rem;aspect-ratio:16/9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Realtà Virtuale & Aumentata</span></div>
+          <img src="assets/images/consulenza.jpg" alt="Consulenza XR" style="width:100%;margin-top:1.5rem;border-radius:12px;object-fit:cover;aspect-ratio:3/4;display:block">
         </div>
       </div>
     </div>
@@ -1307,11 +1319,13 @@ p{color:var(--ink2)}
      SOLUZIONI
 ══════════════════════════════════ -->
 <div id="page-soluzioni" class="page">
-  <section class="ph">
-    <div class="wrap">
-      <div class="lbl">Soluzioni</div>
-      <h1>XR e AI che generano risultati di business misurabili.</h1>
-      <p class="sub">Non tecnologia fine a se stessa. Soluzioni concrete di Extended Reality e Intelligenza Artificiale per chi vende prodotti innovativi e soluzioni complesse nel manufacturing avanzato.</p>
+  <section class="ph ph-video">
+    <video autoplay muted loop playsinline class="ph-bg-video" src="assets/images/video_3drs.mp4"></video>
+    <div class="ph-video-overlay"></div>
+    <div class="wrap" style="position:relative;z-index:2">
+      <div class="lbl" style="color:rgba(255,255,255,.75)">Soluzioni</div>
+      <h1 style="color:#fff">XR e AI che generano risultati di business misurabili.</h1>
+      <p class="sub" style="color:rgba(255,255,255,.85)">Non tecnologia fine a se stessa. Soluzioni concrete di Extended Reality e Intelligenza Artificiale per chi vende prodotti innovativi e soluzioni complesse nel manufacturing avanzato.</p>
     </div>
   </section>
 
@@ -1326,7 +1340,7 @@ p{color:var(--ink2)}
             <h4>La domanda che sentiamo sempre</h4>
             <p>Come lo vendo? Come lo gestisco con i miei clienti? Chi forma il mio team?<br><strong>Ci pensiamo noi — dalla vendita al supporto.</strong></p>
           </div>
-          <div class="img-box" style="margin-top:1.75rem;aspect-ratio:16/9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Immagine: System Integrator / XR</span></div>
+          <img src="assets/images/training_vr.png" alt="Training VR" style="width:100%;margin-top:1.75rem;border-radius:12px;object-fit:cover;aspect-ratio:16/9;display:block">
         </div>
         <div>
           <p style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.75rem">Problemi che risolviamo</p>
@@ -1605,27 +1619,12 @@ p{color:var(--ink2)}
   <section class="sec">
     <div class="wrap">
       <div class="sh reveal"><div class="lbl">Il team</div><h2>Le persone dietro Daedalus-XR.</h2></div>
-      <div class="team-grid">
-        <div class="team-card reveal">
-          <div class="team-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9" r="4.5"/><path d="M3.5 21c0-4.5 3.8-8 8.5-8s8.5 3.5 8.5 8"/></svg><span>Foto in arrivo</span></div>
-          <div class="team-name">Samuele Spotti</div>
-          <div class="team-role">Head of Growth</div>
-        </div>
-        <div class="team-card reveal" style="--d:.08s">
-          <div class="team-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9" r="4.5"/><path d="M3.5 21c0-4.5 3.8-8 8.5-8s8.5 3.5 8.5 8"/></svg><span>Foto in arrivo</span></div>
-          <div class="team-name">Gabriele Fiorenza</div>
-          <div class="team-role">VR Developer</div>
-        </div>
-        <div class="team-card reveal" style="--d:.16s">
-          <div class="team-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9" r="4.5"/><path d="M3.5 21c0-4.5 3.8-8 8.5-8s8.5 3.5 8.5 8"/></svg><span>Foto in arrivo</span></div>
-          <div class="team-name">Filippo Rampolla</div>
-          <div class="team-role">Art Director</div>
-        </div>
-        <div class="team-card reveal" style="--d:.24s">
-          <div class="team-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9" r="4.5"/><path d="M3.5 21c0-4.5 3.8-8 8.5-8s8.5 3.5 8.5 8"/></svg><span>Foto in arrivo</span></div>
-          <div class="team-name">Alessandro Bertozzi</div>
-          <div class="team-role">Backend Developer</div>
-        </div>
+      <img src="assets/images/team_totale.jpg" alt="Il team Daedalus-XR" class="reveal" style="width:100%;border-radius:16px;object-fit:cover;aspect-ratio:16/7;display:block;margin-top:2rem">
+      <div class="team-names reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem">
+        <div><div class="team-name">Filippo Rampolla</div><div class="team-role">Art Director</div></div>
+        <div><div class="team-name">Samuele Spotti</div><div class="team-role">Head of Growth</div></div>
+        <div><div class="team-name">Alessandro Bertozzi</div><div class="team-role">Backend Developer</div></div>
+        <div><div class="team-name">Gabriele Fiorenza</div><div class="team-role">VR Developer</div></div>
       </div>
     </div>
   </section>
