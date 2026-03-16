@@ -1642,11 +1642,11 @@ p{color:var(--ink2)}
         </div>
         <form class="cform" id="cform" onsubmit="submitForm(event)">
           <div class="frow">
-            <div class="fg"><label>Nome</label><input type="text" placeholder="Il tuo nome" required></div>
-            <div class="fg"><label>Email</label><input type="email" placeholder="nome@azienda.it" required></div>
+            <div class="fg"><label>Nome</label><input type="text" name="nome" placeholder="Il tuo nome" required></div>
+            <div class="fg"><label>Email</label><input type="email" name="email" placeholder="nome@azienda.it" required></div>
           </div>
-          <div class="fg"><label>Azienda</label><input type="text" placeholder="Nome azienda"></div>
-          <div class="fg"><label>Messaggio</label><textarea placeholder="Raccontaci la tua situazione..." required></textarea></div>
+          <div class="fg"><label>Azienda</label><input type="text" name="azienda" placeholder="Nome azienda"></div>
+          <div class="fg"><label>Messaggio</label><textarea name="messaggio" placeholder="Raccontaci la tua situazione..." required></textarea></div>
           <div><button type="submit" class="btn btn-p">Invia messaggio</button></div>
           <div class="fok" id="fok">✓ Messaggio inviato! Ti risponderemo entro 24 ore.</div>
         </form>
@@ -1833,25 +1833,31 @@ function submitForm(e) {
   e.preventDefault();
   const form = e.target;
   const btn = form.querySelector('button[type=submit]');
-  const inputs = form.querySelectorAll('input');
-  const nome = inputs[0]?.value || '';
-  const email = inputs[1]?.value || '';
-  const azienda = inputs[2]?.value || '';
-  const msg = form.querySelector('textarea')?.value || '';
-
   btn.disabled = true;
   btn.textContent = 'Invio…';
 
-  const subject = encodeURIComponent('Messaggio dal sito - ' + nome);
-  const body = encodeURIComponent('Nome: ' + nome + '\nEmail: ' + email + '\nAzienda: ' + azienda + '\n\n' + msg);
-  window.location.href = 'mailto:samuele.spotti@daedalusxr.it?subject=' + subject + '&body=' + body;
+  const data = new FormData(form);
 
-  setTimeout(() => {
-    document.getElementById('fok').style.display = 'block';
-    form.reset();
+  fetch('https://formspree.io/f/FORMSPREE_ID', {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(res => {
+    if (res.ok) {
+      document.getElementById('fok').style.display = 'block';
+      form.reset();
+    } else {
+      alert('Errore nell\'invio. Riprova o scrivi a info@daedalusxr.it');
+    }
+  })
+  .catch(() => {
+    alert('Errore di rete. Scrivi a info@daedalusxr.it');
+  })
+  .finally(() => {
     btn.disabled = false;
     btn.textContent = 'Invia messaggio';
-  }, 1200);
+  });
 }
 
 /* ── rotating kicker words ── */
