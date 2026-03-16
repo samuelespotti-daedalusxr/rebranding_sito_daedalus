@@ -1001,13 +1001,17 @@ p{color:var(--ink2)}
 .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem}
 .team-card{display:flex;flex-direction:column}
 .team-photo{
-  width:100%;aspect-ratio:4/5;border-radius:12px;
-  background:#f0eaf8;border:2px solid #d4bbfc;
+  width:100%;aspect-ratio:4/5;border-radius:16px;
+  background:linear-gradient(145deg,#f3ecfd 0%,#e9d8fb 100%);
+  box-shadow:0 2px 0 rgba(255,255,255,.9) inset,
+             0 12px 36px rgba(150,103,224,.12),
+             0 3px 8px rgba(0,0,0,.04);
+  border:1px solid rgba(212,187,252,.5);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;
   color:#9667E0;overflow:hidden;margin-bottom:1rem;
 }
-.team-photo svg{opacity:.32;width:36px;height:36px}
-.team-photo span{opacity:.45;font-size:.6875rem;font-weight:500}
+.team-photo svg{opacity:.28;width:36px;height:36px}
+.team-photo span{opacity:.4;font-size:.6875rem;font-weight:500}
 .team-name{font-weight:700;font-size:1rem;color:var(--ink);line-height:1.3}
 .team-role{font-size:.8125rem;color:var(--p);font-weight:600;margin-top:.2rem}
 @media(max-width:860px){.team-grid{grid-template-columns:repeat(2,1fr)}}
@@ -1028,24 +1032,32 @@ p{color:var(--ink2)}
 }
 .ph-video-overlay{
   position:absolute;inset:0;z-index:1;
-  background:linear-gradient(135deg,rgba(30,10,60,.45) 0%,rgba(60,20,100,.3) 100%);
+  background:linear-gradient(to bottom,rgba(20,5,45,.18) 0%,rgba(20,5,45,.55) 100%);
 }
 
 
+/* ── img placeholder style ── */
+.ph-box{
+  background:linear-gradient(145deg,#f3ecfd 0%,#e9d8fb 100%);
+  border-radius:20px;
+  box-shadow:0 2px 0 rgba(255,255,255,.9) inset,
+             0 16px 48px rgba(150,103,224,.13),
+             0 4px 12px rgba(0,0,0,.04);
+  border:1px solid rgba(212,187,252,.5);
+}
 /* ── training VR full-bleed decorativo ── */
 .training-img-wrap{
-  width:100%;max-width:860px;margin:2.5rem auto 0;
+  width:100%;max-width:900px;margin:3rem auto 0;
   border-radius:20px;overflow:hidden;
-  box-shadow:0 20px 60px rgba(150,103,224,.18);
+  box-shadow:0 2px 0 rgba(255,255,255,.9) inset,
+             0 24px 64px rgba(150,103,224,.15),
+             0 4px 16px rgba(0,0,0,.05);
+  border:1px solid rgba(212,187,252,.4);
 }
-.training-img{
-  width:100%;display:block;
-  object-fit:cover;aspect-ratio:4/3;
+.training-img-wrap>div{
+  background:linear-gradient(145deg,#f3ecfd 0%,#e9d8fb 100%);
 }
-@media(max-width:860px){
-  .training-img-wrap{border-radius:12px}
-  .training-img{aspect-ratio:1/1}
-}
+@media(max-width:860px){.training-img-wrap{border-radius:14px;margin:2rem 1rem 0}}
 
 </style>
 </head>
@@ -1144,7 +1156,7 @@ p{color:var(--ink2)}
       </div>
     </div>
     <!-- training VR -->
-    <div class="training-img-wrap reveal"><div style="aspect-ratio:4/3"></div></div>
+    <div class="training-img-wrap reveal"><div style="aspect-ratio:16/9"></div></div>
   </section>
 
   <div style="border-top:1px solid var(--line)"></div>
@@ -1261,7 +1273,7 @@ p{color:var(--ink2)}
           <p style="margin-bottom:1.5rem">Con Aquaponic Design abbiamo realizzato un digital twin e un training simulativo in realtà virtuale per la gestione di serre idroponiche — formazione immersiva scalabile per l'Industria 5.0.</p>
           <button class="btn btn-p btn-sm" onclick="openArticle('aquaponic')">Leggi il caso studio</button>
         </div>
-        <div class="img-box reveal" style="aspect-ratio:16/9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Immagine progetto Aquaponic</span></div>
+        <div class="img-box ph-box" style="aspect-ratio:16/9"></div>
       </div>
     </div>
   </section>
@@ -1322,7 +1334,7 @@ p{color:var(--ink2)}
   <section class="sec" style="padding-top:0;padding-bottom:0">
     <div class="wrap">
       <div style="display:flex;justify-content:center">
-        <div class="reveal" style="width:100%;max-width:420px;aspect-ratio:3/4;background:#f0eaf8;border:2px solid #d4bbfc;border-radius:16px"></div>
+        <div class="reveal ph-box" style="width:100%;max-width:380px;aspect-ratio:5/6"></div>
       </div>
     </div>
   </section>
@@ -1365,7 +1377,7 @@ p{color:var(--ink2)}
             <h4>La domanda che sentiamo sempre</h4>
             <p>Come lo vendo? Come lo gestisco con i miei clienti? Chi forma il mio team?<br><strong>Ci pensiamo noi — dalla vendita al supporto.</strong></p>
           </div>
-          <div style="width:100%;margin-top:1.75rem;aspect-ratio:16/9;background:#f0eaf8;border:2px solid #d4bbfc;border-radius:12px"></div>
+          <div class="ph-box" style="width:100%;margin-top:1.75rem;aspect-ratio:4/3"></div>
         </div>
         <div>
           <p style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.75rem">Problemi che risolviamo</p>
@@ -1420,7 +1432,7 @@ p{color:var(--ink2)}
           <div class="uc-buyer">Buyer: CSO / After-sales</div>
         </div>
       
-          <div class="img-box" style="margin-top:2rem;aspect-ratio:16/9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Immagine: VR Training / AR Assistenza</span></div>
+          <div class="img-box ph-box" style="margin-top:2rem;aspect-ratio:16/9"></div>
         </div>
     </div>
   </section>
@@ -1434,7 +1446,7 @@ p{color:var(--ink2)}
         <div class="svc-row"><div class="svc-name">Visualizzazione Collaborativa</div><div class="svc-desc">Team distribuiti che lavorano sullo stesso modello 3D in tempo reale. Disponibile su PC e visore VR.</div></div>
         <div class="svc-row"><div class="svc-name">Digital Human con AI</div><div class="svc-desc">Assistenti digitali conversazionali per formazione e supporto clienti. Premiati da CNA come innovazione più rilevante in Emilia-Romagna.</div></div>
         <div class="svc-row" style="padding:1.5rem 0 0;border-top:none">
-          <div class="img-box" style="aspect-ratio:16/9;width:100%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Immagine: prodotto / demo XR</span></div>
+          <div class="img-box ph-box" style="width:100%;aspect-ratio:16/9"></div>
         </div>
         <div class="svc-row"><div class="svc-name">Integrated Virtual Product Design</div><div class="svc-desc">Progettazione e validazione del prodotto in ambiente virtuale. Riduce errori, accelera i cicli di revisione, abbatte i costi di prototipazione fisica.</div></div>
       </div>
@@ -1749,12 +1761,12 @@ p{color:var(--ink2)}
       </div>
 
       <div style="margin-top:3rem">
-        <div style="width:100%;aspect-ratio:16/7;background:#f0eaf8;border:2px solid #d4bbfc;border-radius:16px"></div>
+        <div class="ph-box" style="width:100%;aspect-ratio:16/9"></div>
         <p style="font-size:.8125rem;color:var(--ink3);margin-top:.75rem;text-align:center">Il team Daedalus-XR — Samuele, Gabriele, Filippo, Alessandro</p>
       </div>
 
       <div style="margin-top:3rem">
-        <div style="width:100%;aspect-ratio:16/7;background:#f0eaf8;border:2px solid #d4bbfc;border-radius:16px"></div>
+        <div class="ph-box" style="width:100%;aspect-ratio:16/9"></div>
       </div>
 
       <div style="margin-top:3rem;padding-top:3rem;border-top:1px solid var(--line)">
