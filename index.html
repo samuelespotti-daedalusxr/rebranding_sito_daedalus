@@ -445,24 +445,95 @@ p{color:var(--ink2)}
 .bc:hover .bc-read::after{margin-left:3px}
 
 /* Blog article detail */
+/* ─── Articolo ─── */
 .art-back{
   display:inline-flex;align-items:center;gap:.5rem;
-  font-size:.875rem;font-weight:600;color:var(--p);cursor:pointer;
-  margin-bottom:2.5rem;transition:gap .15s
+  font-size:.8125rem;font-weight:600;color:var(--ink3);
+  background:var(--p5);border:1px solid var(--line);
+  padding:.5rem 1rem;border-radius:100px;cursor:pointer;
+  margin-bottom:3rem;transition:color .15s,border-color .15s;
+  text-decoration:none
 }
-.art-back::before{content:'←'}
-.art-back:hover{gap:.875rem}
-.art-header{max-width:680px;margin-bottom:3rem}
-.art-header h1{font-size:clamp(1.875rem,3.5vw,2.75rem);margin:.75rem 0 1.25rem}
-.art-meta{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
-.art-date{font-size:.8125rem;color:var(--ink3)}
-.art-body{max-width:680px}
-.art-body p{font-size:1rem;line-height:1.85;color:var(--ink2);margin-bottom:1.5rem}
-.art-body h2{font-size:1.5rem;margin:2.5rem 0 1rem}
-.art-body h3{font-size:1.125rem;margin:2rem 0 .75rem}
-.art-body ul{padding-left:1.5rem;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:.5rem}
-.art-body ul li{font-size:1rem;color:var(--ink2);line-height:1.7}
-.art-body ul li::marker{color:var(--p)}
+.art-back::before{content:'←';color:var(--p)}
+.art-back:hover{color:var(--p);border-color:var(--p2)}
+
+.art-wrap{
+  display:grid;
+  grid-template-columns:1fr min(680px,100%) 1fr;
+  gap:0;
+}
+.art-wrap > *{grid-column:2}
+.art-wrap .art-full{grid-column:1/-1}
+
+.art-kicker{
+  display:flex;align-items:center;gap:.75rem;
+  margin-bottom:1.25rem;
+}
+.art-kicker-date{font-size:.8125rem;color:var(--ink3)}
+
+.art-title{
+  font-size:clamp(2rem,4vw,3rem);
+  font-weight:800;line-height:1.15;letter-spacing:-.025em;
+  color:var(--ink);margin:0 0 1.5rem;
+}
+.art-lead{
+  font-size:1.1875rem;line-height:1.75;color:var(--ink2);
+  margin-bottom:2.5rem;padding-bottom:2.5rem;
+  border-bottom:1px solid var(--line);font-weight:400;
+}
+.art-img-wrap{
+  border-radius:20px;overflow:hidden;margin:0 0 3rem;
+  box-shadow:0 8px 40px rgba(0,0,0,.08);
+}
+.art-img-wrap img,.art-img-wrap .art-img-ph{
+  width:100%;display:block;
+  aspect-ratio:16/9;object-fit:cover;
+}
+.art-img-ph{
+  display:flex;align-items:center;justify-content:center;
+}
+.art-body p{font-size:1rem;line-height:1.9;color:var(--ink2);margin-bottom:1.5rem}
+.art-body h2{
+  font-size:1.4375rem;font-weight:700;
+  color:var(--ink);margin:3rem 0 1rem;
+  padding-top:3rem;border-top:1px solid var(--line);
+}
+.art-body h2:first-child{border-top:none;padding-top:0}
+.art-body ul{
+  padding-left:0;margin-bottom:1.75rem;
+  display:flex;flex-direction:column;gap:.625rem;list-style:none;
+}
+.art-body ul li{
+  font-size:1rem;color:var(--ink2);line-height:1.7;
+  padding:.75rem 1rem .75rem 1.25rem;
+  border-left:3px solid var(--p2);
+  background:var(--p5);border-radius:0 8px 8px 0;
+}
+.art-body ul li strong{color:var(--ink)}
+.art-body em{color:var(--p);font-style:normal;font-weight:600}
+.art-pullquote{
+  margin:2rem 0;padding:1.5rem 2rem;
+  border-left:4px solid var(--p);background:var(--p5);
+  border-radius:0 12px 12px 0;
+  font-size:1.0625rem;font-weight:500;color:var(--ink);
+  line-height:1.7;
+}
+.art-steps{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+  margin:1.5rem 0 2rem;
+}
+.art-step{
+  background:var(--p5);border:1px solid var(--line);
+  border-radius:12px;padding:1.25rem;
+}
+.art-step-n{
+  font-size:.6875rem;font-weight:800;letter-spacing:.1em;
+  color:var(--p);text-transform:uppercase;margin-bottom:.5rem;
+}
+.art-step h4{font-size:.9375rem;margin:0 0 .375rem;color:var(--ink)}
+.art-step p{font-size:.8125rem;color:var(--ink2);margin:0;line-height:1.6}
+@media(max-width:600px){.art-steps{grid-template-columns:1fr}}
+
 .art-img{
   border-radius:var(--r-lg);height:320px;
   display:flex;align-items:center;justify-content:center;font-size:5rem;
@@ -1547,57 +1618,82 @@ p{color:var(--ink2)}
      ARTICOLO: 3drs
 ══════════════════════════════════ -->
 <div id="page-art-3drs" class="page">
-  <section class="sec">
+  <section class="sec" style="padding-bottom:5rem">
     <div class="wrap">
-      <button class="art-back" onclick="go('blog')">← Torna al blog</button>
-      <div class="art-header">
-        <div class="pill" style="margin-bottom:.875rem">Caso studio</div>
-        <h1>3DRS — Progettare lo spazio, prima di viverlo</h1>
-        <div class="art-meta">
-          <span class="pill pill-outline">2025</span>
-          <span class="art-date">di Daedalus-XR</span>
+      <button class="art-back" onclick="go('blog')">Torna al blog</button>
+      <div class="art-wrap">
+
+        <div class="art-kicker">
+          <span class="pill">Caso studio</span>
+          <span class="art-kicker-date">2025 · Daedalus-XR</span>
         </div>
-      </div>
-      <div class="art-img" style="background:linear-gradient(135deg,#0d2d4e,#1a4a7a);display:flex;align-items:center;justify-content:center" id="art-3drs-video-wrap">
-        <div class="ph-box" style="width:100%;aspect-ratio:16/9;border-radius:16px;background:linear-gradient(135deg,#0d2d4e 0%,#1a4a7a 100%);display:flex;align-items:center;justify-content:center">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="white" opacity=".6"><circle cx="12" cy="12" r="10" fill="rgba(255,255,255,.15)"/><polygon points="10,8 16,12 10,16" fill="white"/></svg>
+
+        <h1 class="art-title">3DRS — Progettare lo spazio,<br>prima di viverlo.</h1>
+
+        <p class="art-lead">Un software proprietario in Unreal Engine che unisce rilievo laser scanner 3D, modellazione BIM e ambienti immersivi interattivi. Dal rilievo alla realtà navigabile — strumento di progettazione, vendita e gestione in uno.</p>
+
+        <div class="art-img-wrap art-full" id="art-3drs-video-wrap">
+          <div class="art-img-ph" style="background:linear-gradient(135deg,#0a1f38 0%,#1a4a7a 100%);min-height:360px">
+            <svg width="72" height="72" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,.1)"/><polygon points="10,8 17,12 10,16" fill="rgba(255,255,255,.85)"/></svg>
+          </div>
         </div>
-      </div>
-      <div class="art-body">
-        <p>3DRS è un software proprietario sviluppato da DRS Studio — un partner di Daedalus-XR — in ambiente Unreal Engine. Unisce rilievo laser scanner 3D, modellazione BIM e ambienti immersivi interattivi per trasformare il modo in cui architetti, ingegneri, developer e committenti progettano e visualizzano lo spazio.</p>
 
-        <p>Non è solo un visualizzatore: è uno strumento decisionale che rende ogni proposta comprensibile, modificabile, condivisibile e progettabile in tempo reale.</p>
+        <div class="art-body">
 
-        <h2>Il problema che risolve</h2>
-        <p>Chi lavora con spazi complessi — retail, hospitality, beni culturali, real estate — conosce bene il problema: il cliente fatica a capire cosa sta comprando prima che esista. I render non bastano. Le planimetrie sono incomprensibili ai non tecnici. Le decisioni si prendono tardi, quando cambiare costa.</p>
+          <h2>Il problema che risolve</h2>
+          <p>Chi lavora con spazi complessi — retail, hospitality, beni culturali, real estate — sa quanto è difficile far capire al cliente cosa sta comprando prima che esista fisicamente. I render sono statici. Le planimetrie sono incomprensibili ai non tecnici. Le decisioni arrivano tardi, quando cambiare costa.</p>
+          <div class="art-pullquote">3DRS ribalta il processo: il progetto diventa navigabile, interattivo e modificabile <em>prima</em> della costruzione.</div>
 
-        <p>3DRS ribalta il processo: il progetto diventa navigabile, interattivo e modificabile <em>prima</em> della costruzione.</p>
+          <h2>Come funziona</h2>
+          <p>Il workflow parte da una nuvola di punti ottenuta con rilievo laser scanner 3D. Da lì il team elabora un modello BIM preciso, che viene importato in 3DRS per la progettazione immersiva. Il risultato è un ambiente tridimensionale realistico e navigabile, distribuibile sia come app eseguibile che in realtà virtuale.</p>
 
-        <h2>Come funziona: dal rilievo alla realtà immersiva</h2>
-        <p>Il workflow di 3DRS parte da una nuvola di punti ottenuta con rilievo laser scanner 3D. Da lì, il team elabora un modello BIM preciso e scalabile, che viene poi importato nel software per la progettazione immersiva. Il risultato è un ambiente tridimensionale realistico e navigabile, disponibile sia come eseguibile che in realtà virtuale.</p>
+        </div>
 
-        <p>Tre passaggi:</p>
-        <ul>
-          <li><strong>Scan:</strong> rilievo laser scanner 3D e creazione della nuvola di punti</li>
-          <li><strong>BIM:</strong> modellazione digitale intelligente e ottimizzata</li>
-          <li><strong>Software:</strong> importazione in 3DRS per progettazione immersiva, personalizzazione e interazione in tempo reale</li>
-        </ul>
+        <div class="art-steps art-full">
+          <div class="art-step">
+            <div class="art-step-n">01 · Scan</div>
+            <h4>Rilievo laser scanner 3D</h4>
+            <p>Creazione della nuvola di punti ad alta precisione dell'ambiente reale</p>
+          </div>
+          <div class="art-step">
+            <div class="art-step-n">02 · BIM</div>
+            <h4>Modellazione digitale</h4>
+            <p>Il modello BIM viene ottimizzato e preparato per l'ambiente real-time</p>
+          </div>
+          <div class="art-step">
+            <div class="art-step-n">03 · Software</div>
+            <h4>Progettazione immersiva</h4>
+            <p>Importazione in 3DRS: navigazione, personalizzazione, interazione in tempo reale</p>
+          </div>
+        </div>
 
-        <h2>Cosa può fare l'utente dentro 3DRS</h2>
-        <p>L'ambiente non è passivo. Dentro 3DRS si può navigare in prima o terza persona — anche in realtà virtuale — cambiare materiali, colori, arredi e luci in tempo reale, prendere misure, caricare librerie personalizzate di prodotti, inserire geotag con dati tecnici e simulare scenari di flusso, manutenzione e percorsi.</p>
+        <div class="art-body">
 
-        <h2>I settori dove funziona meglio</h2>
-        <p>3DRS è stato progettato per rispondere a esigenze concrete in più ambiti: retail e GDO per progettazione layout e test UX cliente, hospitality per presentazione spazi e coinvolgimento investitori, studi di architettura e ingegneria per la validazione delle soluzioni progettuali, immobiliare e real estate per walkthrough immersivi di vendita, beni culturali per digitalizzazione e conservazione del patrimonio, musei e mostre per layout espositivi dinamici.</p>
+          <h2>Cosa si può fare dentro 3DRS</h2>
+          <ul>
+            <li>Navigare in prima o terza persona, anche in realtà virtuale</li>
+            <li>Cambiare materiali, colori, arredi, luci in tempo reale</li>
+            <li>Prendere misure precise e inserire geotag con dati tecnici</li>
+            <li>Caricare librerie personalizzate di oggetti e prodotti</li>
+            <li>Simulare scenari di flusso, percorsi e manutenzioni</li>
+          </ul>
 
-        <h2>Perché Unreal Engine</h2>
-        <p>La scelta di sviluppare 3DRS in Unreal Engine non è casuale. Significa qualità grafica fotorealistica, performance elevate anche su scene complesse, e la possibilità di distribuire l'esperienza sia su PC che su visori VR senza compromessi. È il motore che usa l'industria cinematografica e videoludica di fascia alta — applicato alla progettazione professionale.</p>
+          <h2>I settori di applicazione</h2>
+          <p>Retail e GDO per progettazione layout e test UX cliente. Hospitality per presentazione spazi e coinvolgimento investitori. Studi di architettura e ingegneria per la validazione delle soluzioni. Real estate per walkthrough immersivi di vendita. Beni culturali per digitalizzazione e conservazione del patrimonio.</p>
 
-        <h2>Il ruolo di Daedalus-XR</h2>
-        <p>Daedalus-XR ha collaborato allo sviluppo di 3DRS portando la propria expertise in XR applicato al manufacturing e alla formazione immersiva. Il progetto è un esempio concreto di come competenze diverse — rilievo, BIM, sviluppo real-time 3D — possano convergere in uno strumento che cambia davvero il processo decisionale del cliente.</p>
-      </div>
-      <div class="blog-cta-row" style="margin-top:3rem">
-        <p>Vuoi esplorare come 3DRS può funzionare nel tuo settore?</p>
-        <button class="btn btn-p" onclick="go('contatti')">Parla con noi</button>
+          <h2>Perché Unreal Engine</h2>
+          <p>La scelta non è casuale: Unreal Engine garantisce qualità grafica fotorealistica, performance elevate su scene complesse e distribuzione sia su PC che su visori VR senza compromessi. È il motore dell'industria cinematografica e videoludica di fascia alta — applicato alla progettazione professionale.</p>
+
+          <h2>Il ruolo di Daedalus-XR</h2>
+          <p>Daedalus-XR ha collaborato allo sviluppo di 3DRS portando la propria expertise in XR applicato al manufacturing e alla formazione immersiva. Un esempio concreto di come competenze diverse — rilievo, BIM, sviluppo real-time 3D — possano convergere in uno strumento che cambia il processo decisionale del cliente.</p>
+
+        </div>
+
+        <div class="blog-cta-row">
+          <p>Vuoi esplorare come 3DRS può funzionare nel tuo settore?</p>
+          <button class="btn btn-p" onclick="go('contatti')">Parla con noi</button>
+        </div>
+
       </div>
     </div>
   </section>
