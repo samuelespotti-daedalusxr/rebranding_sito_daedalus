@@ -2278,12 +2278,33 @@ function submitForm(e) {
 
 function toggleReelAudio(){
   const v = document.getElementById('reel-video');
-  const iconMute = document.getElementById('reel-icon-mute');
-  const iconSound = document.getElementById('reel-icon-sound');
   v.muted = !v.muted;
-  iconMute.style.display  = v.muted ? '' : 'none';
-  iconSound.style.display = v.muted ? 'none' : '';
+  updateReelIcon();
 }
+function updateReelIcon(){
+  const v = document.getElementById('reel-video');
+  if(!v) return;
+  document.getElementById('reel-icon-mute').style.display  = v.muted ? '' : 'none';
+  document.getElementById('reel-icon-sound').style.display = v.muted ? 'none' : '';
+}
+// Muta audio quando il video esce dal viewport
+(function(){
+  const v = document.getElementById('reel-video');
+  if(!v || !('IntersectionObserver' in window)) return;
+  let userUnmuted = false;
+  document.getElementById('reel-audio').addEventListener('click', function(){
+    userUnmuted = !v.muted; // true se l'utente ha attivato l'audio
+  });
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting && !v.muted){
+        v.muted = true;
+        userUnmuted = false;
+        updateReelIcon();
+      }
+    });
+  }, { threshold: 0.2 }).observe(v);
+})();
 
 </script>
 
