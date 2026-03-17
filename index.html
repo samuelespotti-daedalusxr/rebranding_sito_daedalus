@@ -1103,12 +1103,19 @@ p{color:var(--ink2)}
 }
 .ph-video-overlay{
   position:absolute;inset:0;z-index:1;
-  background:linear-gradient(160deg,rgba(10,4,28,.35) 0%,rgba(10,4,28,.6) 70%,rgba(10,4,28,.75) 100%);
+  background:linear-gradient(to bottom,rgba(8,2,20,.08) 0%,rgba(8,2,20,.22) 50%,rgba(8,2,20,.55) 100%);
 }
-.ph-video .lbl{color:rgba(255,255,255,.6)!important}
-.ph-video .lbl::before{background:rgba(255,255,255,.4)!important}
-.ph-video h1{color:#fff!important;-webkit-text-fill-color:#fff!important;background:none!important;text-shadow:0 2px 20px rgba(0,0,0,.3)}
-.ph-video .sub{color:rgba(255,255,255,.82)!important;text-shadow:0 1px 8px rgba(0,0,0,.2)}
+.ph-video .lbl{color:rgba(255,255,255,.65)!important}
+.ph-video .lbl::before{background:rgba(255,255,255,.45)!important}
+.ph-video h1{
+  background:linear-gradient(90deg,#fff 0%,#fff 30%,#d4bbfc 55%,#fff 80%,#fff 100%)!important;
+  background-size:400% auto!important;
+  -webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;
+  background-clip:text!important;
+  animation:headlineShimmer 9s ease-in-out infinite alternate!important;
+  text-shadow:none!important;
+}
+.ph-video .sub{color:rgba(255,255,255,.88)!important;text-shadow:0 1px 6px rgba(0,0,0,.25)!important}
 
 
 /* ── img placeholder style ── */
@@ -1122,7 +1129,7 @@ p{color:var(--ink2)}
 }
 /* ── training VR full-bleed decorativo ── */
 .training-img-wrap{
-  width:100%;max-width:900px;margin:3rem auto 0;
+  width:100%;max-width:760px;margin:2.5rem auto 0;
   border-radius:20px;overflow:hidden;
   box-shadow:0 2px 0 rgba(255,255,255,.9) inset,
              0 24px 64px rgba(150,103,224,.15),
@@ -1495,7 +1502,7 @@ p{color:var(--ink2)}
       </div>
     </div>
     <div class="wrap" style="padding-top:0">
-      <div class="ph-box reveal" style="width:100%;aspect-ratio:16/9;margin-top:2.5rem;border-radius:20px"></div>
+      <div class="ph-box reveal" style="width:100%;max-width:800px;margin:2.5rem auto 0;aspect-ratio:2/1;display:block;border-radius:20px"></div>
     </div>
   </section>
 
@@ -1532,7 +1539,7 @@ p{color:var(--ink2)}
           <div class="uc-buyer">Buyer: CSO / After-sales</div>
         </div>
       </div>
-      <div class="ph-box reveal" style="width:100%;aspect-ratio:16/9;margin-top:2.5rem;border-radius:20px"></div>
+      <div class="ph-box reveal" style="width:100%;max-width:800px;margin:2.5rem auto 0;aspect-ratio:2/1;display:block;border-radius:20px"></div>
     </div>
   </section>
 
@@ -1546,7 +1553,7 @@ p{color:var(--ink2)}
         <div class="svc-row"><div class="svc-name">Digital Human con AI</div><div class="svc-desc">Assistenti digitali conversazionali per formazione e supporto clienti. Premiati da CNA come innovazione più rilevante in Emilia-Romagna.</div></div>
         <div class="svc-row"><div class="svc-name">Integrated Virtual Product Design</div><div class="svc-desc">Progettazione e validazione del prodotto in ambiente virtuale. Riduce errori, accelera i cicli di revisione, abbatte i costi di prototipazione fisica.</div></div>
       </div>
-      <div class="ph-box reveal" style="width:100%;aspect-ratio:16/9;margin-top:2.5rem;border-radius:20px"></div>
+      <div class="ph-box reveal" style="width:100%;max-width:800px;margin:2.5rem auto 0;aspect-ratio:2/1;display:block;border-radius:20px"></div>
       <div class="sol-cta-bar">
         <p>Non sai da dove partire? L'Innovation Cycle Design è fatto per questo — tre incontri in 6 settimane, zero impegno di sviluppo.</p>
         <button onclick="openGcal()" class="btn btn-p">Prenota una call →</button>
