@@ -1096,15 +1096,19 @@ p{color:var(--ink2)}
 
 
 /* ── ph con video background ── */
-.ph-video{position:relative;overflow:hidden;padding:6rem 0 5rem}
+.ph-video{position:relative;overflow:hidden;padding:7rem 0 6rem;min-height:480px;display:flex;align-items:center}
 .ph-bg-video{
   position:absolute;inset:0;width:100%;height:100%;
   object-fit:cover;z-index:0;pointer-events:none;
 }
 .ph-video-overlay{
   position:absolute;inset:0;z-index:1;
-  background:linear-gradient(to bottom,rgba(20,5,45,.18) 0%,rgba(20,5,45,.55) 100%);
+  background:linear-gradient(160deg,rgba(10,4,28,.35) 0%,rgba(10,4,28,.6) 70%,rgba(10,4,28,.75) 100%);
 }
+.ph-video .lbl{color:rgba(255,255,255,.6)!important}
+.ph-video .lbl::before{background:rgba(255,255,255,.4)!important}
+.ph-video h1{color:#fff!important;-webkit-text-fill-color:#fff!important;background:none!important;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+.ph-video .sub{color:rgba(255,255,255,.82)!important;text-shadow:0 1px 8px rgba(0,0,0,.2)}
 
 
 /* ── img placeholder style ── */
@@ -1471,7 +1475,6 @@ p{color:var(--ink2)}
             <h4>La domanda che sentiamo sempre</h4>
             <p>Come lo vendo? Come lo gestisco con i miei clienti? Chi forma il mio team?<br><strong>Ci pensiamo noi — dalla vendita al supporto.</strong></p>
           </div>
-          <div class="ph-box" style="width:100%;margin-top:1.75rem;aspect-ratio:4/3"></div>
         </div>
         <div>
           <p style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.75rem">Problemi che risolviamo</p>
@@ -1490,6 +1493,9 @@ p{color:var(--ink2)}
           </div>
         </div>
       </div>
+    </div>
+    <div class="wrap" style="padding-top:0">
+      <div class="ph-box reveal" style="width:100%;aspect-ratio:16/9;margin-top:2.5rem;border-radius:20px"></div>
     </div>
   </section>
 
@@ -1525,9 +1531,8 @@ p{color:var(--ink2)}
           <p>Il tecnico guida l'operatore in loco attraverso la Realtà Aumentata. Meno trasferte, meno downtime.</p>
           <div class="uc-buyer">Buyer: CSO / After-sales</div>
         </div>
-      
-          <div class="img-box ph-box" style="margin-top:2rem;aspect-ratio:16/9"></div>
-        </div>
+      </div>
+      <div class="ph-box reveal" style="width:100%;aspect-ratio:16/9;margin-top:2.5rem;border-radius:20px"></div>
     </div>
   </section>
 
@@ -1539,11 +1544,9 @@ p{color:var(--ink2)}
         <div class="svc-row"><div class="svc-name">Visualizzazione &amp; Configurazione 3D</div><div class="svc-desc">Rendering interattivo da modelli CAD. Il cliente esplora e configura il prodotto in tempo reale — sul web, su tablet o in showroom.</div></div>
         <div class="svc-row"><div class="svc-name">Visualizzazione Collaborativa</div><div class="svc-desc">Team distribuiti che lavorano sullo stesso modello 3D in tempo reale. Disponibile su PC e visore VR.</div></div>
         <div class="svc-row"><div class="svc-name">Digital Human con AI</div><div class="svc-desc">Assistenti digitali conversazionali per formazione e supporto clienti. Premiati da CNA come innovazione più rilevante in Emilia-Romagna.</div></div>
-        <div class="svc-row" style="padding:1.5rem 0 0;border-top:none">
-          <div class="img-box ph-box" style="width:100%;aspect-ratio:16/9"></div>
-        </div>
         <div class="svc-row"><div class="svc-name">Integrated Virtual Product Design</div><div class="svc-desc">Progettazione e validazione del prodotto in ambiente virtuale. Riduce errori, accelera i cicli di revisione, abbatte i costi di prototipazione fisica.</div></div>
       </div>
+      <div class="ph-box reveal" style="width:100%;aspect-ratio:16/9;margin-top:2.5rem;border-radius:20px"></div>
       <div class="sol-cta-bar">
         <p>Non sai da dove partire? L'Innovation Cycle Design è fatto per questo — tre incontri in 6 settimane, zero impegno di sviluppo.</p>
         <button onclick="openGcal()" class="btn btn-p">Prenota una call →</button>
