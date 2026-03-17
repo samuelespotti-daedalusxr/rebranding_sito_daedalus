@@ -1138,6 +1138,28 @@ p{color:var(--ink2)}
 }
 @media(max-width:860px){.training-img-wrap{border-radius:14px;margin:2rem 1rem 0}}
 
+
+/* ── reel Instagram-style ── */
+.reel-wrap{
+  position:relative;
+  width:100%;max-width:300px;
+  margin:2.5rem auto 0;
+  border-radius:20px;overflow:hidden;
+  box-shadow:0 24px 64px rgba(150,103,224,.15),0 4px 16px rgba(0,0,0,.06);
+  border:1px solid rgba(212,187,252,.4);
+}
+#reel-audio{
+  position:absolute;bottom:14px;right:14px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(0,0,0,.45);backdrop-filter:blur(4px);
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;padding:0;transition:background .15s,transform .12s;
+}
+#reel-audio:hover{background:rgba(0,0,0,.65);transform:scale(1.08)}
+#reel-audio svg{width:16px;height:16px}
+@media(max-width:860px){.reel-wrap{max-width:260px;border-radius:14px;margin:2rem auto 0}}
+
 </style>
 </head>
 <body>
@@ -1235,10 +1257,14 @@ p{color:var(--ink2)}
       </div>
     </div>
     <!-- training VR -->
-    <div class="training-img-wrap reveal" style="max-width:360px">
-      <video autoplay muted loop playsinline
+    <div class="reel-wrap reveal" id="reel-wrap">
+      <video id="reel-video" autoplay muted loop playsinline
              style="width:100%;display:block;aspect-ratio:9/16;object-fit:cover"
              src="assets/images/samu_intro.mp4"></video>
+      <button id="reel-audio" onclick="toggleReelAudio()" aria-label="Attiva audio">
+        <svg id="reel-icon-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        <svg id="reel-icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+      </button>
     </div>
   </section>
 
@@ -2248,6 +2274,16 @@ function submitForm(e) {
   // hide on mobile
   if('ontouchstart' in window) g.style.display='none';
 })();
+
+
+function toggleReelAudio(){
+  const v = document.getElementById('reel-video');
+  const iconMute = document.getElementById('reel-icon-mute');
+  const iconSound = document.getElementById('reel-icon-sound');
+  v.muted = !v.muted;
+  iconMute.style.display  = v.muted ? '' : 'none';
+  iconSound.style.display = v.muted ? 'none' : '';
+}
 
 </script>
 
