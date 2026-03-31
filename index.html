@@ -213,6 +213,9 @@ p{color:var(--ink2)}
 .art-back{display:inline-flex;align-items:center;gap:.5rem;font-size:.8125rem;font-weight:600;color:var(--ink3);background:var(--p5);border:1px solid var(--line);padding:.5rem 1rem;border-radius:100px;cursor:pointer;margin-bottom:3rem;transition:color .15s,border-color .15s;text-decoration:none}
 .art-back::before{content:'←';color:var(--p)}
 .art-back:hover{color:var(--p);border-color:var(--p2)}
+.art-header{margin-bottom:2.5rem}
+.art-header h1{font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;line-height:1.2;color:var(--ink);margin:.875rem 0 1.25rem}
+.art-meta{margin-top:.5rem}
 .art-wrap{display:grid;grid-template-columns:1fr min(680px,100%) 1fr;gap:0;}
 .art-wrap > *{grid-column:2}
 .art-wrap .art-full{grid-column:1/-1}
@@ -826,7 +829,7 @@ p{color:var(--ink2)}
           <p style="margin-bottom:1.5rem">Con Aquaponic Design abbiamo realizzato un digital twin e un training simulativo in realtà virtuale per la gestione di serre idroponiche — formazione immersiva scalabile per l'Industria 5.0.</p>
           <button class="btn btn-p btn-sm" onclick="openArticle('aquaponic')">Leggi il caso studio</button>
         </div>
-        <div class="img-box ph-box" style="aspect-ratio:16/9"></div>
+        <div style="border-radius:var(--r-lg);overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.12);cursor:pointer" onclick="openArticle('aquaponic')"><img src="assets/images/blog/aquaponic_4.jpg" alt="Training VR Aquaponic Design" style="width:100%;display:block"></div>
       </div>
     </div>
   </section>
@@ -914,7 +917,7 @@ p{color:var(--ink2)}
         <div class="lbl" style="margin-bottom:1.25rem">Ultime novità</div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
           <a href="javascript:void(0)" onclick="openArticle('cluster-mech')" style="display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s,box-shadow .2s" onmouseover="this.style.borderColor='var(--p2)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(150,103,224,.1)'" onmouseout="this.style.borderColor='var(--line)';this.style.transform='';this.style.boxShadow=''">
-            <div style="height:120px;overflow:hidden"><img src="assets/images/blog/cluster_mech.jpeg" alt="Clust-ER MECH" style="width:100%;height:100%;object-fit:cover"></div>
+            <div style="aspect-ratio:3/2;overflow:hidden"><img src="assets/images/blog/cluster_mech.jpeg" alt="Clust-ER MECH" style="width:100%;height:100%;object-fit:cover"></div>
             <div style="padding:1rem">
               <div class="pill pill-sm" style="margin-bottom:.5rem">Network</div>
               <p style="font-size:.8125rem;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:.5rem">Siamo ufficialmente soci di Clust-ER MECH</p>
@@ -922,7 +925,7 @@ p{color:var(--ink2)}
             </div>
           </a>
           <a href="javascript:void(0)" onclick="openArticle('3dxr-aquaponic')" style="display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s,box-shadow .2s" onmouseover="this.style.borderColor='var(--p2)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(150,103,224,.1)'" onmouseout="this.style.borderColor='var(--line)';this.style.transform='';this.style.boxShadow=''">
-            <div style="height:120px;overflow:hidden"><img src="assets/images/3DXR_1.png" alt="3DXR Aquaponic" style="width:100%;height:100%;object-fit:cover"></div>
+            <div style="aspect-ratio:3/2;overflow:hidden"><img src="assets/images/3DXR_1.png" alt="3DXR Aquaponic" style="width:100%;height:100%;object-fit:cover"></div>
             <div style="padding:1rem">
               <div class="pill pill-sm" style="margin-bottom:.5rem">Caso studio</div>
               <p style="font-size:.8125rem;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:.5rem">Aquaponic Design adotta 3DXR</p>
@@ -930,7 +933,7 @@ p{color:var(--ink2)}
             </div>
           </a>
           <a href="javascript:void(0)" onclick="openArticle('cna')" style="display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s,box-shadow .2s" onmouseover="this.style.borderColor='var(--p2)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(150,103,224,.1)'" onmouseout="this.style.borderColor='var(--line)';this.style.transform='';this.style.boxShadow=''">
-            <div style="height:120px;overflow:hidden"><img src="assets/images/blog/cna_1.jpg" alt="CNA Premio" style="width:100%;height:100%;object-fit:cover"></div>
+            <div style="aspect-ratio:3/2;overflow:hidden"><img src="assets/images/blog/cna_1.jpg" alt="CNA Premio" style="width:100%;height:100%;object-fit:cover"></div>
             <div style="padding:1rem">
               <div class="pill pill-sm" style="margin-bottom:.5rem">Riconoscimenti</div>
               <p style="font-size:.8125rem;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:.5rem">Premiati da CNA come azienda più innovativa</p>
@@ -1078,7 +1081,7 @@ p{color:var(--ink2)}
           <div class="bc-body"><div class="pill">Caso studio</div><h3>3DRS — Progettare lo spazio, prima di viverlo</h3><p>Il software che unisce rilievo laser scanner 3D, BIM e ambienti immersivi in Unreal Engine per trasformare la progettazione e la vendita di spazi.</p><div class="bc-foot"><span class="bc-date">2025</span><span class="bc-read">Leggi</span></div></div>
         </a>
         <a class="bc" href="javascript:void(0)" onclick="openArticle('aquaponic')">
-          <div class="bc-img" style="padding:0;overflow:hidden"><img src="assets/images/blog/aquaponic_1.jpg" alt="Aquaponic Design VR" style="width:100%;height:100%;object-fit:cover"></div>
+          <div class="bc-img" style="padding:0;overflow:hidden"><img src="assets/images/blog/aquaponic_4.jpg" alt="Aquaponic Design VR" style="width:100%;height:100%;object-fit:cover;object-position:center top"></div>
           <div class="bc-body"><div class="pill">Caso studio</div><h3>Serra idroponica in realtà virtuale: il progetto con Aquaponic Design per l'Industria 5.0</h3><p>Digital twin e training simulativo VR per la gestione di serre idroponiche — formazione immersiva scalabile al confine tra Industria 5.0 e sostenibilità.</p><div class="bc-foot"><span class="bc-date">Ottobre 2024</span><span class="bc-read">Leggi</span></div></div>
         </a>
         <a class="bc" href="javascript:void(0)" onclick="openArticle('cna')">
@@ -1157,21 +1160,24 @@ p{color:var(--ink2)}
     <div class="wrap">
       <button class="art-back" onclick="go('blog')">Torna al blog</button>
       <div class="art-header"><div class="pill" style="margin-bottom:.875rem">Caso studio</div><h1>Serra idroponica in realtà virtuale: il progetto con Aquaponic Design per l'Industria 5.0</h1><div class="art-meta"><span class="pill pill-outline">Ottobre 2024</span></div></div>
-      <div class="art-full" style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);margin-bottom:2.5rem"><img src="assets/images/blog/aquaponic_1.jpg" alt="Aquaponic Design VR" loading="eager" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover"></div>
+      <div class="art-full" style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);margin-bottom:2.5rem"><img src="assets/images/blog/aquaponic_4.jpg" alt="Training VR Aquaponic Design" loading="eager" style="width:100%;display:block"></div>
       <div class="art-body">
-        <p>Aquaponic Design è un'azienda italiana che progetta e realizza impianti di coltivazione fuori suolo — serre idroponiche, sistemi acquaponici e verticali per la produzione alimentare sostenibile. Quando si sono rivolti a Daedalus-xr, avevano un obiettivo chiaro: rendere la formazione degli operatori più efficiente, scalabile e indipendente dalla presenza fisica di un tecnico senior.</p>
+        <p>Aquaponic Design progetta e realizza impianti di coltivazione fuori suolo — serre idroponiche, sistemi verticali e acquaponici per la produzione alimentare sostenibile. Quando si sono rivolti a Daedalus-xr, avevano un obiettivo preciso: rendere la formazione degli operatori più efficiente, scalabile e indipendente dalla presenza fisica di un tecnico senior.</p>
         <h2>La sfida</h2>
-        <p>La gestione di una serra idroponica richiede competenze tecniche specifiche: monitoraggio dei parametri dell'acqua, calibrazione dei sistemi di dosaggio, riconoscimento di patologie sulle piante, gestione delle emergenze. Formare un nuovo operatore richiedeva settimane di affiancamento in loco — costoso, non scalabile, e impossibile da standardizzare su siti diversi.</p>
+        <p>Gestire una serra idroponica richiede competenze specifiche: monitoraggio dei parametri dell'acqua, calibrazione dei sistemi di dosaggio, riconoscimento di patologie sulle piante, gestione delle emergenze. Formare un nuovo operatore richiedeva settimane di affiancamento in loco — costoso, non scalabile, impossibile da standardizzare su più siti.</p>
         <h2>La soluzione</h2>
-        <p>Daedalus-xr ha sviluppato due componenti distinte ma integrate:</p>
+        <p>Daedalus-xr ha sviluppato due componenti integrate:</p>
         <ul>
-          <li><strong>Digital Twin della serra:</strong> una replica digitale 3D interattiva dell'impianto, che permette di esplorare ogni componente, visualizzare i flussi dell'acqua e simulare scenari operativi senza intervenire sull'impianto reale.</li>
-          <li><strong>Training simulativo in VR:</strong> un percorso formativo in realtà virtuale che guida l'operatore attraverso le procedure operative chiave — dalla calibrazione dei sensori alla gestione di un'emergenza di ph fuori range — con feedback in tempo reale e tracciabilità dei risultati.</li>
+          <li><strong>Digital Twin della serra:</strong> una replica digitale 3D interattiva dell'impianto reale. L'operatore esplora ogni componente, visualizza i flussi dell'acqua e simula scenari operativi senza toccare nulla di fisico.</li>
+          <li><strong>Training simulativo in VR:</strong> un percorso formativo in realtà virtuale con 34 step guidati — dalla calibrazione dei sensori alla gestione di un'emergenza ph fuori range — con feedback in tempo reale e tracciabilità dei risultati per ogni sessione.</li>
         </ul>
+      </div>
+      <div class="art-full" style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);margin:2rem 0"><img src="assets/images/blog/aquaponic_2.jpg" alt="Operatore con visore VR alla fiera" loading="lazy" style="width:100%;display:block"></div>
+      <div class="art-body">
         <h2>I risultati</h2>
-        <p>Il training VR ha ridotto i tempi di onboarding dei nuovi operatori del 60%, eliminando la dipendenza dalla presenza fisica del tecnico senior nelle fasi iniziali. Il digital twin è diventato anche uno strumento di vendita: i clienti di Aquaponic Design possono ora "visitare" virtualmente una serra prima dell'acquisto, accelerando significativamente il ciclo di vendita.</p>
+        <p>Il training VR ha ridotto i tempi di onboarding dei nuovi operatori del 60%, eliminando la dipendenza dalla presenza fisica del tecnico senior nelle fasi iniziali. Il digital twin è diventato anche uno strumento commerciale: i clienti di Aquaponic Design possono ora visitare virtualmente una serra prima dell'acquisto, accorciando il ciclo di vendita in modo significativo.</p>
         <h2>Perché Industria 5.0</h2>
-        <p>Questo progetto incarna i principi dell'Industria 5.0: tecnologia avanzata al servizio dell'essere umano, non in sostituzione. La VR non ha rimpiazzato la competenza del tecnico — l'ha resa accessibile, trasferibile e scalabile.</p>
+        <p>Questo progetto incarna i principi dell'Industria 5.0: tecnologia al servizio dell'essere umano, non in sua sostituzione. La VR non ha rimpiazzato la competenza del tecnico — l'ha resa accessibile, trasferibile e scalabile su qualsiasi sito produttivo.</p>
       </div>
       <div class="blog-cta-row" style="margin-top:3rem"><p>Vuoi una soluzione simile per la tua azienda?</p><button class="btn btn-p" onclick="go('contatti')">Parla con noi</button></div>
     </div>
@@ -1211,19 +1217,20 @@ p{color:var(--ink2)}
     <div class="wrap">
       <button class="art-back" onclick="go('blog')">Torna al blog</button>
       <div class="art-header"><div class="pill" style="margin-bottom:.875rem">Approfondimento</div><h1>Realtà virtuale e aziende manifatturiere: verso l'Industria 4.0</h1></div>
-      <div class="art-full" style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);margin-bottom:2.5rem"><img src="assets/images/blog/manifattura_1.jpg" alt="Manifattura avanzata" loading="eager" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover"></div>
+      <div class="art-full" style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);margin-bottom:2.5rem"><img src="assets/images/blog/manifattura_1.jpg" alt="Manifattura avanzata" loading="eager" style="width:100%;display:block"></div>
       <div class="art-body">
-        <p>La transizione verso l'Industria 4.0 non è più un tema del futuro — è una trasformazione in corso che sta ridefinendo come le aziende manifatturiere italiane producono, formano e vendono. Le tecnologie immersive come la realtà virtuale (VR) e la realtà aumentata (AR) giocano in questo scenario un ruolo sempre più centrale e concreto.</p>
-        <h2>Formazione: il caso d'uso più maturo</h2>
-        <p>La formazione degli operatori è l'applicazione dove la VR ha dimostrato il ROI più chiaro e misurabile. Le simulazioni immersive permettono di addestrare personale su macchinari pericolosi o complessi senza rischi reali, in ambienti completamente replicabili e scalabili. Studi settoriali mostrano riduzioni dei tempi di onboarding tra il 40% e il 70% rispetto alla formazione tradizionale.</p>
-        <h2>Vendita e configurazione: il vantaggio competitivo</h2>
-        <p>Per le aziende che vendono prodotti complessi — macchinari, impianti, sistemi su misura — la VR offre un vantaggio commerciale diretto. Permettere al cliente di "toccare" il prodotto prima che esista fisicamente, configurarlo in tempo reale e visualizzare come si inserisce nel suo spazio produttivo, riduce l'incertezza decisionale e accelera la chiusura del contratto.</p>
-        <h2>Supporto post-vendita: il fronte ancora aperto</h2>
-        <p>La realtà aumentata applicata al supporto tecnico da remoto è probabilmente il caso d'uso con il potenziale non ancora sfruttato più alto nel manufacturing italiano. La possibilità di guidare un tecnico in loco attraverso una riparazione complessa, sovrapporre istruzioni visive direttamente sull'equipment e ridurre le trasferte fisiche rappresenta un vantaggio sia economico che di qualità del servizio.</p>
-        <h2>Il vero ostacolo: l'implementazione</h2>
-        <p>La tecnologia non è mai stata il vero problema. Il vero ostacolo è l'implementazione: integrare soluzioni XR con i processi aziendali esistenti, con i sistemi ERP e CRM, formare i team e gestire il cambiamento organizzativo. È qui che la differenza tra un fornitore tecnologico e un partner di business diventa determinante.</p>
+        <p>Il manifatturiero italiano sta cambiando — e le aziende che crescono sono quelle che hanno capito una cosa: la tecnologia non serve a sembrare innovativi, serve a vendere meglio, formare più velocemente e supportare in modo più efficiente. Realtà virtuale e realtà aumentata, se usate nel modo giusto, fanno esattamente questo.</p>
+        <h2>Formare senza rischi, più in fretta</h2>
+        <p>La formazione degli operatori è il caso d'uso più maturo — e quello con il ROI più misurabile. Le simulazioni VR permettono di addestrare personale su macchinari pericolosi o complessi senza fermare la produzione e senza rischi reali. Ambienti replicabili, standardizzabili, scalabili su più siti. I dati di settore parlano chiaro: riduzioni dei tempi di onboarding tra il 40% e il 70% rispetto alla formazione tradizionale. Con Aquaponic Design abbiamo ottenuto -60% in un progetto reale.</p>
+        <div class="art-pullquote">Non si tratta di sostituire il tecnico esperto. Si tratta di rendere la sua competenza trasferibile — in modo scalabile.</div>
+        <h2>Vendere prodotti complessi con meno attrito</h2>
+        <p>Chi vende macchinari, impianti o sistemi su misura conosce il problema: il cliente fatica a immaginare il prodotto nel suo contesto prima di comprarlo. I configuratori 3D e i visualizzatori in realtà aumentata abbattono questa barriera — il cliente "tocca" il prodotto prima che esista, lo vede nel suo spazio, lo configura in tempo reale. Meno incertezza, cicli di vendita più corti, meno iterazioni sui preventivi.</p>
+        <h2>Supporto post-vendita: il potenziale ancora inespresso</h2>
+        <p>La realtà aumentata applicata all'assistenza tecnica remota è il caso d'uso con il potenziale più alto e meno sfruttato nel manufacturing italiano. Guidare un tecnico in loco attraverso una riparazione complessa, sovrapporre istruzioni visive direttamente sull'equipment, ridurre le trasferte fisiche: meno costi, meno downtime, più qualità del servizio.</p>
+        <h2>Il vero problema non è la tecnologia</h2>
+        <p>Le aziende manifatturiere italiane hanno spesso le risorse per investire in XR — ma si bloccano sull'implementazione. Integrare con i sistemi esistenti, formare i team, gestire il cambiamento: è qui che la maggior parte dei progetti fallisce o si arena. La differenza tra un fornitore tecnologico e un partner di business si misura esattamente in questo punto.</p>
       </div>
-      <div class="blog-cta-row" style="margin-top:3rem"><p>Vuoi capire dove le tecnologie XR possono fare la differenza nella tua azienda?</p><button class="btn btn-p" onclick="go('contatti')">Inizia con l'Innovation Cycle Design</button></div>
+      <div class="blog-cta-row" style="margin-top:3rem"><p>Vuoi capire dove XR può fare la differenza nel tuo business?</p><button class="btn btn-p" onclick="openGcal()">Prenota una call gratuita →</button></div>
     </div>
   </section>
 </div>
