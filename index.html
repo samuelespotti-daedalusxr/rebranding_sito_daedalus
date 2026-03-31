@@ -85,7 +85,7 @@ p{color:var(--ink2)}
 .pill-sm{font-size:.625rem;padding:.2rem .625rem}
 .pill-outline{background:transparent;border:1px solid var(--line);color:var(--ink3)}
 .ph{background:linear-gradient(160deg, var(--p5) 0%, var(--p4) 100%);padding:4.5rem 0;border-bottom:1px solid var(--line)}
-.ph h1{margin:.6rem 0 1.125rem;background:linear-gradient(90deg, var(--ink) 0%, var(--ink) 25%, var(--p) 50%, var(--ink) 75%, var(--ink) 100%);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:headlineShimmer 9s ease-in-out infinite alternate}
+.ph h1{margin:.6rem 0 1.125rem;padding-bottom:.2em;background:linear-gradient(90deg, var(--ink) 0%, var(--ink) 25%, var(--p) 50%, var(--ink) 75%, var(--ink) 100%);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:headlineShimmer 9s ease-in-out infinite alternate}
 .ph .sub{max-width:560px}
 .sh{margin-bottom:3.5rem}
 .sh h2{margin:.5rem 0 .875rem}
@@ -897,19 +897,48 @@ p{color:var(--ink2)}
 
   <section class="sec">
     <div class="wrap">
-      <div class="sh reveal"><div class="lbl">Dal blog</div><h2>Ultime notizie</h2></div>
-      <a href="javascript:void(0)" onclick="openArticle('cluster-mech')" class="blog-teaser reveal">
-        <div class="blog-teaser-img"><img src="assets/images/blog/cluster_mech.jpeg" alt="Assemblea Clust-ER MECH Ducati" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="sh reveal"><div class="lbl">Dal blog</div><h2>In evidenza</h2></div>
+      <a href="javascript:void(0)" onclick="openArticle('giappone')" class="blog-teaser reveal">
+        <div class="blog-teaser-img"><img src="assets/images/blog/giappone_3.webp" alt="Missione Giappone" style="width:100%;height:100%;object-fit:cover;display:block"></div>
         <div class="blog-teaser-body">
-          <div class="pill">Network & Ecosystem</div>
-          <h3 style="font-size:1.25rem;font-weight:800;line-height:1.3;color:var(--ink)">Daedalus-xr è ufficialmente socia di Clust-ER MECH</h3>
-          <p style="font-size:.9rem;color:var(--ink2);line-height:1.7">Siamo entrati nel cluster della meccatronica e della motoristica dell'Emilia-Romagna. Perché è una mossa strategica — e non solo simbolica.</p>
+          <div class="pill">Internazionalizzazione</div>
+          <h3 style="font-size:1.25rem;font-weight:800;line-height:1.3;color:var(--ink)">Da Cesenatico al Giappone — Factory Innovation Week di Tokyo e Expo 2025 Osaka</h3>
+          <p style="font-size:.9rem;color:var(--ink2);line-height:1.7">Tokyo, Osaka, Kyoto: Daedalus-xr porta l'XR italiano alla fabbrica del futuro insieme ad ART-ER e Cluster Innovate.</p>
           <div style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid var(--line)">
-            <span style="font-size:.8125rem;color:var(--ink3)">Marzo 2026</span>
+            <span style="font-size:.8125rem;color:var(--ink3)">Settembre 2025</span>
             <span style="font-size:.8125rem;font-weight:700;color:var(--p)">Leggi →</span>
           </div>
         </div>
       </a>
+      <div style="margin-top:2.5rem">
+        <div class="lbl" style="margin-bottom:1.25rem">Ultime novità</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+          <a href="javascript:void(0)" onclick="openArticle('cluster-mech')" style="display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s,box-shadow .2s" onmouseover="this.style.borderColor='var(--p2)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(150,103,224,.1)'" onmouseout="this.style.borderColor='var(--line)';this.style.transform='';this.style.boxShadow=''">
+            <div style="height:120px;overflow:hidden"><img src="assets/images/blog/cluster_mech.jpeg" alt="Clust-ER MECH" style="width:100%;height:100%;object-fit:cover"></div>
+            <div style="padding:1rem">
+              <div class="pill pill-sm" style="margin-bottom:.5rem">Network</div>
+              <p style="font-size:.8125rem;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:.5rem">Siamo ufficialmente soci di Clust-ER MECH</p>
+              <span style="font-size:.6875rem;color:var(--ink3)">Marzo 2026</span>
+            </div>
+          </a>
+          <a href="javascript:void(0)" onclick="openArticle('3dxr-aquaponic')" style="display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s,box-shadow .2s" onmouseover="this.style.borderColor='var(--p2)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(150,103,224,.1)'" onmouseout="this.style.borderColor='var(--line)';this.style.transform='';this.style.boxShadow=''">
+            <div style="height:120px;overflow:hidden"><img src="assets/images/3DXR_1.png" alt="3DXR Aquaponic" style="width:100%;height:100%;object-fit:cover"></div>
+            <div style="padding:1rem">
+              <div class="pill pill-sm" style="margin-bottom:.5rem">Caso studio</div>
+              <p style="font-size:.8125rem;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:.5rem">Aquaponic Design adotta 3DXR</p>
+              <span style="font-size:.6875rem;color:var(--ink3)">Marzo 2026</span>
+            </div>
+          </a>
+          <a href="javascript:void(0)" onclick="openArticle('cna')" style="display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s,box-shadow .2s" onmouseover="this.style.borderColor='var(--p2)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(150,103,224,.1)'" onmouseout="this.style.borderColor='var(--line)';this.style.transform='';this.style.boxShadow=''">
+            <div style="height:120px;overflow:hidden"><img src="assets/images/blog/cna_1.jpg" alt="CNA Premio" style="width:100%;height:100%;object-fit:cover"></div>
+            <div style="padding:1rem">
+              <div class="pill pill-sm" style="margin-bottom:.5rem">Riconoscimenti</div>
+              <p style="font-size:.8125rem;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:.5rem">Premiati da CNA come azienda più innovativa</p>
+              <span style="font-size:.6875rem;color:var(--ink3)">Ottobre 2024</span>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1034,7 +1063,7 @@ p{color:var(--ink2)}
       <div class="blog-grid">
         <a class="bc" href="javascript:void(0)" onclick="openArticle('cluster-mech')">
           <div class="bc-img" style="padding:0;overflow:hidden"><img src="assets/images/blog/cluster_mech.jpeg" alt="Clust-ER MECH Ducati" style="width:100%;height:100%;object-fit:cover"></div>
-          <div class="bc-body"><div class="pill">Network & Ecosystem</div><h3>Daedalus-xr è ufficialmente socia di Clust-ER MECH</h3><p>Siamo entrati nel cluster della meccatronica e motoristica dell'Emilia-Romagna. Perché è una mossa strategica — e non solo simbolica.</p><div class="bc-foot"><span class="bc-date">Marzo 2026</span><span class="bc-read">Leggi</span></div></div>
+          <div class="bc-body"><div class="pill">Network & Ecosystem</div><h3>Daedalus-xr è ufficialmente socia di Clust-ER MECH</h3><p>Siamo entrati nel cluster della meccatronica e motoristica dell'Emilia-Romagna: 150+ soci tra imprese, università e centri di innovazione.</p><div class="bc-foot"><span class="bc-date">Marzo 2026</span><span class="bc-read">Leggi</span></div></div>
         </a>
         <a class="bc" href="javascript:void(0)" onclick="openArticle('3dxr-aquaponic')">
           <div class="bc-img" style="padding:0;overflow:hidden"><img src="assets/images/3DXR_1.png" alt="3DXR Aquaponic Design" style="width:100%;height:100%;object-fit:cover"></div>
@@ -1045,19 +1074,19 @@ p{color:var(--ink2)}
           <div class="bc-body"><div class="pill">Internazionalizzazione</div><h3>Da Cesenatico al Giappone — Factory Innovation Week di Tokyo e Expo 2025 Osaka</h3><p>Daedalus-xr porta l'XR italiano alla fabbrica del futuro: Tokyo, Osaka, Kyoto. Tre città, un percorso di apertura internazionale.</p><div class="bc-foot"><span class="bc-date">Settembre 2025</span><span class="bc-read">Leggi</span></div></div>
         </a>
         <a class="bc" href="javascript:void(0)" onclick="openArticle('3drs')">
-          <div class="bc-img" style="background:linear-gradient(135deg,#0d2d4e,#1a4a7a)"><span style="font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:-.02em">3DRS</span></div>
+          <div class="bc-img" style="padding:0;overflow:hidden"><img src="assets/images/3drs_1.png" alt="3DRS" style="width:100%;height:100%;object-fit:cover"></div>
           <div class="bc-body"><div class="pill">Caso studio</div><h3>3DRS — Progettare lo spazio, prima di viverlo</h3><p>Il software che unisce rilievo laser scanner 3D, BIM e ambienti immersivi in Unreal Engine per trasformare la progettazione e la vendita di spazi.</p><div class="bc-foot"><span class="bc-date">2025</span><span class="bc-read">Leggi</span></div></div>
         </a>
         <a class="bc" href="javascript:void(0)" onclick="openArticle('aquaponic')">
-          <div class="bc-img bc-img-1">🌿</div>
+          <div class="bc-img" style="padding:0;overflow:hidden"><img src="assets/images/blog/aquaponic_1.jpg" alt="Aquaponic Design VR" style="width:100%;height:100%;object-fit:cover"></div>
           <div class="bc-body"><div class="pill">Caso studio</div><h3>Serra idroponica in realtà virtuale: il progetto con Aquaponic Design per l'Industria 5.0</h3><p>Digital twin e training simulativo VR per la gestione di serre idroponiche — formazione immersiva scalabile al confine tra Industria 5.0 e sostenibilità.</p><div class="bc-foot"><span class="bc-date">Ottobre 2024</span><span class="bc-read">Leggi</span></div></div>
         </a>
         <a class="bc" href="javascript:void(0)" onclick="openArticle('cna')">
-          <div class="bc-img bc-img-2">🏆</div>
+          <div class="bc-img" style="padding:0;overflow:hidden"><img src="assets/images/blog/cna_1.jpg" alt="CNA Premio" style="width:100%;height:100%;object-fit:cover"></div>
           <div class="bc-body"><div class="pill">Riconoscimenti</div><h3>Premiati per il Digital Human all'assemblea CNA Emilia-Romagna a Bologna</h3><p>Daedalus-xr riconosciuta come azienda più innovativa nella provincia di Forlì-Cesena e tra le dieci più innovative dell'Emilia-Romagna.</p><div class="bc-foot"><span class="bc-date">Ottobre 2024</span><span class="bc-read">Leggi</span></div></div>
         </a>
         <a class="bc" href="javascript:void(0)" onclick="openArticle('industria40')">
-          <div class="bc-img bc-img-3">🏭</div>
+          <div class="bc-img" style="padding:0;overflow:hidden"><img src="assets/images/blog/manifattura_1.jpg" alt="Manifattura 4.0" style="width:100%;height:100%;object-fit:cover"></div>
           <div class="bc-body"><div class="pill">Approfondimento</div><h3>Realtà virtuale e aziende manifatturiere: verso l'Industria 4.0</h3><p>Come la transizione verso l'Industria 4.0 sta cambiando formazione, produzione e supporto — e il ruolo delle tecnologie immersive.</p><div class="bc-foot"><span class="bc-date">Gennaio 2022</span><span class="bc-read">Leggi</span></div></div>
         </a>
       </div>
@@ -1080,6 +1109,10 @@ p{color:var(--ink2)}
         <p class="art-lead">Un software proprietario in Unreal Engine che unisce rilievo laser scanner 3D, modellazione BIM e ambienti immersivi interattivi. Dal rilievo alla realtà navigabile — strumento di progettazione, vendita e gestione in uno.</p>
         <div class="art-img-wrap art-full" id="art-3drs-video-wrap">
           <video autoplay muted loop playsinline style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover" src="assets/images/video_3drs.mp4"></video>
+        </div>
+        <div class="art-full" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0">
+          <div style="border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.08)"><img src="assets/images/3drs_1.png" alt="3DRS ambiente immersivo" loading="lazy" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover"></div>
+          <div style="border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.08)"><img src="assets/images/3drs_2.png" alt="3DRS navigazione 3D" loading="lazy" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover"></div>
         </div>
         <div class="art-body">
           <h2>Il problema che risolve</h2>
@@ -1124,7 +1157,7 @@ p{color:var(--ink2)}
     <div class="wrap">
       <button class="art-back" onclick="go('blog')">Torna al blog</button>
       <div class="art-header"><div class="pill" style="margin-bottom:.875rem">Caso studio</div><h1>Serra idroponica in realtà virtuale: il progetto con Aquaponic Design per l'Industria 5.0</h1><div class="art-meta"><span class="pill pill-outline">Ottobre 2024</span></div></div>
-      <div class="art-img bc-img-1">🌿</div>
+      <div class="art-full" style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);margin-bottom:2.5rem"><img src="assets/images/blog/aquaponic_1.jpg" alt="Aquaponic Design VR" loading="eager" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover"></div>
       <div class="art-body">
         <p>Aquaponic Design è un'azienda italiana che progetta e realizza impianti di coltivazione fuori suolo — serre idroponiche, sistemi acquaponici e verticali per la produzione alimentare sostenibile. Quando si sono rivolti a Daedalus-xr, avevano un obiettivo chiaro: rendere la formazione degli operatori più efficiente, scalabile e indipendente dalla presenza fisica di un tecnico senior.</p>
         <h2>La sfida</h2>
@@ -1151,7 +1184,7 @@ p{color:var(--ink2)}
     <div class="wrap">
       <button class="art-back" onclick="go('blog')">Torna al blog</button>
       <div class="art-header"><div class="pill" style="margin-bottom:.875rem">Riconoscimenti</div><h1>Premiati per il Digital Human all'assemblea CNA Emilia-Romagna a Bologna</h1></div>
-      <div class="art-img bc-img-2">🏆</div>
+      <div class="art-full" style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);margin-bottom:2.5rem"><img src="assets/images/blog/cna_1.jpg" alt="CNA Emilia-Romagna Premio" loading="eager" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover"></div>
       <div class="art-body">
         <p>All'assemblea annuale di CNA Emilia-Romagna tenutasi a Bologna nell'ottobre 2024, Daedalus-xr è stata riconosciuta come l'azienda più innovativa nella provincia di Forlì-Cesena e tra le dieci più innovative dell'intera regione Emilia-Romagna.</p>
         <h2>Il prodotto premiato: Digital Human con AI</h2>
@@ -1178,7 +1211,7 @@ p{color:var(--ink2)}
     <div class="wrap">
       <button class="art-back" onclick="go('blog')">Torna al blog</button>
       <div class="art-header"><div class="pill" style="margin-bottom:.875rem">Approfondimento</div><h1>Realtà virtuale e aziende manifatturiere: verso l'Industria 4.0</h1></div>
-      <div class="art-img bc-img-3">🏭</div>
+      <div class="art-full" style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);margin-bottom:2.5rem"><img src="assets/images/blog/manifattura_1.jpg" alt="Manifattura avanzata" loading="eager" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover"></div>
       <div class="art-body">
         <p>La transizione verso l'Industria 4.0 non è più un tema del futuro — è una trasformazione in corso che sta ridefinendo come le aziende manifatturiere italiane producono, formano e vendono. Le tecnologie immersive come la realtà virtuale (VR) e la realtà aumentata (AR) giocano in questo scenario un ruolo sempre più centrale e concreto.</p>
         <h2>Formazione: il caso d'uso più maturo</h2>
@@ -1321,7 +1354,7 @@ p{color:var(--ink2)}
           <p>Clust-ER MECH è il cluster regionale della meccatronica e della motoristica promosso dalla Regione Emilia-Romagna. Riunisce oltre 150 soggetti — aziende manifatturiere, startup, università, laboratori di ricerca, centri per l'innovazione e organizzazioni formative — con l'obiettivo di rafforzare la competitività del sistema produttivo regionale attraverso la collaborazione, il trasferimento tecnologico e l'accesso a opportunità di finanziamento nazionali ed europee.</p>
           <p>L'assemblea del 26 febbraio, ospitata all'Auditorium Ducati, ha presentato i risultati del 2025 e il piano di azione per il 2026 — con focus su robotica collaborativa, manifattura avanzata, materiali innovativi, mobilità sostenibile e sviluppo aerospaziale. Presente anche la Regione Emilia-Romagna e una panoramica sulle opportunità di finanziamento STEP (Strategic Technologies for Europe Platform).</p>
           <div class="art-pullquote">Non si tratta solo di fare rete. Si tratta di stare nel posto giusto, con le persone giuste, nel momento in cui il manifatturiero emiliano-romagnolo sta ridefinendo il suo futuro digitale.</div>
-          <h2>Perché per noi è una mossa strategica</h2>
+          <h2>Perché per noi conta davvero</h2>
           <p>Daedalus-xr lavora con aziende del manufacturing avanzato — esattamente il tessuto produttivo che Clust-ER MECH rappresenta. Essere soci non è un riconoscimento simbolico: è accesso diretto a un ecosistema di potenziali partner, clienti e collaboratori che operano nei settori in cui le nostre soluzioni XR e AI generano il valore maggiore.</p>
           <ul>
             <li><strong>Robotica collaborativa:</strong> i nostri training XR accelerano l'onboarding degli operatori su nuovi sistemi robotici, riducendo i tempi di affiancamento e i costi di formazione</li>
