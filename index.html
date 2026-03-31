@@ -531,6 +531,7 @@ p{color:var(--ink2)}
 @media(max-width:860px){
   #page-3dxr .hero-inner{grid-template-columns:1fr}
   .demo-live{display:none}
+  .shots-3dxr{grid-template-columns:1fr!important}
   .hero-visual{max-width:360px;margin:2rem auto 0}
   .screen-float{display:none}
   .screen-badge{display:none}
@@ -1160,7 +1161,7 @@ p{color:var(--ink2)}
     <div class="wrap">
       <button class="art-back" onclick="go('blog')">Torna al blog</button>
       <div class="art-header"><div class="pill" style="margin-bottom:.875rem">Caso studio</div><h1>Serra idroponica in realtà virtuale: il progetto con Aquaponic Design per l'Industria 5.0</h1><div class="art-meta"><span class="pill pill-outline">Ottobre 2024</span></div></div>
-      <div class="art-full" style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);margin-bottom:2.5rem"><img src="assets/images/blog/aquaponic_4.jpg" alt="Training VR Aquaponic Design" loading="eager" style="width:100%;display:block"></div>
+      <div class="art-full" style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);margin-bottom:2.5rem"><img src="assets/images/blog/aquaponic_4.jpg" alt="Training VR Aquaponic Design" loading="eager" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;object-position:center top"></div>
       <div class="art-body">
         <p>Aquaponic Design progetta e realizza impianti di coltivazione fuori suolo — serre idroponiche, sistemi verticali e acquaponici per la produzione alimentare sostenibile. Quando si sono rivolti a Daedalus-xr, avevano un obiettivo preciso: rendere la formazione degli operatori più efficiente, scalabile e indipendente dalla presenza fisica di un tecnico senior.</p>
         <h2>La sfida</h2>
@@ -1172,13 +1173,17 @@ p{color:var(--ink2)}
           <li><strong>Training simulativo in VR:</strong> un percorso formativo in realtà virtuale con 34 step guidati — dalla calibrazione dei sensori alla gestione di un'emergenza ph fuori range — con feedback in tempo reale e tracciabilità dei risultati per ogni sessione.</li>
         </ul>
       </div>
-      <div class="art-full" style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);margin:2rem 0"><img src="assets/images/blog/aquaponic_2.jpg" alt="Operatore con visore VR alla fiera" loading="lazy" style="width:100%;display:block"></div>
+      <div class="art-full" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0">
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.08)"><img src="assets/images/blog/aquaponic_3.jpg" alt="Esperienza VR — serra idroponica" loading="lazy" style="width:100%;display:block;aspect-ratio:1;object-fit:cover"></div>
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.08)"><img src="assets/images/blog/aquaponic_1.jpg" alt="Esperienza VR — fertirrigatore" loading="lazy" style="width:100%;display:block;aspect-ratio:1;object-fit:cover"></div>
+      </div>
       <div class="art-body">
         <h2>I risultati</h2>
         <p>Il training VR ha ridotto i tempi di onboarding dei nuovi operatori del 60%, eliminando la dipendenza dalla presenza fisica del tecnico senior nelle fasi iniziali. Il digital twin è diventato anche uno strumento commerciale: i clienti di Aquaponic Design possono ora visitare virtualmente una serra prima dell'acquisto, accorciando il ciclo di vendita in modo significativo.</p>
         <h2>Perché Industria 5.0</h2>
         <p>Questo progetto incarna i principi dell'Industria 5.0: tecnologia al servizio dell'essere umano, non in sua sostituzione. La VR non ha rimpiazzato la competenza del tecnico — l'ha resa accessibile, trasferibile e scalabile su qualsiasi sito produttivo.</p>
       </div>
+      <div class="art-full" style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);margin:2rem 0"><img src="assets/images/blog/aquaponic_2.jpg" alt="Visitatore con visore VR alla fiera" loading="lazy" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;object-position:center top"></div>
       <div class="blog-cta-row" style="margin-top:3rem"><p>Vuoi una soluzione simile per la tua azienda?</p><button class="btn btn-p" onclick="go('contatti')">Parla con noi</button></div>
     </div>
   </section>
@@ -1612,6 +1617,23 @@ p{color:var(--ink2)}
         <div class="reveal" style="--d:.1s">
           <p class="intro-body">3DXR è un configuratore 3D white-label che si integra nel tuo sito. Il cliente entra, misura il suo spazio, posiziona i prodotti e vede il totale aggiornarsi in tempo reale. Quando è pronto, acquista — o scarica il preventivo e lo condivide.</p>
           <p class="intro-body">Non serve un commerciale che spieghi. Il prodotto si racconta da solo, in tre dimensioni.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="reveal shots-3dxr" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem">
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.08)">
+          <img src="assets/images/3DXR_1.png" alt="3DXR configuratore 3D" loading="lazy" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover">
+        </div>
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.08)">
+          <img src="assets/images/3DXR_2.png" alt="3DXR pianificazione spazio" loading="lazy" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover">
+        </div>
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.08)">
+          <img src="assets/images/3DXR_3.png" alt="3DXR selezione prodotti" loading="lazy" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover">
         </div>
       </div>
     </div>
