@@ -347,7 +347,7 @@ p{color:var(--ink2)}
 .icd-grid{display:flex;flex-direction:column;gap:1.5rem;position:relative;z-index:1}
 .icd-card{background:var(--w);border:1px solid var(--line);border-radius:20px;overflow:hidden;position:relative;display:grid;grid-template-columns:160px 1fr;align-items:start;transition:border-color .3s,transform .3s,box-shadow .3s;}
 .icd-card:hover{border-color:var(--p);transform:translateY(-6px);box-shadow:0 20px 50px rgba(150,103,224,.15)}
-.icd-num{font-size:5rem;font-weight:800;line-height:1;color:var(--p3);padding:2rem 1.5rem;letter-spacing:-.05em;position:relative;align-self:stretch;display:flex;align-items:center;justify-content:center;background:var(--p5);border-right:1px solid var(--line)}
+.icd-num{font-size:3rem;font-weight:800;line-height:1;color:var(--p3);padding:2rem 1.5rem;letter-spacing:-.05em;position:relative;align-self:stretch;display:flex;align-items:center;justify-content:center;background:var(--p5);border-right:1px solid var(--line)}
 .icd-card:hover .icd-num{color:var(--p2)}
 .icd-body{padding:1.75rem 2.5rem;display:flex;flex-direction:column;gap:.5rem}
 .icd-tag{font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:.5rem}
@@ -527,7 +527,9 @@ p{color:var(--ink2)}
 .cta-note3{font-size:.75rem;color:rgba(255,255,255,.55);margin-top:.875rem}
 @media(max-width:860px){
   #page-3dxr .hero-inner{grid-template-columns:1fr}
-  .hero-visual{display:none}
+  #page-3dxr .hero-bts{display:none}
+  #page-3dxr .demo-cta-row{display:none}
+  .hero-visual{max-width:360px;margin:0 auto}
   .feat-big{grid-template-columns:1fr;padding:2rem}
   .cta-input3{min-width:100%;width:100%}
   .cta-form3{flex-direction:column}
@@ -680,6 +682,17 @@ p{color:var(--ink2)}
           </div>
         </div>
         <span style="font-size:.875rem;font-weight:700;color:var(--p);white-space:nowrap;flex-shrink:0">Scopri →</span>
+      </div>
+      <!-- AI Assistant CTA banner -->
+      <div onclick="go('contatti')" class="reveal" style="margin-top:1rem;background:linear-gradient(120deg,#130730 0%,#1e0b4a 60%,#2a1060 100%);border:1.5px solid rgba(150,103,224,.45);border-radius:var(--r-lg);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s" onmouseover="this.style.borderColor='var(--p)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 36px rgba(150,103,224,.22)'" onmouseout="this.style.borderColor='rgba(150,103,224,.45)';this.style.transform='';this.style.boxShadow=''">
+        <div style="display:flex;align-items:center;gap:1.25rem">
+          <div style="width:44px;height:44px;border-radius:10px;background:rgba(150,103,224,.25);border:1px solid rgba(150,103,224,.5);display:flex;align-items:center;justify-content:center;font-size:1.375rem;flex-shrink:0">🤖</div>
+          <div>
+            <div style="font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p2);margin-bottom:.2rem">Assistente AI aziendale</div>
+            <div style="font-size:.9375rem;font-weight:700;color:#fff;line-height:1.3">Rispondi meno email. Smaltisci richieste tecniche in automatico — 24/7.</div>
+          </div>
+        </div>
+        <span style="font-size:.875rem;font-weight:700;color:var(--p2);white-space:nowrap;flex-shrink:0">Scopri →</span>
       </div>
     </div>
   </section>
@@ -1341,7 +1354,6 @@ p{color:var(--ink2)}
         <div class="hero-visual" style="position:relative">
           <div class="screen-float">
             <div class="float-num">3D</div>
-            <div class="float-label">Room Planner</div>
           </div>
           <div class="hero-screen">
             <div class="screen-topbar">
@@ -1389,34 +1401,34 @@ p{color:var(--ink2)}
     <div class="marquee-outer">
       <div class="marquee-track">
         <div class="marquee-set">
-          <div class="mlogo"><span>Arredamento contract</span></div>
-          <div class="mlogo"><span>Cucine su misura</span></div>
+          <div class="mlogo"><span>Automazione industriale</span></div>
+          <div class="mlogo"><span>Dispositivi medicali</span></div>
           <div class="mlogo"><span>Serre idroponiche</span></div>
           <div class="mlogo"><span>Macchinari industriali B2B</span></div>
-          <div class="mlogo"><span>Interior design</span></div>
+          <div class="mlogo"><span>Interior design premium</span></div>
           <div class="mlogo"><span>Sistemi modulari</span></div>
-          <div class="mlogo"><span>Retail furniture</span></div>
-          <div class="mlogo"><span>Bagni e cucine</span></div>
+          <div class="mlogo"><span>Energie rinnovabili</span></div>
+          <div class="mlogo"><span>Veicoli ed equipment</span></div>
         </div>
         <div class="marquee-set" aria-hidden="true">
-          <div class="mlogo"><span>Arredamento contract</span></div>
-          <div class="mlogo"><span>Cucine su misura</span></div>
+          <div class="mlogo"><span>Automazione industriale</span></div>
+          <div class="mlogo"><span>Dispositivi medicali</span></div>
           <div class="mlogo"><span>Serre idroponiche</span></div>
           <div class="mlogo"><span>Macchinari industriali B2B</span></div>
-          <div class="mlogo"><span>Interior design</span></div>
+          <div class="mlogo"><span>Interior design premium</span></div>
           <div class="mlogo"><span>Sistemi modulari</span></div>
-          <div class="mlogo"><span>Retail furniture</span></div>
-          <div class="mlogo"><span>Bagni e cucine</span></div>
+          <div class="mlogo"><span>Energie rinnovabili</span></div>
+          <div class="mlogo"><span>Veicoli ed equipment</span></div>
         </div>
         <div class="marquee-set" aria-hidden="true">
-          <div class="mlogo"><span>Arredamento contract</span></div>
-          <div class="mlogo"><span>Cucine su misura</span></div>
+          <div class="mlogo"><span>Automazione industriale</span></div>
+          <div class="mlogo"><span>Dispositivi medicali</span></div>
           <div class="mlogo"><span>Serre idroponiche</span></div>
           <div class="mlogo"><span>Macchinari industriali B2B</span></div>
-          <div class="mlogo"><span>Interior design</span></div>
+          <div class="mlogo"><span>Interior design premium</span></div>
           <div class="mlogo"><span>Sistemi modulari</span></div>
-          <div class="mlogo"><span>Retail furniture</span></div>
-          <div class="mlogo"><span>Bagni e cucine</span></div>
+          <div class="mlogo"><span>Energie rinnovabili</span></div>
+          <div class="mlogo"><span>Veicoli ed equipment</span></div>
         </div>
       </div>
     </div>
@@ -1583,7 +1595,7 @@ p{color:var(--ink2)}
         <div class="lbl">Inizia da qui</div>
         <h2>Vedi 3DXR nel tuo contesto, con i tuoi prodotti.</h2>
         <p class="sub">Raccontaci il tuo settore e il tipo di prodotto. Ti mostriamo come funzionerebbe concretamente — senza impegno.</p>
-        <div style="margin-top:2rem;display:flex;gap:.875rem;flex-wrap:wrap">
+        <div class="demo-cta-row" style="margin-top:2rem;display:flex;gap:.875rem;flex-wrap:wrap">
           <button class="btn" style="background:#fff;color:var(--p);font-weight:700;box-shadow:0 4px 24px rgba(0,0,0,.18)" onclick="go('contatti')">Richiedi una demo →</button>
           <a href="https://fe.conf3d.aquaponic.daedalusxr.it/" target="_blank" rel="noopener" class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.35)">Prova la demo live ↗</a>
         </div>
