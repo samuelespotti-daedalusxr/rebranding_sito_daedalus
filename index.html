@@ -527,9 +527,10 @@ p{color:var(--ink2)}
 .cta-note3{font-size:.75rem;color:rgba(255,255,255,.55);margin-top:.875rem}
 @media(max-width:860px){
   #page-3dxr .hero-inner{grid-template-columns:1fr}
-  #page-3dxr .hero-bts{display:none}
-  #page-3dxr .demo-cta-row{display:none}
-  .hero-visual{max-width:360px;margin:0 auto}
+  .demo-live{display:none}
+  .hero-visual{max-width:360px;margin:2rem auto 0}
+  .screen-float{display:none}
+  .screen-badge{display:none}
   .feat-big{grid-template-columns:1fr;padding:2rem}
   .cta-input3{min-width:100%;width:100%}
   .cta-form3{flex-direction:column}
@@ -1430,11 +1431,11 @@ p{color:var(--ink2)}
       <div class="hero-inner">
         <div>
           <div class="pill" style="margin-bottom:1.25rem">Configuratore 3D · White-label</div>
-          <h1>Il cliente entra nella sua stanza. Con il tuo prodotto già dentro.</h1>
+          <h1>Il cliente progetta il suo spazio. Con il tuo prodotto già dentro.</h1>
           <p class="sub">Il cliente inserisce le misure reali del suo spazio, posiziona i tuoi prodotti in 3D, vede colori e materiali in tempo reale. Poi genera il preventivo o va direttamente in checkout.</p>
           <div class="hero-bts">
             <button class="btn btn-p" onclick="go('contatti')">Richiedi una demo →</button>
-            <a href="https://fe.conf3d.aquaponic.daedalusxr.it/" target="_blank" rel="noopener" class="btn btn-o">Prova la demo live ↗</a>
+            <a href="https://fe.conf3d.aquaponic.daedalusxr.it/" target="_blank" rel="noopener" class="btn btn-o demo-live">Prova la demo live ↗</a>
           </div>
         </div>
         <div class="hero-visual" style="position:relative">
@@ -1681,9 +1682,9 @@ p{color:var(--ink2)}
         <div class="lbl">Inizia da qui</div>
         <h2>Vedi 3DXR nel tuo contesto, con i tuoi prodotti.</h2>
         <p class="sub">Raccontaci il tuo settore e il tipo di prodotto. Ti mostriamo come funzionerebbe concretamente — senza impegno.</p>
-        <div class="demo-cta-row" style="margin-top:2rem;display:flex;gap:.875rem;flex-wrap:wrap">
+        <div style="margin-top:2rem;display:flex;gap:.875rem;flex-wrap:wrap">
           <button class="btn" style="background:#fff;color:var(--p);font-weight:700;box-shadow:0 4px 24px rgba(0,0,0,.18)" onclick="go('contatti')">Richiedi una demo →</button>
-          <a href="https://fe.conf3d.aquaponic.daedalusxr.it/" target="_blank" rel="noopener" class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.35)">Prova la demo live ↗</a>
+          <a href="https://fe.conf3d.aquaponic.daedalusxr.it/" target="_blank" rel="noopener" class="btn demo-live" style="background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.35)">Prova la demo live ↗</a>
         </div>
         <p style="font-size:.75rem;color:rgba(255,255,255,.55);margin-top:.875rem">Oppure scrivici direttamente a info@daedalusxr.it</p>
       </div>
