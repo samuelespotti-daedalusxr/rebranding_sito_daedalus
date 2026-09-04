@@ -463,14 +463,14 @@ p{color:var(--ink2)}
 #reel-audio svg{width:16px;height:16px}
 @media(max-width:860px){.reel-wrap{max-width:260px;border-radius:14px;margin:2rem auto 0}}
 
-/* ── 3DXR PAGE ── */
-#page-3dxr .hero{padding:5rem 0 4rem}
-#page-3dxr .hero-inner{grid-template-columns:1fr 400px;gap:3.5rem}
-#page-3dxr .hero::after{content:'';position:absolute;top:-140px;right:-100px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,var(--p3) 0%,transparent 68%);pointer-events:none;z-index:0}
-#page-3dxr .hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(var(--p2) 1px,transparent 1px);background-size:36px 36px;opacity:.22;pointer-events:none;z-index:0}
-#page-3dxr .hero h1{margin-bottom:.875rem;background:linear-gradient(90deg,var(--ink) 0%,var(--ink) 25%,var(--p) 50%,var(--ink) 75%,var(--ink) 100%);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer3dxr 9s ease-in-out infinite alternate}
-@keyframes shimmer3dxr{0%{background-position:0% center}100%{background-position:200% center}}
-#page-3dxr .hero .sub{margin-bottom:1.75rem;max-width:500px}
+/* ── frameform PAGE ── */
+#page-frameform .hero{padding:5rem 0 4rem}
+#page-frameform .hero-inner{grid-template-columns:1fr 400px;gap:3.5rem}
+#page-frameform .hero::after{content:'';position:absolute;top:-140px;right:-100px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,var(--p3) 0%,transparent 68%);pointer-events:none;z-index:0}
+#page-frameform .hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(var(--p2) 1px,transparent 1px);background-size:36px 36px;opacity:.22;pointer-events:none;z-index:0}
+#page-frameform .hero h1{margin-bottom:.875rem;background:linear-gradient(90deg,var(--ink) 0%,var(--ink) 25%,var(--p) 50%,var(--ink) 75%,var(--ink) 100%);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmerframeform 9s ease-in-out infinite alternate}
+@keyframes shimmerframeform{0%{background-position:0% center}100%{background-position:200% center}}
+#page-frameform .hero .sub{margin-bottom:1.75rem;max-width:500px}
 /* hero visual mockup */
 .hero-visual{position:relative;z-index:1}
 .hero-screen{background:var(--w);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 24px 64px rgba(150,103,224,.14),0 4px 16px rgba(0,0,0,.06);animation:floatY3 6s ease-in-out infinite}
@@ -529,9 +529,9 @@ p{color:var(--ink2)}
 .cta-input3:focus{box-shadow:0 0 0 3px rgba(255,255,255,.3)}
 .cta-note3{font-size:.75rem;color:rgba(255,255,255,.55);margin-top:.875rem}
 @media(max-width:860px){
-  #page-3dxr .hero-inner{grid-template-columns:1fr}
+  #page-frameform .hero-inner{grid-template-columns:1fr}
   .demo-live{display:none}
-  .shots-3dxr{grid-template-columns:1fr!important}
+  .shots-frameform{grid-template-columns:1fr!important}
   .hero-visual{max-width:360px;margin:2rem auto 0}
   .screen-float{display:none}
   .screen-badge{display:none}
@@ -558,7 +558,7 @@ p{color:var(--ink2)}
       <a id="nl-soluzioni" onclick="go('soluzioni')">Soluzioni</a>
       <a id="nl-blog"      onclick="go('blog')">Blog</a>
       <a id="nl-chi"       onclick="go('chi')">Chi siamo</a>
-      <a id="nl-3dxr"      onclick="go('3dxr')" style="color:var(--p);font-weight:600">3DXR ↗</a>
+      <a id="nl-frameform"      onclick="go('frameform')" style="color:var(--p);font-weight:600">frameform ↗</a>
       <a id="nl-contatti"  onclick="go('contatti')" class="nav-cta-btn">Contattaci</a>
     </nav>
 
@@ -577,7 +577,7 @@ p{color:var(--ink2)}
   <a id="dm-soluzioni" onclick="go('soluzioni')">Soluzioni</a>
   <a id="dm-blog"      onclick="go('blog')">Blog</a>
   <a id="dm-chi"       onclick="go('chi')">Chi siamo</a>
-  <a id="dm-3dxr"      onclick="go('3dxr')" style="color:var(--p);font-weight:700">3DXR — Configuratore 3D ↗</a>
+  <a id="dm-frameform"      onclick="go('frameform')" style="color:var(--p);font-weight:700">frameform — Configuratore 3D ↗</a>
   <a id="dm-contatti"  onclick="go('contatti')" class="mob-cta">Contattaci</a>
 </nav>
 
@@ -677,13 +677,13 @@ p{color:var(--ink2)}
         </div>
       </div>
       <div class="read-more" onclick="go('soluzioni')">Scopri tutte le soluzioni</div>
-      <!-- 3DXR CTA banner -->
-      <div onclick="go('3dxr')" class="reveal" style="margin-top:2rem;background:linear-gradient(120deg,var(--p5) 0%,var(--p4) 100%);border:1.5px solid var(--p3);border-radius:var(--r-lg);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s" onmouseover="this.style.borderColor='var(--p)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 36px rgba(150,103,224,.12)'" onmouseout="this.style.borderColor='var(--p3)';this.style.transform='';this.style.boxShadow=''">
+      <!-- frameform CTA banner -->
+      <div onclick="go('frameform')" class="reveal" style="margin-top:2rem;background:linear-gradient(120deg,var(--p5) 0%,var(--p4) 100%);border:1.5px solid var(--p3);border-radius:var(--r-lg);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s" onmouseover="this.style.borderColor='var(--p)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 36px rgba(150,103,224,.12)'" onmouseout="this.style.borderColor='var(--p3)';this.style.transform='';this.style.boxShadow=''">
         <div style="display:flex;align-items:center;gap:1.25rem">
           <div style="width:44px;height:44px;border-radius:10px;background:var(--p);display:flex;align-items:center;justify-content:center;font-size:1.375rem;flex-shrink:0">📦</div>
           <div>
             <div style="font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:.2rem">Nuovo prodotto</div>
-            <div style="font-size:.9375rem;font-weight:700;color:var(--ink);line-height:1.3">3DXR — Configuratore 3D white-label per il tuo sito</div>
+            <div style="font-size:.9375rem;font-weight:700;color:var(--ink);line-height:1.3">frameform — Configuratore 3D white-label per il tuo sito</div>
           </div>
         </div>
         <span style="font-size:.875rem;font-weight:700;color:var(--p);white-space:nowrap;flex-shrink:0">Scopri →</span>
@@ -892,9 +892,9 @@ p{color:var(--ink2)}
       <div class="reveal" style="margin-top:2rem;padding:1.5rem 2rem;background:var(--p);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap">
         <div>
           <div style="font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.3rem">Hai un prodotto complesso da vendere online?</div>
-          <p style="font-weight:700;color:#fff;font-size:1rem;margin:0">3DXR — il configuratore 3D white-label che si integra nel tuo sito.</p>
+          <p style="font-weight:700;color:#fff;font-size:1rem;margin:0">frameform — il configuratore 3D white-label che si integra nel tuo sito.</p>
         </div>
-        <button onclick="go('3dxr')" class="btn" style="background:#fff;color:var(--p);font-weight:700;flex-shrink:0;white-space:nowrap">Scopri 3DXR →</button>
+        <button onclick="go('frameform')" class="btn" style="background:#fff;color:var(--p);font-weight:700;flex-shrink:0;white-space:nowrap">Scopri frameform →</button>
       </div>
     </div>
   </section>
@@ -925,11 +925,11 @@ p{color:var(--ink2)}
               <span style="font-size:.6875rem;color:var(--ink3)">Marzo 2026</span>
             </div>
           </a>
-          <a href="javascript:void(0)" onclick="openArticle('3dxr-aquaponic')" style="display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s,box-shadow .2s" onmouseover="this.style.borderColor='var(--p2)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(150,103,224,.1)'" onmouseout="this.style.borderColor='var(--line)';this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:3/2;overflow:hidden"><img src="assets/images/3DXR_1.png" alt="3DXR Aquaponic" style="width:100%;height:100%;object-fit:cover"></div>
+          <a href="javascript:void(0)" onclick="openArticle('frameform-aquaponic')" style="display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s,box-shadow .2s" onmouseover="this.style.borderColor='var(--p2)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(150,103,224,.1)'" onmouseout="this.style.borderColor='var(--line)';this.style.transform='';this.style.boxShadow=''">
+            <div style="aspect-ratio:3/2;overflow:hidden"><img src="assets/images/3DXR_1.png" alt="frameform Aquaponic" style="width:100%;height:100%;object-fit:cover"></div>
             <div style="padding:1rem">
               <div class="pill pill-sm" style="margin-bottom:.5rem">Caso studio</div>
-              <p style="font-size:.8125rem;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:.5rem">Aquaponic Design adotta 3DXR</p>
+              <p style="font-size:.8125rem;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:.5rem">Aquaponic Design adotta frameform</p>
               <span style="font-size:.6875rem;color:var(--ink3)">Marzo 2026</span>
             </div>
           </a>
@@ -1018,16 +1018,16 @@ p{color:var(--ink2)}
         <li>Knowledge tecnica difficile da trasferire a nuovi operatori</li>
       </ul>
       <div class="uc-grid">
-        <div class="uc-card"><div class="pill pill-sm">Vendita</div><h3>Configuratore &amp; Visualizzatore 3D</h3><p>Il cliente esplora e configura il prodotto in 3D prima di firmare. Meno dubbi, ciclo più corto.</p><div class="uc-buyer">Buyer: CMO / CSO</div><div style="margin-top:1rem;padding-top:.875rem;border-top:1px solid var(--line)"><span onclick="go('3dxr')" style="font-size:.8125rem;font-weight:700;color:var(--p);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem">Scopri 3DXR →</span></div></div>
+        <div class="uc-card"><div class="pill pill-sm">Vendita</div><h3>Configuratore &amp; Visualizzatore 3D</h3><p>Il cliente esplora e configura il prodotto in 3D prima di firmare. Meno dubbi, ciclo più corto.</p><div class="uc-buyer">Buyer: CMO / CSO</div><div style="margin-top:1rem;padding-top:.875rem;border-top:1px solid var(--line)"><span onclick="go('frameform')" style="font-size:.8125rem;font-weight:700;color:var(--p);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem">Scopri frameform →</span></div></div>
         <div class="uc-card"><div class="pill pill-sm">Formazione</div><h3>Training in Realtà Virtuale</h3><p>Formazione operatori standardizzata e scalabile — senza dipendere dai tecnici senior presenti fisicamente.</p><div class="uc-buyer">Buyer: COO / HR</div></div>
         <div class="uc-card"><div class="pill pill-sm">Supporto</div><h3>Assistenza Remota in AR</h3><p>Il tecnico guida l'operatore in loco attraverso la Realtà Aumentata. Meno trasferte, meno downtime.</p><div class="uc-buyer">Buyer: CSO / After-sales</div></div>
       </div>
-      <div onclick="go('3dxr')" class="reveal" style="margin-top:1.5rem;background:linear-gradient(120deg,var(--p5) 0%,var(--p4) 100%);border:1.5px solid var(--p3);border-radius:var(--r-lg);padding:1.25rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;cursor:pointer;transition:border-color .2s,box-shadow .2s" onmouseover="this.style.borderColor='var(--p)';this.style.boxShadow='0 8px 28px rgba(150,103,224,.12)'" onmouseout="this.style.borderColor='var(--p3)';this.style.boxShadow=''">
+      <div onclick="go('frameform')" class="reveal" style="margin-top:1.5rem;background:linear-gradient(120deg,var(--p5) 0%,var(--p4) 100%);border:1.5px solid var(--p3);border-radius:var(--r-lg);padding:1.25rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;cursor:pointer;transition:border-color .2s,box-shadow .2s" onmouseover="this.style.borderColor='var(--p)';this.style.boxShadow='0 8px 28px rgba(150,103,224,.12)'" onmouseout="this.style.borderColor='var(--p3)';this.style.boxShadow=''">
         <div>
           <div style="font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:.2rem">Configuratore pronto all'uso</div>
-          <p style="font-size:.9rem;font-weight:600;color:var(--ink);margin:0">Hai un prodotto da configurare online? 3DXR è la soluzione white-label già pronta.</p>
+          <p style="font-size:.9rem;font-weight:600;color:var(--ink);margin:0">Hai un prodotto da configurare online? frameform è la soluzione white-label già pronta.</p>
         </div>
-        <span style="font-size:.875rem;font-weight:700;color:var(--p);white-space:nowrap;flex-shrink:0">Scopri 3DXR →</span>
+        <span style="font-size:.875rem;font-weight:700;color:var(--p);white-space:nowrap;flex-shrink:0">Scopri frameform →</span>
       </div>
       <img src="assets/images/3drs_2.png" alt="3DRS — navigazione spazio" class="reveal" style="width:100%;max-width:800px;margin:2.5rem auto 0;aspect-ratio:2/1;object-fit:cover;display:block;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,.1)">
     </div>
@@ -1069,9 +1069,9 @@ p{color:var(--ink2)}
           <div class="bc-img" style="padding:0;overflow:hidden"><img src="assets/images/blog/cluster_mech.jpeg" alt="Clust-ER MECH Ducati" style="width:100%;height:100%;object-fit:cover"></div>
           <div class="bc-body"><div class="pill">Network & Ecosystem</div><h3>Daedalus-xr è ufficialmente socia di Clust-ER MECH</h3><p>Siamo entrati nel cluster della meccatronica e motoristica dell'Emilia-Romagna: 150+ soci tra imprese, università e centri di innovazione.</p><div class="bc-foot"><span class="bc-date">Marzo 2026</span><span class="bc-read">Leggi</span></div></div>
         </a>
-        <a class="bc" href="javascript:void(0)" onclick="openArticle('3dxr-aquaponic')">
-          <div class="bc-img" style="padding:0;overflow:hidden"><img src="assets/images/3DXR_1.png" alt="3DXR Aquaponic Design" style="width:100%;height:100%;object-fit:cover"></div>
-          <div class="bc-body"><div class="pill">Caso studio · 3DXR</div><h3>Aquaponic Design adotta 3DXR — il configuratore 3D che porta il cliente dentro la serra</h3><p>Da una visita in showroom a un'esperienza 3D immersiva: come il configuratore ha cambiato il ciclo di vendita delle serre idroponiche.</p><div class="bc-foot"><span class="bc-date">Marzo 2026</span><span class="bc-read">Leggi</span></div></div>
+        <a class="bc" href="javascript:void(0)" onclick="openArticle('frameform-aquaponic')">
+          <div class="bc-img" style="padding:0;overflow:hidden"><img src="assets/images/3DXR_1.png" alt="frameform Aquaponic Design" style="width:100%;height:100%;object-fit:cover"></div>
+          <div class="bc-body"><div class="pill">Caso studio · frameform</div><h3>Aquaponic Design adotta frameform — il configuratore 3D che porta il cliente dentro la serra</h3><p>Da una visita in showroom a un'esperienza 3D immersiva: come il configuratore ha cambiato il ciclo di vendita delle serre idroponiche.</p><div class="bc-foot"><span class="bc-date">Marzo 2026</span><span class="bc-read">Leggi</span></div></div>
         </a>
         <a class="bc" href="javascript:void(0)" onclick="openArticle('giappone')">
           <div class="bc-img" style="padding:0;overflow:hidden"><img src="assets/images/blog/giappone_3.webp" alt="Missione Giappone" style="width:100%;height:100%;object-fit:cover"></div>
@@ -1293,32 +1293,32 @@ p{color:var(--ink2)}
   </section>
 </div><!-- /art-giappone -->
 
-<!-- ARTICOLO: 3dxr-aquaponic -->
-<div id="page-art-3dxr-aquaponic" class="page">
+<!-- ARTICOLO: frameform-aquaponic -->
+<div id="page-art-frameform-aquaponic" class="page">
   <section class="sec" style="padding-bottom:5rem">
     <div class="wrap">
       <button class="art-back" onclick="go('blog')">Torna al blog</button>
       <div class="art-wrap">
-        <div class="art-kicker"><span class="pill">Caso studio · 3DXR</span><span class="art-kicker-date">Marzo 2026 · Daedalus-xr</span></div>
-        <h1 class="art-title">Aquaponic Design e 3DXR.<br>Configurare uno spazio — o comprare un prodotto — non è mai stato così semplice.</h1>
-        <p class="art-lead">Aquaponic Design è uno spinoff dell'Università di Bologna specializzato in impianti di coltivazione fuori suolo. Vendono sistemi su misura per aziende e pubblica amministrazione, ma anche kit, fertilizzanti e orti verticali direttamente in ecommerce. Con 3DXR hanno dato ai loro clienti un modo completamente nuovo di interagire con i prodotti — che stiano configurando un impianto professionale o scegliendo un orto verticale per casa.</p>
+        <div class="art-kicker"><span class="pill">Caso studio · frameform</span><span class="art-kicker-date">Marzo 2026 · Daedalus-xr</span></div>
+        <h1 class="art-title">Aquaponic Design e frameform.<br>Configurare uno spazio — o comprare un prodotto — non è mai stato così semplice.</h1>
+        <p class="art-lead">Aquaponic Design è uno spinoff dell'Università di Bologna specializzato in impianti di coltivazione fuori suolo. Vendono sistemi su misura per aziende e pubblica amministrazione, ma anche kit, fertilizzanti e orti verticali direttamente in ecommerce. Con frameform hanno dato ai loro clienti un modo completamente nuovo di interagire con i prodotti — che stiano configurando un impianto professionale o scegliendo un orto verticale per casa.</p>
         <div class="art-full" style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);margin-bottom:3rem">
-          <img src="assets/images/3DXR_1.png" alt="Configuratore 3DXR per Aquaponic Design" loading="eager" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover">
+          <img src="assets/images/3DXR_1.png" alt="Configuratore frameform per Aquaponic Design" loading="eager" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover">
         </div>
         <div class="art-body">
           <h2>Chi è Aquaponic Design</h2>
           <p>SpinOff dell'Università di Bologna, Aquaponic Design progetta impianti idroponici e verticali e vende kit, fertilizzanti e sistemi di coltivazione fuori suolo in ecommerce. Prodotti con molte varianti, configurazioni e prezzi che cambiano a seconda dello spazio e delle esigenze del cliente.</p>
           <div class="art-pullquote">La sfida non era solo vendere — era far capire al cliente cosa stava comprando, prima di comprarlo.</div>
           <h2>Il problema: troppa complessità, troppo poco visual</h2>
-          <p>Vendere coltivazioni fuori suolo significa gestire variabili continue. Un impianto acquaponico su misura dipende dalle dimensioni dello spazio, dal tipo di coltura, dalla capacità produttiva e dagli accessori scelti. Anche un orto verticale ALE 3.0 ha varianti, estensioni e combinazioni. Prima di 3DXR, tutto si risolveva con schede PDF, email e spesso un sopralluogo prima ancora di capire se il cliente fosse davvero pronto ad acquistare.</p>
+          <p>Vendere coltivazioni fuori suolo significa gestire variabili continue. Un impianto acquaponico su misura dipende dalle dimensioni dello spazio, dal tipo di coltura, dalla capacità produttiva e dagli accessori scelti. Anche un orto verticale ALE 3.0 ha varianti, estensioni e combinazioni. Prima di frameform, tutto si risolveva con schede PDF, email e spesso un sopralluogo prima ancora di capire se il cliente fosse davvero pronto ad acquistare.</p>
           <ul>
             <li>Cicli di vendita lunghi per gli impianti su misura</li>
             <li>Clienti che faticavano a visualizzare il prodotto nel loro spazio reale</li>
             <li>Team commerciale impegnato in preventivi manuali e iterazioni ripetitive</li>
             <li>Ecommerce con prodotti difficili da differenziare solo a testo e foto</li>
           </ul>
-          <h2>La soluzione: 3DXR per spazi e prodotti</h2>
-          <p>Con 3DXR, Aquaponic Design ha portato il configuratore direttamente nel proprio sito — white-label, con i loro colori e il loro brand. Il cliente non vede Daedalus-xr: vede uno strumento di Aquaponic Design. Il configuratore gestisce due flussi distinti:</p>
+          <h2>La soluzione: frameform per spazi e prodotti</h2>
+          <p>Con frameform, Aquaponic Design ha portato il configuratore direttamente nel proprio sito — white-label, con i loro colori e il loro brand. Il cliente non vede Daedalus-xr: vede uno strumento di Aquaponic Design. Il configuratore gestisce due flussi distinti:</p>
         </div>
         <div class="art-steps art-full" style="grid-template-columns:repeat(2,1fr);max-width:700px;margin-left:auto;margin-right:auto">
           <div class="art-step"><div class="art-step-n">Flusso 1 · Spazi</div><h4>Progetta il tuo impianto</h4><p>Il cliente inserisce le dimensioni reali dello spazio, configura i moduli idroponici e ottiene un preventivo indicativo — senza aspettare nessun tecnico.</p></div>
@@ -1326,7 +1326,7 @@ p{color:var(--ink2)}
         </div>
         <div class="art-full" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2.5rem 0">
           <div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08)"><img src="assets/images/3DXR_2.png" alt="Configurazione impianto idroponico 3D" loading="lazy" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover"></div>
-          <div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08)"><img src="assets/images/3DXR_3.png" alt="Selezione prodotti e varianti 3DXR" loading="lazy" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover"></div>
+          <div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08)"><img src="assets/images/3DXR_3.png" alt="Selezione prodotti e varianti frameform" loading="lazy" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover"></div>
         </div>
         <div class="art-body">
           <h2>Cosa cambia concretamente</h2>
@@ -1338,16 +1338,16 @@ p{color:var(--ink2)}
             <li>Esperienza di brand differenziante rispetto a qualsiasi concorrente del settore</li>
           </ul>
           <div class="art-pullquote">Nel settore delle coltivazioni fuori suolo, nessuno offre ancora un'esperienza di acquisto così avanzata. Questo è il vantaggio competitivo che si costruisce una volta e dura anni.</div>
-          <h2>3DXR per il tuo catalogo</h2>
-          <p>Se vendi prodotti con varianti, configurazioni o che dipendono dallo spazio del cliente — impianti, sistemi modulari, macchinari, arredo tecnico — 3DXR si adatta al tuo catalogo, non viceversa. Il processo parte dall'analisi del tuo prodotto e del tuo flusso di vendita. Poi costruiamo insieme.</p>
+          <h2>frameform per il tuo catalogo</h2>
+          <p>Se vendi prodotti con varianti, configurazioni o che dipendono dallo spazio del cliente — impianti, sistemi modulari, macchinari, arredo tecnico — frameform si adatta al tuo catalogo, non viceversa. Il processo parte dall'analisi del tuo prodotto e del tuo flusso di vendita. Poi costruiamo insieme.</p>
         </div>
       </div>
     </div>
     <div class="wrap" style="margin-top:3rem;padding-top:3rem;border-top:1px solid var(--line)">
-      <div class="blog-cta-row"><p>Vuoi vedere 3DXR con i tuoi prodotti?</p><button class="btn btn-p" onclick="go('3dxr')">Scopri 3DXR →</button></div>
+      <div class="blog-cta-row"><p>Vuoi vedere frameform con i tuoi prodotti?</p><button class="btn btn-p" onclick="go('frameform')">Scopri frameform →</button></div>
     </div>
   </section>
-</div><!-- /art-3dxr-aquaponic -->
+</div><!-- /art-frameform-aquaponic -->
 
 <!-- ARTICOLO: cluster-mech -->
 <div id="page-art-cluster-mech" class="page">
@@ -1508,14 +1508,15 @@ p{color:var(--ink2)}
   </section>
 </div><!-- /contatti -->
 
-<!-- ══════════════ 3DXR PAGE ══════════════ -->
-<div id="page-3dxr" class="page">
+<!-- ══════════════ frameform PAGE ══════════════ -->
+<div id="page-frameform" class="page">
 
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
       <div class="hero-inner">
         <div>
+          <img src="assets/images/frameform_logo.png" alt="frameform — Configuratore 3D Online" style="height:56px;width:auto;margin-bottom:1.5rem;display:block">
           <div class="pill" style="margin-bottom:1.25rem">Configuratore 3D · White-label</div>
           <h1>Il cliente progetta il suo spazio. Con il tuo prodotto già dentro.</h1>
           <p class="sub">Il cliente inserisce le misure reali del suo spazio, posiziona i tuoi prodotti in 3D, vede colori e materiali in tempo reale. Poi genera il preventivo o va direttamente in checkout.</p>
@@ -1615,7 +1616,7 @@ p{color:var(--ink2)}
           <p class="intro-lead">Zero chiamate. Zero commerciale in mezzo. Il cliente configura, vede il prezzo, compra.</p>
         </div>
         <div class="reveal" style="--d:.1s">
-          <p class="intro-body">3DXR è un configuratore 3D white-label che si integra nel tuo sito. Il cliente entra, misura il suo spazio, posiziona i prodotti e vede il totale aggiornarsi in tempo reale. Quando è pronto, acquista — o scarica il preventivo e lo condivide.</p>
+          <p class="intro-body">frameform è un configuratore 3D white-label che si integra nel tuo sito. Il cliente entra, misura il suo spazio, posiziona i prodotti e vede il totale aggiornarsi in tempo reale. Quando è pronto, acquista — o scarica il preventivo e lo condivide.</p>
           <p class="intro-body">Non serve un commerciale che spieghi. Il prodotto si racconta da solo, in tre dimensioni.</p>
         </div>
       </div>
@@ -1625,26 +1626,26 @@ p{color:var(--ink2)}
   <!-- SCREENSHOTS -->
   <section class="sec" style="padding-top:0">
     <div class="wrap">
-      <div class="reveal shots-3dxr" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem">
+      <div class="reveal shots-frameform" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem">
         <div style="border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.08)">
-          <img src="assets/images/3DXR_1.png" alt="3DXR configuratore 3D" loading="lazy" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover">
+          <img src="assets/images/3DXR_1.png" alt="frameform configuratore 3D" loading="lazy" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover">
         </div>
         <div style="border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.08)">
-          <img src="assets/images/3DXR_2.png" alt="3DXR pianificazione spazio" loading="lazy" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover">
+          <img src="assets/images/3DXR_2.png" alt="frameform pianificazione spazio" loading="lazy" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover">
         </div>
         <div style="border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.08)">
-          <img src="assets/images/3DXR_3.png" alt="3DXR selezione prodotti" loading="lazy" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover">
+          <img src="assets/images/3DXR_3.png" alt="frameform selezione prodotti" loading="lazy" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover">
         </div>
       </div>
     </div>
   </section>
 
   <!-- FEATURES -->
-  <section class="icd-sec" id="3dxr-features">
+  <section class="icd-sec" id="frameform-features">
     <div class="wrap">
       <div class="icd-header reveal">
         <div class="lbl">Funzionalità</div>
-        <h2>Cosa fa 3DXR, concretamente.</h2>
+        <h2>Cosa fa frameform, concretamente.</h2>
         <p class="sub" style="margin-top:.5rem">Tutto quello che serve per portare il cliente dalla curiosità all'acquisto, dentro un'unica esperienza 3D.</p>
       </div>
       <div class="icd-grid">
@@ -1756,7 +1757,7 @@ p{color:var(--ink2)}
       <div class="sh reveal">
         <div class="lbl">Personalizzazione</div>
         <h2>Una base solida. Adattabile alle tue esigenze.</h2>
-        <p class="sub" style="margin-top:.5rem">3DXR copre il flusso completo dalla configurazione all'acquisto. Se hai esigenze specifiche, si integra con i tuoi sistemi esistenti.</p>
+        <p class="sub" style="margin-top:.5rem">frameform copre il flusso completo dalla configurazione all'acquisto. Se hai esigenze specifiche, si integra con i tuoi sistemi esistenti.</p>
       </div>
       <div class="why-grid">
         <div class="why-card reveal">
@@ -1767,7 +1768,7 @@ p{color:var(--ink2)}
         <div class="why-card reveal" style="--d:.1s">
           <div class="why-n">02</div>
           <h3>Integrazioni su misura</h3>
-          <p>CRM, ERP, PIM, sistemi di gestione ordini. Se hai già una piattaforma, 3DXR si connette — i dati fluiscono senza duplicazioni.</p>
+          <p>CRM, ERP, PIM, sistemi di gestione ordini. Se hai già una piattaforma, frameform si connette — i dati fluiscono senza duplicazioni.</p>
         </div>
         <div class="why-card reveal" style="--d:.2s">
           <div class="why-n">03</div>
@@ -1783,7 +1784,7 @@ p{color:var(--ink2)}
     <div class="wrap">
       <div class="cta-box reveal">
         <div class="lbl">Inizia da qui</div>
-        <h2>Vedi 3DXR nel tuo contesto, con i tuoi prodotti.</h2>
+        <h2>Vedi frameform nel tuo contesto, con i tuoi prodotti.</h2>
         <p class="sub">Raccontaci il tuo settore e il tipo di prodotto. Ti mostriamo come funzionerebbe concretamente — senza impegno.</p>
         <div style="margin-top:2rem;display:flex;gap:.875rem;flex-wrap:wrap">
           <button class="btn" style="background:#fff;color:var(--p);font-weight:700;box-shadow:0 4px 24px rgba(0,0,0,.18)" onclick="go('contatti')">Richiedi una demo →</button>
@@ -1794,7 +1795,7 @@ p{color:var(--ink2)}
     </div>
   </section>
 
-</div><!-- /3dxr -->
+</div><!-- /frameform -->
 
 <!-- FOOTER -->
 <footer id="footer">
@@ -1817,7 +1818,7 @@ p{color:var(--ink2)}
           <li><a onclick="go('blog')">Blog</a></li>
           <li><a onclick="go('chi')">Chi siamo</a></li>
           <li><a onclick="go('contatti')">Contatti</a></li>
-          <li><a onclick="go('3dxr')" style="color:var(--p2)">3DXR — Configuratore 3D</a></li>
+          <li><a onclick="go('frameform')" style="color:var(--p2)">frameform — Configuratore 3D</a></li>
         </ul>
       </div>
       <div class="fc">
@@ -1847,8 +1848,8 @@ window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
 
-const PAGES = ['home','soluzioni','blog','chi','contatti','3dxr','art-3drs','art-aquaponic','art-cna','art-industria40','art-giappone','art-3dxr-aquaponic','art-cluster-mech'];
-const NAV_PAGES = ['home','soluzioni','blog','chi','contatti','3dxr'];
+const PAGES = ['home','soluzioni','blog','chi','contatti','frameform','art-3drs','art-aquaponic','art-cna','art-industria40','art-giappone','art-frameform-aquaponic','art-cluster-mech'];
+const NAV_PAGES = ['home','soluzioni','blog','chi','contatti','frameform'];
 let menuOpen = false;
 
 function renderPage(id) {
